@@ -1,0 +1,8 @@
+streamlit
+sentence-transformers
+pinecone
+pandas
+openpyxl
+scikit-learn
+torch
+transformers

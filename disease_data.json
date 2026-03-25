@@ -1,0 +1,4683 @@
+[
+  {
+    "category": "cash crop",
+    "crop": "cotton",
+    "disease": "Angular Leaf Spot",
+    "type": "bacterial",
+    "symptoms": [
+      "water-soaked angular spots on leaves",
+      "black arm (stem lesions)",
+      "boll rot",
+      "bacterial ooze"
+    ],
+    "management": [
+      "Seed treatment with Acid Delinting; spray Streptocycline (100 ppm) + Copper Oxychloride (0.3%)."
+    ],
+    "causal_organism": "Xanthomonas citri pv. malvacearum"
+  },
+  {
+    "category": "cash crop",
+    "crop": "cotton",
+    "disease": "Bacterial Blight (Black Arm)",
+    "type": "bacterial",
+    "symptoms": [
+      "angular leaf spots",
+      "blackening of the stem (Black arm)",
+      "boll rot with oily appearance"
+    ],
+    "management": [
+      "Acid delinting of seeds; spray Streptocycline; use resistant cultivars."
+    ],
+    "causal_organism": "Xanthomonas citri pv. malvacearum"
+  },
+  {
+    "category": "cash crop",
+    "crop": "cotton",
+    "disease": "Fusarium Wilt",
+    "type": "fungal",
+    "symptoms": [
+      "yellowing and browning of leaf margins",
+      "wilting of seedlings",
+      "browning of vascular tissues"
+    ],
+    "management": [
+      "Crop rotation with non-host crops; apply Trichoderma viride to soil; use resistant varieties."
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. vasinfectum"
+  },
+  {
+    "category": "cash crop",
+    "crop": "cotton",
+    "disease": "Grey Mildew (Dahiya)",
+    "type": "fungal",
+    "symptoms": [
+      "white frosty/powdery growth on leaf underside",
+      "angular translucent spots on upper surface",
+      "premature defoliation"
+    ],
+    "management": [
+      "Spray Wettable Sulfur (0.3%) or Carbendazim; destroy plant debris."
+    ],
+    "causal_organism": "Ramularia areola"
+  },
+  {
+    "category": "cash crop",
+    "crop": "cotton",
+    "disease": "Leaf Curl Virus (CLCuV)",
+    "type": "viral",
+    "symptoms": [
+      "upward or downward curling of leaves",
+      "thickening of veins",
+      "enations (leaf-like outgrowths) on underside"
+    ],
+    "management": [
+      "Control Whitefly vector with Imidacloprid; remove alternate weed hosts like Sida acuta."
+    ],
+    "causal_organism": "Cotton leaf curl virus (CLCuV)"
+  },
+  {
+    "category": "cash crop",
+    "crop": "cotton",
+    "disease": "Reniform Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "stunted plants",
+      "smaller bolls",
+      "leaves show 'mosaic-like' chlorosis",
+      "reduced root system"
+    ],
+    "management": [
+      "Rotate with corn; use soil fumigants in high-infestation areas."
+    ],
+    "causal_organism": "Rotylenchulus reniformis"
+  },
+  {
+    "category": "cash crop",
+    "crop": "cotton",
+    "disease": "Root Rot (Macrophomina)",
+    "type": "fungal",
+    "symptoms": [
+      "sudden wilting",
+      "shredding of bark at the root-stem junction",
+      "darkened taproot"
+    ],
+    "management": [
+      "Intercrop with Moth bean; apply Zinc Sulphate; avoid moisture stress."
+    ],
+    "causal_organism": "Macrophomina phaseolina"
+  },
+  {
+    "category": "cash crop",
+    "crop": "cotton",
+    "disease": "Root-Knot Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "stunting",
+      "patchy growth",
+      "leaf yellowing",
+      "small/fewer bolls",
+      "large root galls"
+    ],
+    "management": [
+      "Use resistant varieties; apply Nematicides; rotate with peanuts (non-host)."
+    ],
+    "causal_organism": "Meloidogyne incognita"
+  },
+  {
+    "category": "cash crop",
+    "crop": "cotton",
+    "disease": "Tobacco Streak Virus",
+    "type": "viral",
+    "symptoms": [
+      "necrotic spots on leaves",
+      "purple discoloration of stem",
+      "drooping of squares/buds"
+    ],
+    "management": [
+      "Control thrips; remove Parthenium weed hosts."
+    ],
+    "causal_organism": "Tobacco streak virus (TSV)"
+  },
+  {
+    "category": "cash crop",
+    "crop": "cotton",
+    "disease": "Tobacco Streak Virus (TSV)",
+    "type": "viral",
+    "symptoms": [
+      "necrosis of leaf veins",
+      "square/bud drooping",
+      "purple-to-brown streaks on stem"
+    ],
+    "management": [
+      "Remove Parthenium weeds (host for thrips); spray systemic insecticides for thrips control."
+    ],
+    "causal_organism": "Tobacco streak virus (TSV)"
+  },
+  {
+    "category": "cash crop",
+    "crop": "sugarcane",
+    "disease": "Grassy Shoot",
+    "type": "phytoplasma",
+    "symptoms": [
+      "profuse tillering",
+      "stunted growth",
+      "narrow chlorotic leaves",
+      "plant looks like a clump of grass"
+    ],
+    "management": [
+      "Hot Water Treatment (50°C for 2 hours); rogue out infected clumps; control aphids."
+    ],
+    "causal_organism": "Candidatus Phytoplasma sacchari"
+  },
+  {
+    "category": "cash crop",
+    "crop": "sugarcane",
+    "disease": "Lesion Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "reddish-brown lesions on roots",
+      "poor ratoon growth",
+      "thin stalks",
+      "general yellowing"
+    ],
+    "management": [
+      "Apply filter press mud (press mud); use green manure; soil application of Carbofuran."
+    ],
+    "causal_organism": "Pratylenchus zeae"
+  },
+  {
+    "category": "cash crop",
+    "crop": "sugarcane",
+    "disease": "Red Rot",
+    "type": "fungal",
+    "symptoms": [
+      "reddening of internal pith with white transverse bands",
+      "acidic smell (alcoholic)",
+      "drying of third or fourth leaf"
+    ],
+    "management": [
+      "Use healthy setts; avoid ratoon cropping in infected fields; treat setts with Carbendazim (50°C)."
+    ],
+    "causal_organism": "Colletotrichum falcatum"
+  },
+  {
+    "category": "cash crop",
+    "crop": "sugarcane",
+    "disease": "Sett Rot (Pineapple Disease)",
+    "type": "fungal",
+    "symptoms": [
+      "failure of buds to germinate",
+      "internal tissue turns black",
+      "distinct pineapple-like odor from fermented sap"
+    ],
+    "management": [
+      "Drip-treat setts with Carbendazim; avoid waterlogging; ensure optimal soil temperature at planting."
+    ],
+    "causal_organism": "Ceratocystis paradoxa"
+  },
+  {
+    "category": "cash crop",
+    "crop": "sugarcane",
+    "disease": "Smut",
+    "type": "fungal",
+    "symptoms": [
+      "long whip-like black structure from the apex",
+      "stunted stalks",
+      "excessive tillering"
+    ],
+    "management": [
+      "Remove and burn 'whips' in a cloth bag to prevent spore spread; avoid using setts from smutted plants."
+    ],
+    "causal_organism": "Sporisorium scitamineum"
+  },
+  {
+    "category": "cash crop",
+    "crop": "sugarcane",
+    "disease": "Wilt",
+    "type": "fungal",
+    "symptoms": [
+      "stunted growth",
+      "hollowing of the pith",
+      "internal pith turns purple-brown",
+      "drying of crown"
+    ],
+    "management": [
+      "Selection of healthy setts; drench soil with Carbendazim; avoid drought."
+    ],
+    "causal_organism": "Cephalosporium sacchari"
+  },
+  {
+    "category": "cereal",
+    "crop": "barley",
+    "disease": "Barley Stripe Mosaic",
+    "type": "viral",
+    "symptoms": [
+      "yellow-to-white stripes on leaves",
+      "v-shaped patterns",
+      "shriveled grains",
+      "stunted plants"
+    ],
+    "management": [
+      "Use certified virus-free seeds; eliminate wild grass hosts."
+    ],
+    "causal_organism": "Barley stripe mosaic virus (BSMV)"
+  },
+  {
+    "category": "cereal",
+    "crop": "barley",
+    "disease": "Covered Smut",
+    "type": "fungal",
+    "symptoms": [
+      "grains replaced by black spore mass",
+      "spores enclosed by a persistent gray membrane",
+      "stunted heads"
+    ],
+    "management": [
+      "Seed treatment with Vitavax (2.5g/kg); follow proper crop rotation."
+    ],
+    "causal_organism": "Ustilago hordei"
+  },
+  {
+    "category": "cereal",
+    "crop": "barley",
+    "disease": "Loose Smut",
+    "type": "fungal",
+    "symptoms": [
+      "heads turn into black powdery spore masses",
+      "silvery membrane ruptures early",
+      "stunted stalks"
+    ],
+    "management": [
+      "Systemic seed treatment with Carboxin (Vitavax); hot water treatment."
+    ],
+    "causal_organism": "Ustilago nuda"
+  },
+  {
+    "category": "cereal",
+    "crop": "barley",
+    "disease": "Net Blotch",
+    "type": "fungal",
+    "symptoms": [
+      "criss-cross dark brown lines",
+      "net-like pattern on leaves",
+      "leaf stripes"
+    ],
+    "management": [
+      "Seed treatment with Carboxin; use resistant varieties."
+    ],
+    "causal_organism": "Pyrenophora teres"
+  },
+  {
+    "category": "cereal",
+    "crop": "barley",
+    "disease": "Scald",
+    "type": "fungal",
+    "symptoms": [
+      "oval water-soaked lesions",
+      "centers turn gray-white with dark brown margins",
+      "lens-shaped spots on leaf sheaths"
+    ],
+    "management": [
+      "Rotate with non-cereal crops; apply Prothioconazole; treat seeds with Fluxapyroxad."
+    ],
+    "causal_organism": "Rhynchosporium secalis"
+  },
+  {
+    "category": "cereal",
+    "crop": "barnyard millet",
+    "disease": "Head Smut",
+    "type": "fungal",
+    "symptoms": [
+      "entire inflorescence converted to a black gall",
+      "gall covered by a silvery membrane",
+      "stunted plants"
+    ],
+    "management": [
+      "Hot water seed treatment (55°C for 10 mins); avoid continuous cropping of barnyard millet."
+    ],
+    "causal_organism": "Ustilago panicifromentacei"
+  },
+  {
+    "category": "cereal",
+    "crop": "finger millet (ragi)",
+    "disease": "Blast",
+    "type": "fungal",
+    "symptoms": [
+      "spindle-shaped leaf spots",
+      "neck infection (blackening below ear)",
+      "finger infection causing grain shriveling"
+    ],
+    "management": [
+      "Spray Kitazin or Carbendazim; avoid late sowing; use resistant varieties like GPU 28 or ML-365."
+    ],
+    "causal_organism": "Pyricularia grisea"
+  },
+  {
+    "category": "cereal",
+    "crop": "finger millet (ragi)",
+    "disease": "Helminthosporium Leaf Spot",
+    "type": "fungal",
+    "symptoms": [
+      "small oval brown spots",
+      "centers become straw-colored",
+      "spots coalesce to form large blighted areas"
+    ],
+    "management": [
+      "Seed treatment with Captan; spray Mancozeb (0.2%) if symptoms appear at seedling stage."
+    ],
+    "causal_organism": "Bipolaris nodulosa"
+  },
+  {
+    "category": "cereal",
+    "crop": "foxtail millet",
+    "disease": "Smut",
+    "type": "fungal",
+    "symptoms": [
+      "individual grains replaced by gray-black fungal galls",
+      "swollen spikelets",
+      "ruptured galls releasing black powder"
+    ],
+    "management": [
+      "Seed treatment with Carboxin or Thiram (2g/kg); crop rotation; removal of smutted ear heads."
+    ],
+    "causal_organism": "Ustilago crameri"
+  },
+  {
+    "category": "cereal",
+    "crop": "little millet",
+    "disease": "Bacterial Leaf Spot",
+    "type": "bacterial",
+    "symptoms": [
+      "linear water-soaked lesions",
+      "lesions turn brown with age",
+      "yellow halo around spots"
+    ],
+    "management": [
+      "Seed treatment with Streptocycline (100 ppm); avoid overhead irrigation in nurseries."
+    ],
+    "causal_organism": "Pseudomonas syringae"
+  },
+  {
+    "category": "cereal",
+    "crop": "maize",
+    "disease": "Bacterial Leaf Streak",
+    "type": "bacterial",
+    "symptoms": [
+      "narrow yellow-to-tan stripes",
+      "lesions stay between veins",
+      "wavy margins on streaks"
+    ],
+    "management": [
+      "Clean equipment after harvest; crop rotation; use resistant hybrids."
+    ],
+    "causal_organism": "Xanthomonas vasicola pv. zeae"
+  },
+  {
+    "category": "cereal",
+    "crop": "maize",
+    "disease": "Bacterial Stalk Rot",
+    "type": "bacterial",
+    "symptoms": [
+      "water-soaked base of the plant",
+      "foul-smelling decay",
+      "sudden plant collapse",
+      "pith disintegration"
+    ],
+    "management": [
+      "Avoid waterlogging; use bleaching powder (10kg/ha) in irrigation; provide good drainage."
+    ],
+    "causal_organism": "Erwinia chrysanthemi pv. zeae"
+  },
+  {
+    "category": "cereal",
+    "crop": "maize",
+    "disease": "Common Smut",
+    "type": "fungal",
+    "symptoms": [
+      "large white galls on ears, tassels, or nodes",
+      "galls turn black and rupture",
+      "distorted plant growth"
+    ],
+    "management": [
+      "Avoid mechanical injury to plants; crop rotation; remove galls before they rupture."
+    ],
+    "causal_organism": "Ustilago maydis"
+  },
+  {
+    "category": "cereal",
+    "crop": "maize",
+    "disease": "Common rust",
+    "type": "fungal",
+    "symptoms": [
+      "brown pustules",
+      "leaf spots",
+      "reduced yield"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Apply fungicides if severe",
+      "Maintain field hygiene"
+    ],
+    "causal_organism": "Puccinia sorghi"
+  },
+  {
+    "category": "cereal",
+    "crop": "maize",
+    "disease": "Downy mildew",
+    "type": "fungal",
+    "symptoms": [
+      "chlorotic streaks",
+      "white growth underside",
+      "stunted growth"
+    ],
+    "management": [
+      "Use resistant hybrids",
+      "Seed treatment with metalaxyl",
+      "Remove infected plants early"
+    ],
+    "causal_organism": "Peronosclerospora sorghi"
+  },
+  {
+    "category": "cereal",
+    "crop": "maize",
+    "disease": "Maize Dwarf Mosaic",
+    "type": "viral",
+    "symptoms": [
+      "stunting",
+      "mottled green and light yellow streaks",
+      "shortened internodes",
+      "reduced ear size"
+    ],
+    "management": [
+      "Control aphid vectors; eliminate Johnson grass (alternate host); use resistant hybrids."
+    ],
+    "causal_organism": "Maize dwarf mosaic virus (MDMV)"
+  },
+  {
+    "category": "cereal",
+    "crop": "maize",
+    "disease": "Maydis Leaf Blight",
+    "type": "fungal",
+    "symptoms": [
+      "small diamond-shaped lesions",
+      "elongated tan spots with brownish borders",
+      "lesions stay between veins",
+      "premature foliage drying"
+    ],
+    "management": [
+      "Spray Mancozeb or Zineb; use resistant hybrids like Ganga-5; destroy crop residue."
+    ],
+    "causal_organism": "Bipolaris maydis (syn. Helminthosporium maydis)"
+  },
+  {
+    "category": "cereal",
+    "crop": "maize",
+    "disease": "Nitrogen Deficiency",
+    "type": "nutrient",
+    "symptoms": [
+      "V-shaped yellowing starting from leaf tip",
+      "stunted spindly stalks",
+      "pale green overall appearance"
+    ],
+    "management": [
+      "Apply Urea or Ammonium Nitrate; use split doses of Nitrogen during knee-high stage."
+    ],
+    "causal_organism": "Abiotic (Nitrogen deficiency)"
+  },
+  {
+    "category": "cereal",
+    "crop": "pearl millet",
+    "disease": "Downy mildew",
+    "type": "fungal",
+    "symptoms": [
+      "yellow streaks",
+      "white downy growth",
+      "distorted leaves"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Seed treatment with fungicide",
+      "Remove infected plants"
+    ],
+    "causal_organism": "Sclerospora graminicola"
+  },
+  {
+    "category": "cereal",
+    "crop": "pearl millet (bajra)",
+    "disease": "Downy Mildew (Green Ear)",
+    "type": "fungal",
+    "symptoms": [
+      "transformation of spikes into leafy structures",
+      "white cottony growth on leaf underside",
+      "chlorotic streaks on leaves",
+      "stunting"
+    ],
+    "management": [
+      "Seed treatment with Metalaxyl (6g/kg); rogue out 'green ear' plants; use resistant hybrids like HHB 67."
+    ],
+    "causal_organism": "Sclerospora graminicola"
+  },
+  {
+    "category": "cereal",
+    "crop": "pearl millet (bajra)",
+    "disease": "Ergot",
+    "type": "fungal",
+    "symptoms": [
+      "honey-like pinkish fluid (honeydew) from spikelets",
+      "dark brown to black sclerotia replacing grains",
+      "sticky panicles"
+    ],
+    "management": [
+      "Brine treatment (10% salt) to float off sclerotia; spray Mancozeb at 50% flowering; deep summer plowing."
+    ],
+    "causal_organism": "Claviceps fusiformis"
+  },
+  {
+    "category": "cereal",
+    "crop": "pearl millet (bajra)",
+    "disease": "Rust",
+    "type": "fungal",
+    "symptoms": [
+      "reddish-brown pustules on both leaf surfaces",
+      "pustules on stem and leaf sheath",
+      "premature leaf drying"
+    ],
+    "management": [
+      "Spray Wettable Sulfur (0.2%) or Mancozeb; destroy collateral hosts like 'Ischaemum aristatum'."
+    ],
+    "causal_organism": "Puccinia penniseti"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "Bacterial Grain Rot",
+    "type": "bacterial",
+    "symptoms": [
+      "discolored grains",
+      "aborted grains",
+      "rotting of the panicle base",
+      "reddish-brown lesions on grains"
+    ],
+    "management": [
+      "Use healthy seeds; avoid overhead irrigation; spray Copper Oxychloride."
+    ],
+    "causal_organism": "Burkholderia glumae"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "Bacterial Leaf Blight",
+    "type": "bacterial",
+    "symptoms": [
+      "water-soaked streaks",
+      "yellowish-white lesions",
+      "wavy margins on leaves",
+      "bacterial ooze"
+    ],
+    "management": [
+      "Balanced nitrogen application; treat seeds with Streptocycline."
+    ],
+    "causal_organism": "Xanthomonas oryzae pv. oryzae"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "Bacterial leaf blight",
+    "type": "bacterial",
+    "symptoms": [
+      "yellowing of leaves",
+      "wilting",
+      "leaf drying from tip"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Avoid water stagnation",
+      "Apply copper-based bactericide"
+    ],
+    "causal_organism": "Xanthomonas oryzae pv. oryzae"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "Blast",
+    "type": "fungal",
+    "symptoms": [
+      "spindle-shaped lesions",
+      "gray center spots",
+      "leaf drying"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Avoid excess nitrogen fertilizer",
+      "Apply fungicide such as tricyclazole"
+    ],
+    "causal_organism": "Magnaporthe oryzae"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "Phosphorus Deficiency",
+    "type": "nutrient",
+    "symptoms": [
+      "dark green leaves with purple tint",
+      "erect and spindly growth",
+      "reduced tillering",
+      "delayed maturity"
+    ],
+    "management": [
+      "Apply Single Super Phosphate (SSP) or DAP as a basal dose."
+    ],
+    "causal_organism": "Abiotic (Phosphorus deficiency)"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "Rice Blast",
+    "type": "fungal",
+    "symptoms": [
+      "spindle-shaped spots with gray centers",
+      "brown margins on leaves",
+      "neck rot",
+      "nodal infection"
+    ],
+    "management": [
+      "Seed treatment with Thiram; avoid excessive Nitrogen; spray Tricyclazole 75 WP."
+    ],
+    "causal_organism": "Magnaporthe oryzae"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "Rice Grassy Stunt",
+    "type": "viral",
+    "symptoms": [
+      "excessive tillering",
+      "very narrow/short leaves",
+      "leaves turn yellow/green",
+      "failed flowering"
+    ],
+    "management": [
+      "Control Brown Plant Hopper (BPH); remove infected plants."
+    ],
+    "causal_organism": "Rice grassy stunt virus (RGSV)"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "Rice Root-Knot Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "terminal galls on roots (hook-like)",
+      "yellowing of leaves",
+      "stunted growth",
+      "empty grains"
+    ],
+    "management": [
+      "Continuous flooding of fields; crop rotation with non-host crops like mustard; apply Carbofuran 3G."
+    ],
+    "causal_organism": "Meloidogyne graminicola"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "Sheath blight",
+    "type": "fungal",
+    "symptoms": [
+      "oval lesions on sheath",
+      "brown patches",
+      "lodging"
+    ],
+    "management": [
+      "Maintain proper spacing",
+      "Avoid excess nitrogen",
+      "Apply fungicide such as validamycin"
+    ],
+    "causal_organism": "Rhizoctonia solani"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "Tungro Virus",
+    "type": "viral",
+    "symptoms": [
+      "stunting",
+      "yellow-to-orange discoloration of leaves",
+      "reduced tillering",
+      "rusty spots on older leaves"
+    ],
+    "management": [
+      "Control Green Leafhopper (Nephotettix) with Imidacloprid; rogue out infected clumps."
+    ],
+    "causal_organism": "Rice tungro bacilliform virus (RTBV) + Rice tungro spherical virus (RTSV)"
+  },
+  {
+    "category": "cereal",
+    "crop": "rice",
+    "disease": "White Tip Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "whitish leaf tips (2-5 cm)",
+      "curled or twisted leaf tips",
+      "small/shriveled grains",
+      "flag leaf distortion"
+    ],
+    "management": [
+      "Seed soaking in hot water (52°C for 10 mins); apply Carbofuran to standing water."
+    ],
+    "causal_organism": "Aphelenchoides besseyi"
+  },
+  {
+    "category": "cereal",
+    "crop": "sorghum",
+    "disease": "Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "reddish lesions",
+      "leaf spots",
+      "stem rot"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Crop rotation",
+      "Apply fungicide when needed"
+    ],
+    "causal_organism": "Colletotrichum graminicola"
+  },
+  {
+    "category": "cereal",
+    "crop": "sorghum",
+    "disease": "Bacterial Leaf Spot",
+    "type": "bacterial",
+    "symptoms": [
+      "circular red or tan spots",
+      "water-soaked appearance",
+      "spots coalesce into large streaks"
+    ],
+    "management": [
+      "Remove crop residues; use certified seeds; avoid high Nitrogen."
+    ],
+    "causal_organism": "Pseudomonas syringae pv. syringae"
+  },
+  {
+    "category": "cereal",
+    "crop": "sorghum",
+    "disease": "Bacterial Leaf Stripe",
+    "type": "bacterial",
+    "symptoms": [
+      "narrow purple-to-red stripes",
+      "water-soaked lesions",
+      "bacterial ooze on leaves"
+    ],
+    "management": [
+      "Seed treatment with bleach; avoid high density; remove infected plant debris."
+    ],
+    "causal_organism": "Pseudomonas andropogonis"
+  },
+  {
+    "category": "cereal",
+    "crop": "sorghum",
+    "disease": "Leaf Blight",
+    "type": "fungal",
+    "symptoms": [
+      "large spindle-shaped lesions",
+      "straw-colored centers",
+      "purple-to-brown margins"
+    ],
+    "management": [
+      "Spray Zineb or Mancozeb; use resistant hybrids; destroy collateral hosts."
+    ],
+    "causal_organism": "Exserohilum turcicum"
+  },
+  {
+    "category": "cereal",
+    "crop": "sorghum",
+    "disease": "Rust",
+    "type": "fungal",
+    "symptoms": [
+      "reddish-brown elongated pustules",
+      "pustules rupture to release spores",
+      "leaf midrib infection"
+    ],
+    "management": [
+      "Use resistant hybrids; spray Mancozeb; destroy weeds (alternate hosts)."
+    ],
+    "causal_organism": "Puccinia purpurea"
+  },
+  {
+    "category": "cereal",
+    "crop": "sorghum (jowar)",
+    "disease": "Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "small circular red/tan spots with black dots",
+      "midrib infection",
+      "stalk rot with internal reddening"
+    ],
+    "management": [
+      "Remove crop residues; apply balanced Nitrogen/Potassium; spray Carbendazim."
+    ],
+    "causal_organism": "Colletotrichum graminicola"
+  },
+  {
+    "category": "cereal",
+    "crop": "sorghum (jowar)",
+    "disease": "Grain Mold",
+    "type": "fungal complex",
+    "symptoms": [
+      "pink, white, or black fungal growth on grain surface",
+      "soft/powdery grains",
+      "discoloration of the glumes"
+    ],
+    "management": [
+      "Harvest promptly after physiological maturity; use cultivars with tan plant color and hard grain luster."
+    ],
+    "causal_organism": "Fusarium spp. / Curvularia spp. complex"
+  },
+  {
+    "category": "cereal",
+    "crop": "wheat",
+    "disease": "Barley Yellow Dwarf Virus (BYDV)",
+    "type": "viral",
+    "symptoms": [
+      "bright yellowing or reddening of leaf tips",
+      "stunting",
+      "erect leaves",
+      "reduced heading"
+    ],
+    "management": [
+      "Control aphid vectors early; adjust planting dates to avoid peak aphid migration."
+    ],
+    "causal_organism": "Barley yellow dwarf virus (BYDV)"
+  },
+  {
+    "category": "cereal",
+    "crop": "wheat",
+    "disease": "Cereal Cyst Nematode (Molya Disease)",
+    "type": "nematode",
+    "symptoms": [
+      "patchy growth in field",
+      "excessive branching of roots",
+      "shrivelled grains",
+      "white female cysts visible on roots"
+    ],
+    "management": [
+      "Deep summer plowing (2-3 times); 1-2 year rotation with non-host crops; use resistant varieties like Raj 4037."
+    ],
+    "causal_organism": "Heterodera avenae"
+  },
+  {
+    "category": "cereal",
+    "crop": "wheat",
+    "disease": "Ear Cockle Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "wrinkling and twisting of leaves",
+      "grains replaced by dark hard galls (cockles)",
+      "stunted plants",
+      "increased tillering"
+    ],
+    "management": [
+      "Sieve seeds to remove galls; brine flotation (10% salt) to separate galls; hot water seed treatment."
+    ],
+    "causal_organism": "Anguina tritici"
+  },
+  {
+    "category": "cereal",
+    "crop": "wheat",
+    "disease": "Flag Smut",
+    "type": "fungal",
+    "symptoms": [
+      "gray-black stripes on leaf blades",
+      "leaves curl and twist",
+      "stunted plants that fail to head"
+    ],
+    "management": [
+      "Seed treatment with Tetrachloronitrobenzene; late sowing in cool soils."
+    ],
+    "causal_organism": "Urocystis agropyri"
+  },
+  {
+    "category": "cereal",
+    "crop": "wheat",
+    "disease": "Foot Rot",
+    "type": "fungal",
+    "symptoms": [
+      "brown lesions on the crown and roots",
+      "stunted plants",
+      "white heads with no grain"
+    ],
+    "management": [
+      "Late sowing; seed treatment with Tebuconazole."
+    ],
+    "causal_organism": "Bipolaris sorokiniana (syn. Drechslera sorokiniana)"
+  },
+  {
+    "category": "cereal",
+    "crop": "wheat",
+    "disease": "Karnal Bunt",
+    "type": "fungal",
+    "symptoms": [
+      "fishy odor from infected grains",
+      "partially blackened grains",
+      "sooty powder on spikelets"
+    ],
+    "management": [
+      "Sow disease-free certified seeds; avoid continuous wheat-wheat rotation; spray Propiconazole."
+    ],
+    "causal_organism": "Tilletia indica"
+  },
+  {
+    "category": "cereal",
+    "crop": "wheat",
+    "disease": "Loose smut",
+    "type": "fungal",
+    "symptoms": [
+      "black powder in heads",
+      "empty grains"
+    ],
+    "management": [
+      "Use certified disease-free seeds",
+      "Treat seeds with fungicide",
+      "Avoid infected seed stock"
+    ],
+    "causal_organism": "Ustilago nuda tritici"
+  },
+  {
+    "category": "cereal",
+    "crop": "wheat",
+    "disease": "Rust",
+    "type": "fungal",
+    "symptoms": [
+      "orange pustules",
+      "powdery spores",
+      "leaf damage"
+    ],
+    "management": [
+      "Grow resistant varieties",
+      "Apply fungicides like propiconazole",
+      "Remove infected plant debris"
+    ],
+    "causal_organism": "Puccinia graminis (Black), P. striiformis (Yellow), P. triticina (Brown)"
+  },
+  {
+    "category": "cereal",
+    "crop": "wheat",
+    "disease": "Wheat Streak Mosaic",
+    "type": "viral",
+    "symptoms": [
+      "yellow-to-light-green parallel streaks",
+      "mottling of leaves",
+      "stunted growth",
+      "reduced tillering"
+    ],
+    "management": [
+      "Control Wheat Curl Mites; eliminate 'volunteer' wheat plants; adjust planting dates."
+    ],
+    "causal_organism": "Wheat streak mosaic virus (WSMV)"
+  },
+  {
+    "category": "cereal",
+    "crop": "wheat",
+    "disease": "Yellow Rust",
+    "type": "fungal",
+    "symptoms": [
+      "yellow pustules in stripes",
+      "chlorosis",
+      "shriveled grains",
+      "reduced photosynthesis"
+    ],
+    "management": [
+      "Sow resistant varieties like HD 2967; spray Propiconazole."
+    ],
+    "causal_organism": "Puccinia striiformis f. sp. tritici"
+  },
+  {
+    "category": "flower",
+    "crop": "begonia",
+    "disease": "Bacterial Leaf Spot",
+    "type": "bacterial",
+    "symptoms": [
+      "small blister-like spots",
+      "spots turn brown/black",
+      "leaf drop"
+    ],
+    "management": [
+      "Remove infected leaves; reduce humidity; avoid splashing water."
+    ],
+    "causal_organism": "Xanthomonas axonopodis pv. begoniae"
+  },
+  {
+    "category": "flower",
+    "crop": "carnation",
+    "disease": "Fusarium Wilt",
+    "type": "fungal",
+    "symptoms": [
+      "one-sided wilting of shoots",
+      "yellow-green leaf discoloration",
+      "brown vascular streaks in stem"
+    ],
+    "management": [
+      "Use disease-free cuttings; soil sterilization with steam or formalin."
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. dianthi"
+  },
+  {
+    "category": "flower",
+    "crop": "carnation",
+    "disease": "Rust",
+    "type": "fungal",
+    "symptoms": [
+      "chocolate-brown powdery pustules",
+      "yellow leaf margins",
+      "stunted plant growth"
+    ],
+    "management": [
+      "Avoid high humidity; spray Propiconazole or Azoxystrobin."
+    ],
+    "causal_organism": "Uromyces dianthi"
+  },
+  {
+    "category": "flower",
+    "crop": "chrysanthemum",
+    "disease": "Septoria Leaf Spot",
+    "type": "fungal",
+    "symptoms": [
+      "circular dark brown spots",
+      "yellowing of surrounding tissue",
+      "bottom-to-top leaf drying"
+    ],
+    "management": [
+      "Remove bottom leaves; spray Carbendazim; keep foliage dry during evening hours."
+    ],
+    "causal_organism": "Septoria chrysanthemella"
+  },
+  {
+    "category": "flower",
+    "crop": "chrysanthemum",
+    "disease": "White Rust",
+    "type": "fungal",
+    "symptoms": [
+      "pale green spots on upper leaf",
+      "white/pinkish waxy pustules on underside",
+      "leaf necrosis"
+    ],
+    "management": [
+      "Strict quarantine; avoid overhead watering; spray Myclobutanil or Azoxystrobin."
+    ],
+    "causal_organism": "Puccinia horiana"
+  },
+  {
+    "category": "flower",
+    "crop": "geranium",
+    "disease": "Bacterial Blight",
+    "type": "bacterial",
+    "symptoms": [
+      "V-shaped yellowing on leaves",
+      "leaf spots with gray centers",
+      "stem blackening and rot"
+    ],
+    "management": [
+      "Discard infected plants; avoid overhead irrigation; sterilize tools."
+    ],
+    "causal_organism": "Xanthomonas hortorum pv. pelargonii"
+  },
+  {
+    "category": "flower",
+    "crop": "gerbera",
+    "disease": "Foot Rot",
+    "type": "fungal",
+    "symptoms": [
+      "blackening of the crown",
+      "wilting of leaves",
+      "detachment of leaves from base"
+    ],
+    "management": [
+      "Improve drainage; avoid planting too deep; drench with Captan."
+    ],
+    "causal_organism": "Phytophthora cryptogea"
+  },
+  {
+    "category": "flower",
+    "crop": "gerbera",
+    "disease": "Powdery Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery coating on leaves and peduncles",
+      "distorted flower heads"
+    ],
+    "management": [
+      "Spray Dinocap or Wettable Sulfur (0.2%)."
+    ],
+    "causal_organism": "Erysiphe cichoracearum"
+  },
+  {
+    "category": "flower",
+    "crop": "gladiolus",
+    "disease": "Corm Rot",
+    "type": "fungal",
+    "symptoms": [
+      "yellowing of foliage",
+      "brownish decay of corms",
+      "stunted flower spikes"
+    ],
+    "management": [
+      "Pre-planting dip of corms in Carbendazim; ensure well-drained soil."
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. gladioli"
+  },
+  {
+    "category": "flower",
+    "crop": "jasmine",
+    "disease": "Cercospora Leaf Spot",
+    "type": "fungal",
+    "symptoms": [
+      "circular reddish-brown spots",
+      "white centers in mature spots",
+      "severe leaf fall"
+    ],
+    "management": [
+      "Foliar spray of Mancozeb (0.2%); remove infected debris."
+    ],
+    "causal_organism": "Cercospora jasminicola"
+  },
+  {
+    "category": "flower",
+    "crop": "jasmine",
+    "disease": "Phyllosticta Leaf Spot",
+    "type": "fungal",
+    "symptoms": [
+      "irregular tan spots",
+      "dark brown borders",
+      "black fruiting bodies (pycnidia)"
+    ],
+    "management": [
+      "Spray Copper Oxychloride; ensure balanced fertilization."
+    ],
+    "causal_organism": "Phyllosticta jasminorum"
+  },
+  {
+    "category": "flower",
+    "crop": "jasmine",
+    "disease": "Rust",
+    "type": "fungal",
+    "symptoms": [
+      "orange-colored pustules on lower leaf surface",
+      "yellow spots on upper surface",
+      "leaf distortion"
+    ],
+    "management": [
+      "Prune and burn infected parts; spray Copper Oxychloride or wettable sulfur."
+    ],
+    "causal_organism": "Uromyces hobsoni"
+  },
+  {
+    "category": "flower",
+    "crop": "jasmine",
+    "disease": "Wilt",
+    "type": "fungal",
+    "symptoms": [
+      "yellowing of lower leaves",
+      "gradual drying of the whole plant",
+      "root decay"
+    ],
+    "management": [
+      "Soil drenching with Copper Oxychloride (0.3%); use bio-control Trichoderma."
+    ],
+    "causal_organism": "Sclerotium rolfsii"
+  },
+  {
+    "category": "flower",
+    "crop": "marigold",
+    "disease": "Damping Off",
+    "type": "fungal",
+    "symptoms": [
+      "collapse of seedlings at soil level",
+      "water-soaked stems",
+      "sudden nursery death"
+    ],
+    "management": [
+      "Seed treatment with Thiram; avoid excess moisture in nursery beds."
+    ],
+    "causal_organism": "Pythium aphanidermatum"
+  },
+  {
+    "category": "flower",
+    "crop": "marigold",
+    "disease": "Flower Bud Rot",
+    "type": "fungal",
+    "symptoms": [
+      "brownish decay of young buds",
+      "buds fail to open",
+      "grayish mold in humid conditions"
+    ],
+    "management": [
+      "Spray Carbendazim; avoid overhead irrigation during flowering."
+    ],
+    "causal_organism": "Alternaria dianthi"
+  },
+  {
+    "category": "flower",
+    "crop": "marigold",
+    "disease": "Leaf Spot and Blight",
+    "type": "fungal",
+    "symptoms": [
+      "necrotic spots",
+      "blackening of stems",
+      "flower bud rot",
+      "foliar drying"
+    ],
+    "management": [
+      "Avoid overhead irrigation; spray Dithane M-45."
+    ],
+    "causal_organism": "Alternaria tagetica"
+  },
+  {
+    "category": "flower",
+    "crop": "marigold",
+    "disease": "Lesion Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "necrotic patches on roots",
+      "poor growth",
+      "chlorosis"
+    ],
+    "management": [
+      "Marigolds are usually resistant and act as a trap crop, but heavy infestations require soil solarization."
+    ],
+    "causal_organism": "Pratylenchus penetrans"
+  },
+  {
+    "category": "flower",
+    "crop": "orchid",
+    "disease": "Black Rot",
+    "type": "fungal",
+    "symptoms": [
+      "purplish-black soft rot on leaves",
+      "yellow margins",
+      "rapid spread to pseudostems"
+    ],
+    "management": [
+      "Increase air movement; drench with Metalaxyl; isolate infected plants."
+    ],
+    "causal_organism": "Phytophthora palmivora"
+  },
+  {
+    "category": "flower",
+    "crop": "orchid",
+    "disease": "Cymbidium Mosaic",
+    "type": "viral",
+    "symptoms": [
+      "sunken necrotic streaks",
+      "pitting on leaves",
+      "mottling on flowers"
+    ],
+    "management": [
+      "Sterilize cutting tools with bleach; destroy infected plants."
+    ],
+    "causal_organism": "Cymbidium mosaic virus (CymMV)"
+  },
+  {
+    "category": "flower",
+    "crop": "rose",
+    "disease": "Black Spot",
+    "type": "fungal",
+    "symptoms": [
+      "circular black spots with feathery margins",
+      "yellowing of surrounding leaf",
+      "premature defoliation"
+    ],
+    "management": [
+      "Remove fallen leaves; improve air circulation; spray Mancozeb or Triforine."
+    ],
+    "causal_organism": "Diplocarpon rosae"
+  },
+  {
+    "category": "flower",
+    "crop": "rose",
+    "disease": "Crown Gall",
+    "type": "bacterial",
+    "symptoms": [
+      "large woody galls at soil line",
+      "stunted growth",
+      "poor flower production"
+    ],
+    "management": [
+      "Avoid stem injury; dip roots in Agrobacterium radiobacter K-84 solution; sterilize tools."
+    ],
+    "causal_organism": "Agrobacterium tumefaciens"
+  },
+  {
+    "category": "flower",
+    "crop": "rose",
+    "disease": "Dieback",
+    "type": "fungal",
+    "symptoms": [
+      "blackening of stem from tip downwards",
+      "brown discoloration of internal wood",
+      "wilting of flowers"
+    ],
+    "management": [
+      "Prune 2 inches below infected area; apply Bordeaux paste to cut ends."
+    ],
+    "causal_organism": "Lasiodiplodia theobromae"
+  },
+  {
+    "category": "flower",
+    "crop": "rose",
+    "disease": "Downy Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "purplish-red irregular spots",
+      "rapid leaf drop (shattering)",
+      "grayish fuzz on underside in high humidity"
+    ],
+    "management": [
+      "Improve ventilation; spray Metalaxyl or Fosetyl-Al; keep humidity below 85%."
+    ],
+    "causal_organism": "Peronospora sparsa"
+  },
+  {
+    "category": "flower",
+    "crop": "rose",
+    "disease": "Lesion Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "dark necrotic lesions on roots",
+      "stunted growth",
+      "gradual yellowing of leaves"
+    ],
+    "management": [
+      "Apply Neem cake; drench soil with Fluopyram."
+    ],
+    "causal_organism": "Pratylenchus penetrans"
+  },
+  {
+    "category": "flower",
+    "crop": "rose",
+    "disease": "Powdery Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery growth",
+      "curled leaves",
+      "distorted buds",
+      "premature leaf drop"
+    ],
+    "management": [
+      "Improve air circulation; spray Dinocap or wettable sulfur."
+    ],
+    "causal_organism": "Podosphaera pannosa"
+  },
+  {
+    "category": "flower",
+    "crop": "rose",
+    "disease": "Root-Knot Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "stunted shoots",
+      "pale leaves",
+      "abnormal root swellings",
+      "short flower stems"
+    ],
+    "management": [
+      "Steam sterilization of soil; apply Neem cake; use resistant rootstocks like Rosa multiflora."
+    ],
+    "causal_organism": "Meloidogyne incognita"
+  },
+  {
+    "category": "flower",
+    "crop": "rose",
+    "disease": "Rose Mosaic Virus",
+    "type": "viral",
+    "symptoms": [
+      "yellow zig-zag line patterns",
+      "chlorotic rings",
+      "distorted flower buds"
+    ],
+    "management": [
+      "Propagate from healthy mother plants; heat treatment of budwood (38°C for 4 weeks)."
+    ],
+    "causal_organism": "Rose mosaic virus"
+  },
+  {
+    "category": "flower",
+    "crop": "rose",
+    "disease": "Rose Ring Pattern Virus",
+    "type": "viral",
+    "symptoms": [
+      "concentric yellow rings on leaves",
+      "line patterns",
+      "reduced flower vigor"
+    ],
+    "management": [
+      "Use certified virus-indexed propagation material; heat therapy for cuttings."
+    ],
+    "causal_organism": "Rose ring pattern virus"
+  },
+  {
+    "category": "flower",
+    "crop": "rose",
+    "disease": "Rust",
+    "type": "fungal",
+    "symptoms": [
+      "orange or rust-colored pustules on leaf undersides",
+      "yellow spots on upper surface",
+      "leaf curling"
+    ],
+    "management": [
+      "Prune infected canes; apply Myclobutanil or Oxycarboxin."
+    ],
+    "causal_organism": "Phragmidium mucronatum"
+  },
+  {
+    "category": "flower",
+    "crop": "sunflower",
+    "disease": "Alternaria Leaf Spot",
+    "type": "fungal",
+    "symptoms": [
+      "circular dark brown spots with concentric rings",
+      "blight on leaves, stem, and bracts"
+    ],
+    "management": [
+      "Spray Mancozeb (0.3%); use disease-free seeds; remove infected plant debris."
+    ],
+    "causal_organism": "Alternaria helianthi"
+  },
+  {
+    "category": "flower",
+    "crop": "tuberose",
+    "disease": "Root-Knot Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "yellowing of leaf tips",
+      "stunted flowering stalks",
+      "galling on roots",
+      "reduction in bulb size"
+    ],
+    "management": [
+      "Hot water treatment of bulbs (50°C for 30 mins); soil application of Phorate."
+    ],
+    "causal_organism": "Meloidogyne incognita"
+  },
+  {
+    "category": "flower",
+    "crop": "tuberose",
+    "disease": "Stem Rot",
+    "type": "fungal",
+    "symptoms": [
+      "water-soaked lesions near soil",
+      "coarse white mycelium on stem",
+      "plant toppling"
+    ],
+    "management": [
+      "Soil drenching with Brassicol; use healthy bulbs for planting."
+    ],
+    "causal_organism": "Sclerotium rolfsii"
+  },
+  {
+    "category": "flower",
+    "crop": "tulip",
+    "disease": "Tulip Breaking Virus",
+    "type": "viral",
+    "symptoms": [
+      "streaks or stripes of different colors on petals",
+      "mottled leaves",
+      "reduced bulb size"
+    ],
+    "management": [
+      "Control aphids; rogue out 'broken' tulips immediately."
+    ],
+    "causal_organism": "Tulip breaking virus"
+  },
+  {
+    "category": "fruit",
+    "crop": "apple",
+    "disease": "Apple Mosaic Virus",
+    "type": "viral",
+    "symptoms": [
+      "irregular creamy-white patches on leaves",
+      "vein clearing",
+      "premature leaf drop",
+      "reduced fruit yield"
+    ],
+    "management": [
+      "Use virus-indexed nursery stock; heat treatment of budwood."
+    ],
+    "causal_organism": "Apple mosaic virus (ApMV)"
+  },
+  {
+    "category": "fruit",
+    "crop": "apple",
+    "disease": "Apple Scab",
+    "type": "fungal",
+    "symptoms": [
+      "olive-green velvety spots",
+      "corky brown lesions on fruit",
+      "premature leaf fall",
+      "deformed fruit"
+    ],
+    "management": [
+      "Apply Urea (5%) as a post-harvest spray to fallen leaves; spray Captan or Mancozeb during bloom."
+    ],
+    "causal_organism": "Venturia inaequalis"
+  },
+  {
+    "category": "fruit",
+    "crop": "apple",
+    "disease": "Apple scab",
+    "type": "fungal",
+    "symptoms": [
+      "olive green spots",
+      "dark scabby lesions",
+      "leaf spots"
+    ],
+    "management": [
+      "Remove fallen infected leaves",
+      "Prune for better air movement",
+      "Apply recommended fungicides at proper intervals"
+    ],
+    "causal_organism": "Venturia inaequalis"
+  },
+  {
+    "category": "fruit",
+    "crop": "apple",
+    "disease": "Fire Blight",
+    "type": "bacterial",
+    "symptoms": [
+      "blossoms turn black and die",
+      "shepherd's crook shape on twigs",
+      "cankers on bark",
+      "bacterial ooze"
+    ],
+    "management": [
+      "Prune 12 inches below visible damage; spray Streptomycin during bloom; avoid high Nitrogen."
+    ],
+    "causal_organism": "Erwinia amylovora"
+  },
+  {
+    "category": "fruit",
+    "crop": "apple",
+    "disease": "Fire blight",
+    "type": "bacterial",
+    "symptoms": [
+      "blossom blight",
+      "shoot blight",
+      "blackened twigs"
+    ],
+    "management": [
+      "Prune infected twigs well below visible symptoms",
+      "Disinfect pruning tools",
+      "Avoid excessive nitrogen fertilization"
+    ],
+    "causal_organism": "Erwinia amylovora"
+  },
+  {
+    "category": "fruit",
+    "crop": "apple",
+    "disease": "Powdery Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "whitish felt-like patches on leaves",
+      "curled/narrow leaves",
+      "silver-gray appearance of twigs"
+    ],
+    "management": [
+      "Prune infected shoots in winter; spray Dinocap or Wettable Sulfur."
+    ],
+    "causal_organism": "Podosphaera leucotricha"
+  },
+  {
+    "category": "fruit",
+    "crop": "avocado",
+    "disease": "Bacterial Canker",
+    "type": "bacterial",
+    "symptoms": [
+      "water-soaked bark",
+      "white powdery exudate (sugar) on trunk",
+      "bark cracking"
+    ],
+    "management": [
+      "Prune affected limbs; avoid trunk injuries; improve soil drainage."
+    ],
+    "causal_organism": "Pseudomonas syringae"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "black circular sunken spots on fruit",
+      "pinkish spore masses in center",
+      "premature ripening and rotting"
+    ],
+    "management": [
+      "Post-harvest dip in Benomyl; minimize fruit bruising; spray Chlorothalonil in the field."
+    ],
+    "causal_organism": "Colletotrichum musae"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Banana Bract Mosaic",
+    "type": "viral",
+    "symptoms": [
+      "spindle-shaped dark red streaks on bracts",
+      "mosaic patterns on pseudostem",
+      "distorted fruit fingers"
+    ],
+    "management": [
+      "Use tissue-cultured plantlets; strict quarantine of suckers."
+    ],
+    "causal_organism": "Banana bract mosaic virus (BBrMV)"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Bunchy Top",
+    "type": "viral",
+    "symptoms": [
+      "stunted growth",
+      "crowded small leaves at top",
+      "dark green 'morse code' streaks on veins"
+    ],
+    "management": [
+      "Eradicate infected plants immediately; control aphid vectors with Dimethoate."
+    ],
+    "causal_organism": "Banana bunchy top virus (BBTV)"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Bunchy top virus",
+    "type": "viral",
+    "symptoms": [
+      "bunched leaves",
+      "stunted growth",
+      "dark green streaks"
+    ],
+    "management": [
+      "Control aphid vectors",
+      "Remove infected plants",
+      "Use virus-free planting material"
+    ],
+    "causal_organism": "Banana bunchy top virus (BBTV)"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Burrowing Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "reddish-brown lesions on roots",
+      "toppling of plants (black-head)",
+      "small bunches",
+      "root decay"
+    ],
+    "management": [
+      "Paring and pralinage (dipping suckers in clay slurry + Carbofuran); hot water treatment of suckers (55°C for 20 mins)."
+    ],
+    "causal_organism": "Radopholus similis"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Cigar End Rot",
+    "type": "fungal",
+    "symptoms": [
+      "blackening of the tip of the fingers",
+      "wrinkled skin on fruit tip",
+      "resembles ash of a cigar"
+    ],
+    "management": [
+      "Remove pistils/stiles after fruit set; spray Copper fungicides on bunches."
+    ],
+    "causal_organism": "Verticillium theobromae"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Panama Wilt (Fusarium)",
+    "type": "fungal",
+    "symptoms": [
+      "yellowing of lower leaf margins",
+      "hanging leaves around pseudostem",
+      "vascular browning"
+    ],
+    "management": [
+      "Use resistant varieties (Grand Naine); drench soil with Carbendazim; avoid waterlogged soil."
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. cubense"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Panama wilt",
+    "type": "fungal",
+    "symptoms": [
+      "yellowing of leaves",
+      "wilting",
+      "vascular discoloration"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Avoid infected soil",
+      "Improve drainage",
+      "Apply Trichoderma-based bioagents"
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. cubense"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Potassium Deficiency",
+    "type": "nutrient",
+    "symptoms": [
+      "rapid yellowing of leaf margins",
+      "leaf tips curl inward and turn brown",
+      "weak pseudostem",
+      "small fruit bunches"
+    ],
+    "management": [
+      "Apply Muriate of Potash (MOP) or Sulfate of Potash; recycle organic banana trash into soil."
+    ],
+    "causal_organism": "Abiotic (Potassium deficiency)"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Sigatoka Leaf Spot",
+    "type": "fungal",
+    "symptoms": [
+      "yellow streaks",
+      "elliptical necrotic spots",
+      "premature ripening",
+      "reduced leaf area"
+    ],
+    "management": [
+      "Removal of infected leaves; spray mineral oil mixed with fungicides."
+    ],
+    "causal_organism": "Mycosphaerella musicola (Yellow Sigatoka)"
+  },
+  {
+    "category": "fruit",
+    "crop": "banana",
+    "disease": "Spiral Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "stunted growth",
+      "yellowing of foliage",
+      "lesions on roots",
+      "reduced bunch weight"
+    ],
+    "management": [
+      "Crop rotation with sugarcane; apply Neem cake at the base of the plant."
+    ],
+    "causal_organism": "Helicotylenchus multicinctus"
+  },
+  {
+    "category": "fruit",
+    "crop": "cherry",
+    "disease": "Little Cherry Disease",
+    "type": "viral",
+    "symptoms": [
+      "small/triangular fruits",
+      "pale color/poor flavor",
+      "leathery leaves",
+      "delayed ripening"
+    ],
+    "management": [
+      "Eradicate infected trees; control mealybug and leafhopper vectors."
+    ],
+    "causal_organism": "Little cherry virus"
+  },
+  {
+    "category": "fruit",
+    "crop": "citrus",
+    "disease": "Citrus Blast",
+    "type": "bacterial",
+    "symptoms": [
+      "black lesions on leaf petiole",
+      "leaf wilting and drying",
+      "twigs die back in a blast-like manner"
+    ],
+    "management": [
+      "Apply copper sprays in autumn; prune out diseased wood; protect from wind."
+    ],
+    "causal_organism": "Pseudomonas syringae pv. syringae"
+  },
+  {
+    "category": "fruit",
+    "crop": "citrus",
+    "disease": "Citrus Canker",
+    "type": "bacterial",
+    "symptoms": [
+      "raised corky lesions on leaves",
+      "yellow halos around spots",
+      "fruit spotting",
+      "twig dieback"
+    ],
+    "management": [
+      "Prune infected twigs; spray Copper Oxychloride (0.3%) at 15-day intervals."
+    ],
+    "causal_organism": "Xanthomonas citri subsp. citri"
+  },
+  {
+    "category": "fruit",
+    "crop": "citrus",
+    "disease": "Citrus Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "slow decline of tree vigor",
+      "small/sparse leaves",
+      "soil particles sticking to roots",
+      "dieback of branches"
+    ],
+    "management": [
+      "Use Poncirus trifoliata as resistant rootstock; apply Fluopyram; ensure nematode-free nursery stock."
+    ],
+    "causal_organism": "Tylenchulus semipenetrans"
+  },
+  {
+    "category": "fruit",
+    "crop": "citrus",
+    "disease": "Citrus Nematode (Slow Decline)",
+    "type": "nematode",
+    "symptoms": [
+      "gradual reduction in vigor",
+      "small fruit size",
+      "dieback of twigs",
+      "roots appear dirty and thick"
+    ],
+    "management": [
+      "Use nematode-free nursery stock; apply Phorate or Aldicarb to the root zone."
+    ],
+    "causal_organism": "Tylenchulus semipenetrans"
+  },
+  {
+    "category": "fruit",
+    "crop": "citrus",
+    "disease": "Citrus canker",
+    "type": "bacterial",
+    "symptoms": [
+      "raised corky lesions",
+      "yellow halo",
+      "leaf spots"
+    ],
+    "management": [
+      "Use disease-free nursery plants",
+      "Prune and destroy infected twigs",
+      "Apply copper-based sprays where recommended"
+    ],
+    "causal_organism": "Xanthomonas citri subsp. citri"
+  },
+  {
+    "category": "fruit",
+    "crop": "citrus",
+    "disease": "Citrus tristeza",
+    "type": "viral",
+    "symptoms": [
+      "decline",
+      "stem pitting",
+      "yellowing"
+    ],
+    "management": [
+      "Use certified virus-free planting material",
+      "Control aphid vectors",
+      "Use tolerant rootstocks where available"
+    ],
+    "causal_organism": "Citrus tristeza virus (CTV)"
+  },
+  {
+    "category": "fruit",
+    "crop": "citrus",
+    "disease": "Greening (Huanglongbing)",
+    "type": "bacterial",
+    "symptoms": [
+      "mottled leaves",
+      "yellow shoots",
+      "small lopsided fruits",
+      "bitter juice",
+      "inverted coloration"
+    ],
+    "management": [
+      "Control citrus psylla vector with Imidacloprid; use disease-free budwood; nutritional sprays."
+    ],
+    "causal_organism": "Candidatus Liberibacter asiaticus"
+  },
+  {
+    "category": "fruit",
+    "crop": "citrus",
+    "disease": "Gummosis (Phytophthora)",
+    "type": "fungal",
+    "symptoms": [
+      "profuse oozing of gum from bark",
+      "bark cracking and stripping",
+      "yellowing of midribs",
+      "dieback"
+    ],
+    "management": [
+      "Scrape infected bark and apply Bordeaux paste; improve drainage; use resistant rootstocks."
+    ],
+    "causal_organism": "Phytophthora citrophthora / P. parasitica"
+  },
+  {
+    "category": "fruit",
+    "crop": "citrus",
+    "disease": "Tristeza (Quick Decline)",
+    "type": "viral",
+    "symptoms": [
+      "honeycombing of inner bark",
+      "vein clearing",
+      "pitting of stem",
+      "sudden wilting"
+    ],
+    "management": [
+      "Use tolerant rootstocks (Rough Lemon); control citrus aphids (Toxoptera citricida)."
+    ],
+    "causal_organism": "Citrus tristeza virus (CTV)"
+  },
+  {
+    "category": "fruit",
+    "crop": "citrus",
+    "disease": "Zinc Deficiency (Mottle Leaf)",
+    "type": "nutrient",
+    "symptoms": [
+      "interveinal chlorosis (yellowing between veins)",
+      "small narrow leaves (little leaf)",
+      "dieback of twigs"
+    ],
+    "management": [
+      "Foliar spray of Zinc Sulphate (0.5%) neutralized with lime."
+    ],
+    "causal_organism": "Abiotic (Zinc deficiency)"
+  },
+  {
+    "category": "fruit",
+    "crop": "coffee",
+    "disease": "Coffee Leaf Rust",
+    "type": "fungal",
+    "symptoms": [
+      "yellow-orange powdery spots on leaf undersides",
+      "premature defoliation",
+      "berry drop"
+    ],
+    "management": [
+      "Spray Bordeaux mixture (0.5%); use resistant varieties like Hemavathi."
+    ],
+    "causal_organism": "Hemileia vastatrix"
+  },
+  {
+    "category": "fruit",
+    "crop": "grape",
+    "disease": "Downy mildew",
+    "type": "fungal",
+    "symptoms": [
+      "yellow oil spots",
+      "white fungal growth underside"
+    ],
+    "management": [
+      "Improve vineyard ventilation",
+      "Apply fungicides like Mancozeb",
+      "Avoid leaf wetness"
+    ],
+    "causal_organism": "Plasmopara viticola"
+  },
+  {
+    "category": "fruit",
+    "crop": "grape",
+    "disease": "Powdery mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery coating",
+      "distorted leaves"
+    ],
+    "management": [
+      "Apply sulfur fungicides",
+      "Ensure proper spacing",
+      "Remove infected parts"
+    ],
+    "causal_organism": "Erysiphe necator"
+  },
+  {
+    "category": "fruit",
+    "crop": "grapes",
+    "disease": "Bacterial Leaf Spot",
+    "type": "bacterial",
+    "symptoms": [
+      "angular black lesions on leaves",
+      "cankers on petioles",
+      "cracking of berries"
+    ],
+    "management": [
+      "Prune and burn infected parts; spray Streptocycline (500 ppm) + Copper Oxychloride."
+    ],
+    "causal_organism": "Xanthomonas ampelina"
+  },
+  {
+    "category": "fruit",
+    "crop": "grapes",
+    "disease": "Black Rot",
+    "type": "fungal",
+    "symptoms": [
+      "small circular tan spots on leaves",
+      "berries turn brown and shrivel into black mummies",
+      "black pycnidia on fruit"
+    ],
+    "management": [
+      "Remove mummified berries; spray Myclobutanil; prune for better sun exposure."
+    ],
+    "causal_organism": "Guignardia bidwellii"
+  },
+  {
+    "category": "fruit",
+    "crop": "grapes",
+    "disease": "Dagger Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "stunting",
+      "swollen root tips",
+      "transmission of Fanleaf Virus",
+      "poor vine vigor"
+    ],
+    "management": [
+      "Use nematode-resistant rootstocks; soil fumigation before planting."
+    ],
+    "causal_organism": "Xiphinema index"
+  },
+  {
+    "category": "fruit",
+    "crop": "grapes",
+    "disease": "Downy Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "yellow translucent 'oil spots' on upper leaf",
+      "white downy growth underneath",
+      "berry mummification"
+    ],
+    "management": [
+      "Spray Bordeaux mixture (1%) or Metalaxyl; improve canopy ventilation."
+    ],
+    "causal_organism": "Plasmopara viticola"
+  },
+  {
+    "category": "fruit",
+    "crop": "grapes",
+    "disease": "Grapevine Fanleaf Virus",
+    "type": "viral",
+    "symptoms": [
+      "fan-like leaf shape",
+      "yellow mosaic mottling",
+      "short internodes",
+      "poor fruit set"
+    ],
+    "management": [
+      "Use certified virus-free planting material; control soil nematodes (Xiphinema index)."
+    ],
+    "causal_organism": "Grapevine fanleaf virus (GFLV)"
+  },
+  {
+    "category": "fruit",
+    "crop": "grapes",
+    "disease": "Powdery Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery growth on both leaf surfaces",
+      "blossom drop",
+      "scarring and cracking of berries"
+    ],
+    "management": [
+      "Apply wettable sulfur; use Dinocap or Myclobutanil; ensure open canopy for sunlight."
+    ],
+    "causal_organism": "Erysiphe necator"
+  },
+  {
+    "category": "fruit",
+    "crop": "guava",
+    "disease": "Algal Leaf Spot (Cephaleuros)",
+    "type": "fungal/algal",
+    "symptoms": [
+      "orange-to-rust colored velvety spots",
+      "spots become greenish-gray",
+      "reduction in fruit quality"
+    ],
+    "management": [
+      "Spray Copper Oxychloride (0.3%); prune for light penetration; balanced fertilization."
+    ],
+    "causal_organism": "Cephaleuros virescens"
+  },
+  {
+    "category": "fruit",
+    "crop": "guava",
+    "disease": "Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "dark sunken spots",
+      "fruit rot"
+    ],
+    "management": [
+      "Prune infected branches",
+      "Apply fungicides",
+      "Avoid high humidity conditions"
+    ],
+    "causal_organism": "Colletotrichum gloeosporioides"
+  },
+  {
+    "category": "fruit",
+    "crop": "guava",
+    "disease": "Fruit Canker",
+    "type": "fungal",
+    "symptoms": [
+      "small raised corky spots on fruit",
+      "sunken lesions",
+      "fruit cracking",
+      "reduced market value"
+    ],
+    "management": [
+      "Prune infected twigs; spray Copper Oxychloride (0.3%) three times a year."
+    ],
+    "causal_organism": "Pestalotiopsis psidii"
+  },
+  {
+    "category": "fruit",
+    "crop": "guava",
+    "disease": "Root-Knot Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "severe root galling",
+      "leaf bronzing",
+      "marginal drying of leaves",
+      "sudden wilting during dry spells"
+    ],
+    "management": [
+      "Apply Paecilomyces lilacinus (bio-control) to soil; intercrop with Tagetes (marigold)."
+    ],
+    "causal_organism": "Meloidogyne incognita"
+  },
+  {
+    "category": "fruit",
+    "crop": "guava",
+    "disease": "Wilt",
+    "type": "fungal",
+    "symptoms": [
+      "leaf yellowing",
+      "wilting",
+      "plant death"
+    ],
+    "management": [
+      "Improve soil drainage",
+      "Remove infected plants",
+      "Apply biocontrol agents"
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. psidii"
+  },
+  {
+    "category": "fruit",
+    "crop": "mango",
+    "disease": "Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "black spots",
+      "fruit rot",
+      "leaf spots"
+    ],
+    "management": [
+      "Prune infected branches",
+      "Apply copper fungicides",
+      "Avoid overhead irrigation"
+    ],
+    "causal_organism": "Colletotrichum gloeosporioides"
+  },
+  {
+    "category": "fruit",
+    "crop": "mango",
+    "disease": "Bacterial Canker",
+    "type": "bacterial",
+    "symptoms": [
+      "water-soaked lesions on leaves",
+      "star-shaped cracks on fruit",
+      "cankerous lesions on stem"
+    ],
+    "management": [
+      "Prune infected twigs; spray Streptocycline (200 ppm); apply Bordeaux paste."
+    ],
+    "causal_organism": "Xanthomonas citri pv. mangiferaeindicae"
+  },
+  {
+    "category": "fruit",
+    "crop": "mango",
+    "disease": "Phoma Blight",
+    "type": "fungal",
+    "symptoms": [
+      "small irregular yellow spots on older leaves",
+      "spots turn brown with dark margins",
+      "withered leaf tips"
+    ],
+    "management": [
+      "Spray Copper Oxychloride (0.3%); maintain proper tree spacing."
+    ],
+    "causal_organism": "Phoma mangiferae"
+  },
+  {
+    "category": "fruit",
+    "crop": "mango",
+    "disease": "Powdery Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "whitish powdery growth on panicles",
+      "flower drop",
+      "coated tender fruits",
+      "premature fruit fall"
+    ],
+    "management": [
+      "Apply wettable sulfur (0.2%) or Dinocap (0.1%) at 15-day intervals during bloom."
+    ],
+    "causal_organism": "Oidium mangiferae"
+  },
+  {
+    "category": "fruit",
+    "crop": "mango",
+    "disease": "Powdery mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery growth",
+      "flower drop",
+      "leaf curling"
+    ],
+    "management": [
+      "Spray sulfur-based fungicides",
+      "Improve air circulation",
+      "Avoid excess nitrogen fertilization"
+    ],
+    "causal_organism": "Oidium mangiferae"
+  },
+  {
+    "category": "fruit",
+    "crop": "mango",
+    "disease": "Sooty Mould",
+    "type": "fungal",
+    "symptoms": [
+      "black velvety film covering leaf surface",
+      "interferes with photosynthesis",
+      "blackening of fruit skin"
+    ],
+    "management": [
+      "Control honeydew-secreting insects (hoppers/aphids) with Starch spray or Imidacloprid."
+    ],
+    "causal_organism": "Capnodium mangiferae"
+  },
+  {
+    "category": "fruit",
+    "crop": "papaya",
+    "disease": "Boron Deficiency",
+    "type": "nutrient",
+    "symptoms": [
+      "bumpy/distorted fruits",
+      "latex secretion on fruit surface",
+      "brittle leaves",
+      "death of growing point"
+    ],
+    "management": [
+      "Soil application of Borax (10-20g per tree); foliar spray of Solubor (0.1%)."
+    ],
+    "causal_organism": "Abiotic (Boron deficiency)"
+  },
+  {
+    "category": "fruit",
+    "crop": "papaya",
+    "disease": "Damping off",
+    "type": "fungal",
+    "symptoms": [
+      "seedling collapse",
+      "stem rot"
+    ],
+    "management": [
+      "Use sterilized soil",
+      "Avoid overwatering",
+      "Apply fungicide seed treatment"
+    ],
+    "causal_organism": "Pythium aphanidermatum"
+  },
+  {
+    "category": "fruit",
+    "crop": "papaya",
+    "disease": "Foot Rot",
+    "type": "fungal",
+    "symptoms": [
+      "water-soaked patches at stem base",
+      "bark peeling",
+      "wilting of foliage",
+      "plant toppling"
+    ],
+    "management": [
+      "Drench with Metalaxyl; improve drainage; avoid wounding the stem during weeding."
+    ],
+    "causal_organism": "Pythium aphanidermatum"
+  },
+  {
+    "category": "fruit",
+    "crop": "papaya",
+    "disease": "Papaya ringspot virus",
+    "type": "viral",
+    "symptoms": [
+      "ring spots on fruit",
+      "mosaic leaves",
+      "distorted growth"
+    ],
+    "management": [
+      "Control aphid vectors",
+      "Remove infected plants",
+      "Use resistant varieties"
+    ],
+    "causal_organism": "Papaya ringspot virus (PRSV)"
+  },
+  {
+    "category": "fruit",
+    "crop": "papaya",
+    "disease": "Powdery Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery spots on young leaves",
+      "underside shows light green patches",
+      "fruit show circular white patches"
+    ],
+    "management": [
+      "Spray Wettable Sulfur (0.2%); remove infected leaves; apply Dinocap."
+    ],
+    "causal_organism": "Oidium caricae"
+  },
+  {
+    "category": "fruit",
+    "crop": "papaya",
+    "disease": "Reniform Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "stunted growth",
+      "yellowing",
+      "premature leaf fall",
+      "poor fruit quality"
+    ],
+    "management": [
+      "Nursery treatment with Carbofuran; application of organic manures."
+    ],
+    "causal_organism": "Rotylenchulus reniformis"
+  },
+  {
+    "category": "fruit",
+    "crop": "papaya",
+    "disease": "Ring Spot Virus",
+    "type": "viral",
+    "symptoms": [
+      "yellow mosaic on leaves",
+      "dark green rings on fruit",
+      "distorted leaf shape",
+      "stunted plant"
+    ],
+    "management": [
+      "Control aphids with Imidacloprid; remove infected plants; use net-house for nurseries."
+    ],
+    "causal_organism": "Papaya ringspot virus (PRSV)"
+  },
+  {
+    "category": "fruit",
+    "crop": "pear",
+    "disease": "Fire Blight",
+    "type": "bacterial",
+    "symptoms": [
+      "blossoms turn black",
+      "twigs hook like a shepherd's crook",
+      "bark appears scorched/burnt"
+    ],
+    "management": [
+      "Prune 12 inches below visible symptoms; spray Streptomycin during bloom."
+    ],
+    "causal_organism": "Erwinia amylovora"
+  },
+  {
+    "category": "fruit",
+    "crop": "pomegranate",
+    "disease": "Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "dark leaf spots",
+      "fruit lesions",
+      "blight"
+    ],
+    "management": [
+      "Remove infected plant parts",
+      "Improve orchard sanitation",
+      "Apply suitable fungicides at proper intervals"
+    ],
+    "causal_organism": "Colletotrichum gloeosporioides"
+  },
+  {
+    "category": "fruit",
+    "crop": "pomegranate",
+    "disease": "Bacterial Blight (Oily Spot)",
+    "type": "bacterial",
+    "symptoms": [
+      "water-soaked dark brown spots",
+      "cracking of fruits",
+      "oily appearance on fruit surface"
+    ],
+    "management": [
+      "Spray Streptocycline with Copper Oxychloride; prune and burn infected twigs."
+    ],
+    "causal_organism": "Xanthomonas axonopodis pv. punicae"
+  },
+  {
+    "category": "fruit",
+    "crop": "pomegranate",
+    "disease": "Bacterial blight",
+    "type": "bacterial",
+    "symptoms": [
+      "oily leaf spots",
+      "fruit spots",
+      "twig blight"
+    ],
+    "management": [
+      "Prune infected twigs and branches",
+      "Avoid overhead irrigation",
+      "Use copper-based sprays as recommended"
+    ],
+    "causal_organism": "Xanthomonas axonopodis pv. punicae"
+  },
+  {
+    "category": "fruit",
+    "crop": "pomegranate",
+    "disease": "Cercospora Fruit Spot",
+    "type": "fungal",
+    "symptoms": [
+      "black circular spots on fruit",
+      "lesions on leaves",
+      "cracking of fruit skin"
+    ],
+    "management": [
+      "Spray Mancozeb (0.2%) or Carbendazim; collect and burn fallen fruits."
+    ],
+    "causal_organism": "Cercospora punicae"
+  },
+  {
+    "category": "fruit",
+    "crop": "pomegranate",
+    "disease": "Wilt",
+    "type": "fungal",
+    "symptoms": [
+      "sudden yellowing of a single branch",
+      "total plant collapse",
+      "root browning"
+    ],
+    "management": [
+      "Drench with Propiconazole; apply bio-control agent Trichoderma viride to soil."
+    ],
+    "causal_organism": "Ceratocystis fimbriata"
+  },
+  {
+    "category": "fruit",
+    "crop": "strawberry",
+    "disease": "Gray Mold (Botrytis)",
+    "type": "fungal",
+    "symptoms": [
+      "soft brown rot on fruit",
+      "fuzzy gray fungal growth",
+      "water-soaked spots"
+    ],
+    "management": [
+      "Avoid overhead irrigation; mulch with plastic; apply Boscalid during bloom."
+    ],
+    "causal_organism": "Botrytis cinerea"
+  },
+  {
+    "category": "fruit",
+    "crop": "strawberry",
+    "disease": "Leaf spot",
+    "type": "fungal",
+    "symptoms": [
+      "small purple spots",
+      "gray centers",
+      "leaf blight"
+    ],
+    "management": [
+      "Remove old infected leaves",
+      "Avoid prolonged leaf wetness",
+      "Maintain field sanitation"
+    ],
+    "causal_organism": "Mycosphaerella fragariae"
+  },
+  {
+    "category": "fruit",
+    "crop": "strawberry",
+    "disease": "Powdery mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery growth",
+      "leaf curling",
+      "reddening"
+    ],
+    "management": [
+      "Improve ventilation around plants",
+      "Avoid dense planting",
+      "Apply appropriate fungicides if needed"
+    ],
+    "causal_organism": "Podosphaera aphanis"
+  },
+  {
+    "category": "fruit",
+    "crop": "strawberry",
+    "disease": "Strawberry Mild Yellow Edge",
+    "type": "viral",
+    "symptoms": [
+      "yellowing of leaf margins",
+      "stunting",
+      "small/distorted fruits"
+    ],
+    "management": [
+      "Control strawberry aphids; use certified runners."
+    ],
+    "causal_organism": "Strawberry mild yellow edge virus"
+  },
+  {
+    "category": "fruit",
+    "crop": "tea",
+    "disease": "Blister Blight",
+    "type": "fungal",
+    "symptoms": [
+      "translucent spots on leaves",
+      "white velvet-like blisters",
+      "curling and distortion of leaves"
+    ],
+    "management": [
+      "Maintain pruning cycles; spray Copper Oxychloride + Nickel Chloride."
+    ],
+    "causal_organism": "Exobasidium vexans"
+  },
+  {
+    "category": "fruit",
+    "crop": "walnut",
+    "disease": "Bacterial Blight",
+    "type": "bacterial",
+    "symptoms": [
+      "black spots on young leaves",
+      "catkin infection",
+      "blackening and shriveling of nut husks"
+    ],
+    "management": [
+      "Spray Copper-based bactericides during early bud break."
+    ],
+    "causal_organism": "Xanthomonas arboricola pv. juglandis"
+  },
+  {
+    "category": "fruit",
+    "crop": "watermelon",
+    "disease": "Fusarium Wilt",
+    "type": "fungal",
+    "symptoms": [
+      "vines wilt from tip to base",
+      "vascular browning",
+      "sudden plant death"
+    ],
+    "management": [
+      "Use resistant rootstocks (grafting); 5-year crop rotation."
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. niveum"
+  },
+  {
+    "category": "fruit",
+    "crop": "watermelon",
+    "disease": "Fusarium wilt",
+    "type": "fungal",
+    "symptoms": [
+      "wilting",
+      "yellowing",
+      "vascular browning"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Practice long crop rotation",
+      "Avoid movement of contaminated soil"
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. niveum"
+  },
+  {
+    "category": "fruit",
+    "crop": "watermelon",
+    "disease": "Mosaic virus",
+    "type": "viral",
+    "symptoms": [
+      "mosaic mottling",
+      "distorted leaves",
+      "stunted growth"
+    ],
+    "management": [
+      "Control aphid vectors",
+      "Remove infected plants early",
+      "Use healthy seed and planting material"
+    ],
+    "causal_organism": "Cucumber mosaic virus (CMV)"
+  },
+  {
+    "category": "miscellaneous",
+    "crop": "general/multiple",
+    "disease": "Damping Off",
+    "type": "fungal",
+    "symptoms": [
+      "seedling stem collapse",
+      "water-soaked tissues",
+      "pre-emergence rot"
+    ],
+    "management": [
+      "Avoid overwatering; use sterilized potting mix; seed treatment with Thiram."
+    ],
+    "causal_organism": "Pythium spp. / Rhizoctonia solani"
+  },
+  {
+    "category": "miscellaneous",
+    "crop": "general/multiple",
+    "disease": "Root Knot Nematode",
+    "type": "parasitic",
+    "symptoms": [
+      "knots or galls on roots",
+      "stunted growth",
+      "daytime wilting",
+      "nutrient deficiency signs"
+    ],
+    "management": [
+      "Apply Neem cake to soil; crop rotation with marigold; apply Fluopyram."
+    ],
+    "causal_organism": "Meloidogyne incognita"
+  },
+  {
+    "category": "miscellaneous",
+    "crop": "general/multiple",
+    "disease": "Sooty Mold",
+    "type": "fungal (secondary)",
+    "symptoms": [
+      "black velvety coating on leaves",
+      "sticky honeydew residue",
+      "reduced photosynthesis"
+    ],
+    "management": [
+      "Control sap-sucking insects (aphids/whiteflies) using starch spray or insecticides."
+    ],
+    "causal_organism": "Capnodium spp."
+  },
+  {
+    "category": "pulse",
+    "crop": "black gram",
+    "disease": "Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "sunken lesions on pods",
+      "dark spots on leaves",
+      "stem infection",
+      "seed discoloration"
+    ],
+    "management": [
+      "use disease-free seeds",
+      "apply fungicides",
+      "crop rotation"
+    ],
+    "causal_organism": "Colletotrichum lindemuthianum"
+  },
+  {
+    "category": "pulse",
+    "crop": "black gram",
+    "disease": "Cercospora leaf spot",
+    "type": "fungal",
+    "symptoms": [
+      "brown spots with gray center",
+      "leaf yellowing",
+      "defoliation",
+      "reduced yield"
+    ],
+    "management": [
+      "use resistant varieties",
+      "apply fungicides",
+      "remove crop debris"
+    ],
+    "causal_organism": "Cercospora canescens"
+  },
+  {
+    "category": "pulse",
+    "crop": "chickpea",
+    "disease": "Ascochyta blight",
+    "type": "fungal",
+    "symptoms": [
+      "circular lesions with dark margins",
+      "stem cankers",
+      "leaf blight",
+      "seed infection"
+    ],
+    "management": [
+      "use disease-free seeds",
+      "apply fungicides",
+      "avoid overhead irrigation"
+    ],
+    "causal_organism": "Ascochyta rabiei"
+  },
+  {
+    "category": "pulse",
+    "crop": "chickpea",
+    "disease": "Botrytis Gray Mold",
+    "type": "fungal",
+    "symptoms": [
+      "grayish-brown fungal mats on flowers",
+      "shedding of flowers",
+      "small water-soaked lesions on stems",
+      "pod rot"
+    ],
+    "management": [
+      "Avoid high plant density; spray Carbendazim + Mancozeb; ensure proper field aeration."
+    ],
+    "causal_organism": "Botrytis cinerea"
+  },
+  {
+    "category": "pulse",
+    "crop": "chickpea",
+    "disease": "Chlorotic Dwarf Virus",
+    "type": "viral",
+    "symptoms": [
+      "extreme stunting",
+      "yellowing of new leaves",
+      "leaf twisting",
+      "plant turns brittle"
+    ],
+    "management": [
+      "Control leafhopper vectors; maintain field sanitation."
+    ],
+    "causal_organism": "Chickpea chlorotic dwarf virus (CpCDV)"
+  },
+  {
+    "category": "pulse",
+    "crop": "chickpea",
+    "disease": "Fusarium Wilt",
+    "type": "fungal",
+    "symptoms": [
+      "drooping of leaves",
+      "internal browning of stem",
+      "sudden plant death",
+      "stunted growth"
+    ],
+    "management": [
+      "Seed treatment with Trichoderma viride; 3-year crop rotation."
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. ciceris"
+  },
+  {
+    "category": "pulse",
+    "crop": "chickpea",
+    "disease": "Fusarium wilt",
+    "type": "fungal",
+    "symptoms": [
+      "yellowing of lower leaves",
+      "sudden wilting",
+      "brown discoloration of vascular tissues",
+      "plant drying"
+    ],
+    "management": [
+      "use resistant varieties",
+      "crop rotation",
+      "seed treatment with fungicides"
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. ciceris"
+  },
+  {
+    "category": "pulse",
+    "crop": "chickpea",
+    "disease": "Root-Knot Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "stunting",
+      "poor podding",
+      "yellowing",
+      "bead-like galls on roots"
+    ],
+    "management": [
+      "Summer deep plowing; seed treatment with bio-control agents like Trichoderma."
+    ],
+    "causal_organism": "Meloidogyne incognita"
+  },
+  {
+    "category": "pulse",
+    "crop": "green gram",
+    "disease": "Bacterial Leaf Spot",
+    "type": "bacterial",
+    "symptoms": [
+      "small circular water-soaked spots",
+      "spots turn brown with yellow halos",
+      "leaf drying"
+    ],
+    "management": [
+      "Seed treatment with Streptocycline (100 ppm); spray Copper Oxychloride."
+    ],
+    "causal_organism": "Xanthomonas phaseoli pv. vignicola"
+  },
+  {
+    "category": "pulse",
+    "crop": "green gram",
+    "disease": "Leaf Crinkle Virus",
+    "type": "viral",
+    "symptoms": [
+      "extreme enlargement of third leaf",
+      "crinkling and curling of leaf blade",
+      "stiff leathery leaves"
+    ],
+    "management": [
+      "Seed treatment with Imidacloprid; remove infected plants; control aphids."
+    ],
+    "causal_organism": "Mungbean leaf crinkle virus"
+  },
+  {
+    "category": "pulse",
+    "crop": "green gram",
+    "disease": "Powdery mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery growth on leaves",
+      "leaf curling",
+      "premature leaf drop",
+      "reduced yield"
+    ],
+    "management": [
+      "apply sulfur fungicides",
+      "improve air circulation",
+      "avoid dense planting"
+    ],
+    "causal_organism": "Erysiphe polygoni"
+  },
+  {
+    "category": "pulse",
+    "crop": "green gram",
+    "disease": "Yellow Mosaic Virus",
+    "type": "viral",
+    "symptoms": [
+      "scattered yellow spots",
+      "complete yellowing of leaves",
+      "stunted growth",
+      "fewer pods"
+    ],
+    "management": [
+      "Use resistant varieties like ML-267; control whitefly vector with Imidacloprid spray."
+    ],
+    "causal_organism": "Mungbean yellow mosaic virus (MYMV)"
+  },
+  {
+    "category": "pulse",
+    "crop": "green gram",
+    "disease": "Yellow mosaic disease",
+    "type": "viral",
+    "symptoms": [
+      "yellow patches on leaves",
+      "leaf mosaic pattern",
+      "reduced pod formation",
+      "stunted plants"
+    ],
+    "management": [
+      "control whitefly vectors",
+      "use resistant varieties",
+      "remove infected plants"
+    ],
+    "causal_organism": "Mungbean yellow mosaic virus (MYMV)"
+  },
+  {
+    "category": "pulse",
+    "crop": "lentil",
+    "disease": "Rust",
+    "type": "fungal",
+    "symptoms": [
+      "orange pustules on leaves",
+      "leaf drying",
+      "reduced photosynthesis",
+      "yield loss"
+    ],
+    "management": [
+      "apply fungicides",
+      "use resistant varieties",
+      "early sowing"
+    ],
+    "causal_organism": "Uromyces viciae-fabae"
+  },
+  {
+    "category": "pulse",
+    "crop": "lentil",
+    "disease": "Stemphylium Blight",
+    "type": "fungal",
+    "symptoms": [
+      "small light-brown spots on leaflets",
+      "leaves turn dark brown and drop",
+      "twigs appear blighted and thin"
+    ],
+    "management": [
+      "Spray Iprodione or Chlorothalonil; avoid late sowing; use wider row spacing."
+    ],
+    "causal_organism": "Stemphylium botryosum"
+  },
+  {
+    "category": "pulse",
+    "crop": "lentil",
+    "disease": "Wilt",
+    "type": "fungal",
+    "symptoms": [
+      "yellowing leaves",
+      "plant wilting",
+      "root discoloration",
+      "plant death"
+    ],
+    "management": [
+      "crop rotation",
+      "use resistant varieties",
+      "soil treatment"
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. lentis"
+  },
+  {
+    "category": "pulse",
+    "crop": "mung bean",
+    "disease": "Bacterial Leaf Spot",
+    "type": "bacterial",
+    "symptoms": [
+      "circular brown spots",
+      "raised yellowish borders",
+      "leaf yellowing and drop"
+    ],
+    "management": [
+      "Seed treatment with Streptocycline; spray Copper fungicides."
+    ],
+    "causal_organism": "Xanthomonas phaseoli pv. vignicola"
+  },
+  {
+    "category": "pulse",
+    "crop": "mung bean",
+    "disease": "Cercospora Leaf Spot",
+    "type": "fungal",
+    "symptoms": [
+      "circular brown spots with gray centers",
+      "reddish-purple borders",
+      "severe defoliation during flowering"
+    ],
+    "management": [
+      "Spray Carbendazim (0.1%); use disease-free seeds; remove plant debris."
+    ],
+    "causal_organism": "Cercospora canescens"
+  },
+  {
+    "category": "pulse",
+    "crop": "pea",
+    "disease": "Ascochyta Blight",
+    "type": "fungal",
+    "symptoms": [
+      "purplish-black spots on leaves",
+      "stem girdling near soil line",
+      "sunken brown spots on pods"
+    ],
+    "management": [
+      "Use pathogen-free seeds; spray Chlorothalonil; remove crop residues."
+    ],
+    "causal_organism": "Ascochyta pisi"
+  },
+  {
+    "category": "pulse",
+    "crop": "pea",
+    "disease": "Pea Seed-borne Mosaic",
+    "type": "viral",
+    "symptoms": [
+      "vein swelling",
+      "leaf rolling",
+      "delayed maturity",
+      "cracked seed coats"
+    ],
+    "management": [
+      "Use virus-free seeds; rogue out early infected plants."
+    ],
+    "causal_organism": "Pea seed-borne mosaic virus (PSbMV)"
+  },
+  {
+    "category": "pulse",
+    "crop": "pigeon pea",
+    "disease": "Phytophthora Blight",
+    "type": "fungal",
+    "symptoms": [
+      "brown-to-black lesions on stem",
+      "girdling of stem",
+      "sudden wilting in rainy season"
+    ],
+    "management": [
+      "Ridge planting to improve drainage; seed treatment with Metalaxyl."
+    ],
+    "causal_organism": "Phytophthora drechsleri f. sp. cajani"
+  },
+  {
+    "category": "pulse",
+    "crop": "pigeon pea",
+    "disease": "Reniform Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "dirty roots due to soil particles sticking to egg masses",
+      "stunted growth",
+      "chlorosis (yellowing)"
+    ],
+    "management": [
+      "Crop rotation with maize or sorghum; seed treatment with Fluopyram."
+    ],
+    "causal_organism": "Rotylenchulus reniformis"
+  },
+  {
+    "category": "pulse",
+    "crop": "pigeon pea",
+    "disease": "Sterility Mosaic Disease",
+    "type": "viral",
+    "symptoms": [
+      "mosaic mottling of leaves",
+      "small pale green leaves",
+      "reduction in leaf size",
+      "complete absence of flowers"
+    ],
+    "management": [
+      "Rouge out infected plants; spray Dicofol or Fenazaquin to control the mite vector (Aceria cajani)."
+    ],
+    "causal_organism": "Pigeonpea sterility mosaic virus (PPSMV)"
+  },
+  {
+    "category": "pulse",
+    "crop": "pigeonpea",
+    "disease": "Phytophthora blight",
+    "type": "fungal",
+    "symptoms": [
+      "stem rot near soil level",
+      "wilting",
+      "dark lesions",
+      "plant collapse"
+    ],
+    "management": [
+      "improve drainage",
+      "avoid waterlogging",
+      "use fungicide treatment"
+    ],
+    "causal_organism": "Phytophthora drechsleri f. sp. cajani"
+  },
+  {
+    "category": "pulse",
+    "crop": "pigeonpea",
+    "disease": "Sterility mosaic disease",
+    "type": "viral",
+    "symptoms": [
+      "bushy appearance",
+      "chlorotic rings",
+      "absence of flowers",
+      "stunted growth"
+    ],
+    "management": [
+      "remove infected plants",
+      "control mite vectors",
+      "use resistant varieties"
+    ],
+    "causal_organism": "Pigeonpea sterility mosaic virus (PPSMV)"
+  },
+  {
+    "category": "pulse",
+    "crop": "soybean",
+    "disease": "Bacterial Blight",
+    "type": "bacterial",
+    "symptoms": [
+      "angular water-soaked spots",
+      "spots turn black with yellow halo",
+      "leaf center drops out (shot-hole)"
+    ],
+    "management": [
+      "Avoid cultivation when leaves are wet; use certified seeds."
+    ],
+    "causal_organism": "Pseudomonas savastanoi pv. glycinea"
+  },
+  {
+    "category": "pulse",
+    "crop": "soybean",
+    "disease": "Iron Chlorosis",
+    "type": "nutrient",
+    "symptoms": [
+      "bright yellowing of new leaves",
+      "veins remain dark green",
+      "stunted growth in alkaline soils"
+    ],
+    "management": [
+      "Apply Chelated Iron (Fe-EDDHA) to soil or foliar spray of Ferrous Sulphate."
+    ],
+    "causal_organism": "Abiotic (Iron deficiency)"
+  },
+  {
+    "category": "pulse",
+    "crop": "soybean",
+    "disease": "Soybean Cyst Nematode (SCN)",
+    "type": "nematode",
+    "symptoms": [
+      "yellowing (resembles Nitrogen deficiency)",
+      "stunting",
+      "fewer Nitrogen-fixing nodules",
+      "dead patches in field"
+    ],
+    "management": [
+      "Rotate with non-host crops like corn; use resistant SCN-varieties; maintain high soil fertility."
+    ],
+    "causal_organism": "Heterodera glycines"
+  },
+  {
+    "category": "pulse",
+    "crop": "soybean",
+    "disease": "Soybean Mosaic Virus (SMV)",
+    "type": "viral",
+    "symptoms": [
+      "stunting",
+      "crinkled or ruffled leaves",
+      "mosaic patterns",
+      "reduced seed size",
+      "brown/black bleeding on seed coat"
+    ],
+    "management": [
+      "Use virus-free seeds; control aphids; rogue out infected plants early."
+    ],
+    "causal_organism": "Soybean mosaic virus (SMV)"
+  },
+  {
+    "category": "pulse",
+    "crop": "soybean",
+    "disease": "Soybean Vein Necrosis",
+    "type": "viral",
+    "symptoms": [
+      "yellowing along leaf veins",
+      "veins turn reddish-brown and die",
+      "scalded appearance of leaves"
+    ],
+    "management": [
+      "Control thrips vectors; use tolerant soybean varieties."
+    ],
+    "causal_organism": "Soybean vein necrosis virus (SVNV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "ash gourd",
+    "disease": "Mosaic virus",
+    "type": "viral",
+    "symptoms": [
+      "mosaic pattern",
+      "distorted leaves"
+    ],
+    "management": [
+      "Control aphids",
+      "Remove infected plants",
+      "Use healthy seedlings"
+    ],
+    "causal_organism": "Cucumber mosaic virus (CMV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "bean",
+    "disease": "Halo Blight",
+    "type": "bacterial",
+    "symptoms": [
+      "small spots with very large yellow halos",
+      "greasy-looking spots on pods",
+      "stunting"
+    ],
+    "management": [
+      "Use clean seeds; spray Copper fungicides; avoid working in wet fields."
+    ],
+    "causal_organism": "Pseudomonas savastanoi pv. phaseolicola"
+  },
+  {
+    "category": "vegetable",
+    "crop": "beans",
+    "disease": "Common bacterial blight",
+    "type": "bacterial",
+    "symptoms": [
+      "water-soaked spots",
+      "yellow halos"
+    ],
+    "management": [
+      "Use certified seeds",
+      "Avoid wet conditions",
+      "Practice crop rotation"
+    ],
+    "causal_organism": "Xanthomonas axonopodis pv. phaseoli"
+  },
+  {
+    "category": "vegetable",
+    "crop": "beans",
+    "disease": "Rust",
+    "type": "fungal",
+    "symptoms": [
+      "brown pustules",
+      "leaf spots"
+    ],
+    "management": [
+      "Remove infected leaves",
+      "Apply fungicides",
+      "Ensure proper spacing"
+    ],
+    "causal_organism": "Uromyces appendiculatus"
+  },
+  {
+    "category": "vegetable",
+    "crop": "bitter gourd",
+    "disease": "Powdery mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery spots",
+      "leaf yellowing"
+    ],
+    "management": [
+      "Ensure proper spacing",
+      "Apply fungicides",
+      "Remove infected leaves"
+    ],
+    "causal_organism": "Podosphaera xanthii"
+  },
+  {
+    "category": "vegetable",
+    "crop": "bottle gourd",
+    "disease": "Downy mildew",
+    "type": "fungal",
+    "symptoms": [
+      "yellow patches",
+      "leaf drying"
+    ],
+    "management": [
+      "Improve air circulation",
+      "Avoid wet foliage",
+      "Apply fungicides"
+    ],
+    "causal_organism": "Pseudoperonospora cubensis"
+  },
+  {
+    "category": "vegetable",
+    "crop": "brinjal",
+    "disease": "Bacterial Wilt",
+    "type": "bacterial",
+    "symptoms": [
+      "sudden dropping of leaves",
+      "permanent wilting within 72 hours",
+      "white bacterial ooze from cut stems"
+    ],
+    "management": [
+      "Crop rotation with non-solanaceous crops; use resistant varieties like Arka Nidhi."
+    ],
+    "causal_organism": "Ralstonia solanacearum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "brinjal",
+    "disease": "Cercospora Leaf Spot",
+    "type": "fungal",
+    "symptoms": [
+      "chlorotic spots",
+      "centers turn grayish-brown",
+      "concentric rings",
+      "leaf drying"
+    ],
+    "management": [
+      "Spray Mancozeb; remove infected plant debris after harvest."
+    ],
+    "causal_organism": "Cercospora melongenae"
+  },
+  {
+    "category": "vegetable",
+    "crop": "brinjal",
+    "disease": "Little Leaf",
+    "type": "phytoplasma",
+    "symptoms": [
+      "extreme reduction in leaf size",
+      "shortened internodes",
+      "bushy appearance",
+      "no fruit set"
+    ],
+    "management": [
+      "Control leafhopper vector with Dimethoate; remove and burn infected plants."
+    ],
+    "causal_organism": "Phytoplasma (transmitted by Hishimonus phycitis)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "brinjal",
+    "disease": "Little leaf",
+    "type": "viral",
+    "symptoms": [
+      "small leaves",
+      "bushy growth"
+    ],
+    "management": [
+      "Control leafhoppers",
+      "Remove infected plants",
+      "Use healthy seedlings"
+    ],
+    "causal_organism": "Phytoplasma (transmitted by Hishimonus phycitis)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "brinjal",
+    "disease": "Phomopsis Blight",
+    "type": "fungal",
+    "symptoms": [
+      "circular brown spots on leaves",
+      "pale sunken spots on fruit",
+      "fruit rot"
+    ],
+    "management": [
+      "Destroy infected plant debris; spray Zineb or Mancozeb."
+    ],
+    "causal_organism": "Phomopsis vexans"
+  },
+  {
+    "category": "vegetable",
+    "crop": "brinjal",
+    "disease": "Phomopsis blight",
+    "type": "fungal",
+    "symptoms": [
+      "leaf spots",
+      "fruit rot"
+    ],
+    "management": [
+      "Remove infected parts",
+      "Use certified seeds",
+      "Apply fungicides"
+    ],
+    "causal_organism": "Phomopsis vexans"
+  },
+  {
+    "category": "vegetable",
+    "crop": "brinjal",
+    "disease": "Root-Knot Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "heavy galling on secondary roots",
+      "stunting",
+      "yellowing",
+      "poor fruit set"
+    ],
+    "management": [
+      "Nursery bed treatment with Formalin; use resistant varieties like Arka Nidhi."
+    ],
+    "causal_organism": "Meloidogyne incognita"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cabbage",
+    "disease": "Bacterial Leaf Spot",
+    "type": "bacterial",
+    "symptoms": [
+      "small translucent spots",
+      "spots become dark and circular",
+      "concentric rings (resembling fungal) but water-soaked"
+    ],
+    "management": [
+      "Rotate crops; treat seeds with hot water (50°C); avoid working in wet fields."
+    ],
+    "causal_organism": "Pseudomonas syringae pv. maculicola"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cabbage",
+    "disease": "Black Leg",
+    "type": "fungal",
+    "symptoms": [
+      "sunken gray lesions with black dots on stem",
+      "root rot",
+      "wilting of the whole plant"
+    ],
+    "management": [
+      "Hot water seed treatment; destroy crop residues; apply Carbendazim."
+    ],
+    "causal_organism": "Leptosphaeria maculans"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cabbage",
+    "disease": "Black Rot",
+    "type": "bacterial",
+    "symptoms": [
+      "V-shaped yellow lesions on leaf margins",
+      "blackening of veins",
+      "foul smell in head",
+      "stunted growth"
+    ],
+    "management": [
+      "Hot water seed treatment (50°C for 30 mins); 3-year crop rotation; avoid overhead irrigation."
+    ],
+    "causal_organism": "Xanthomonas campestris pv. campestris"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cabbage",
+    "disease": "Black rot",
+    "type": "bacterial",
+    "symptoms": [
+      "yellow v-shaped lesions",
+      "vein blackening"
+    ],
+    "management": [
+      "Use disease-free seeds",
+      "Remove infected plants",
+      "Practice crop rotation"
+    ],
+    "causal_organism": "Xanthomonas campestris pv. campestris"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cabbage",
+    "disease": "Clubroot",
+    "type": "fungal",
+    "symptoms": [
+      "swelling and distortion of roots (club-like)",
+      "wilting during hot days",
+      "stunted growth"
+    ],
+    "management": [
+      "Add lime to soil to increase pH; rotate with non-cruciferous crops."
+    ],
+    "causal_organism": "Plasmodiophora brassicae"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cabbage",
+    "disease": "Downy Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "purplish-gray downy growth on leaf underside",
+      "yellow angular spots on top",
+      "stunted seedlings"
+    ],
+    "management": [
+      "Spray Metalaxyl + Mancozeb; avoid high density in nursery beds."
+    ],
+    "causal_organism": "Peronospora parasitica"
+  },
+  {
+    "category": "vegetable",
+    "crop": "carrot",
+    "disease": "Bacterial Leaf Blight",
+    "type": "bacterial",
+    "symptoms": [
+      "irregular brown spots on leaf margins",
+      "leaf curling",
+      "yellowing of foliage"
+    ],
+    "management": [
+      "Seed treatment with hot water; apply Copper sprays; 2-year crop rotation."
+    ],
+    "causal_organism": "Xanthomonas hortorum pv. carotae"
+  },
+  {
+    "category": "vegetable",
+    "crop": "carrot",
+    "disease": "Leaf blight",
+    "type": "fungal",
+    "symptoms": [
+      "brown leaf spots",
+      "leaf drying"
+    ],
+    "management": [
+      "Use healthy seeds",
+      "Remove infected leaves",
+      "Apply fungicides"
+    ],
+    "causal_organism": "Alternaria dauci"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cauliflower",
+    "disease": "Browning (Boron Deficiency)",
+    "type": "nutrient",
+    "symptoms": [
+      "water-soaked lesions on curd",
+      "curd turns rusty brown",
+      "hollow stem with browning"
+    ],
+    "management": [
+      "Apply Borax (10-15 kg/ha) to soil during land preparation."
+    ],
+    "causal_organism": "Abiotic (Boron deficiency)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cauliflower",
+    "disease": "Downy Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "purplish-brown spots on leaf undersides",
+      "yellowing of top leaf",
+      "curd browning"
+    ],
+    "management": [
+      "Spray Metalaxyl + Mancozeb; ensure field sanitation."
+    ],
+    "causal_organism": "Peronospora parasitica"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cauliflower",
+    "disease": "Downy mildew",
+    "type": "fungal",
+    "symptoms": [
+      "yellow patches",
+      "white growth underside"
+    ],
+    "management": [
+      "Improve drainage",
+      "Avoid overhead irrigation",
+      "Apply fungicides"
+    ],
+    "causal_organism": "Peronospora parasitica"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cauliflower",
+    "disease": "Whip Tail",
+    "type": "deficiency",
+    "symptoms": [
+      "leaf blade fails to develop",
+      "only midrib grows",
+      "thin wire-like leaves"
+    ],
+    "management": [
+      "Apply Sodium or Ammonium Molybdate to soil; check soil pH."
+    ],
+    "causal_organism": "Abiotic (Molybdenum deficiency)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "chili",
+    "disease": "Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "sunken spots",
+      "fruit rot"
+    ],
+    "management": [
+      "Use disease-free seeds",
+      "Apply fungicides",
+      "Remove infected fruits"
+    ],
+    "causal_organism": "Colletotrichum capsici"
+  },
+  {
+    "category": "vegetable",
+    "crop": "chili",
+    "disease": "Bacterial leaf spot",
+    "type": "bacterial",
+    "symptoms": [
+      "small dark spots",
+      "yellow halo"
+    ],
+    "management": [
+      "Avoid overhead watering",
+      "Use resistant varieties",
+      "Remove infected leaves"
+    ],
+    "causal_organism": "Xanthomonas campestris pv. vesicatoria"
+  },
+  {
+    "category": "vegetable",
+    "crop": "chilli",
+    "disease": "Dieback & Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "necrosis of twigs from tip downward",
+      "sunken circular spots on fruit",
+      "black dots in rings"
+    ],
+    "management": [
+      "Seed treatment with Thiram; spray Azoxystrobin or Carbendazim."
+    ],
+    "causal_organism": "Colletotrichum capsici"
+  },
+  {
+    "category": "vegetable",
+    "crop": "chilli",
+    "disease": "Leaf Curl",
+    "type": "viral",
+    "symptoms": [
+      "upward curling of leaves",
+      "thickening of veins",
+      "stunted plant height",
+      "brittle leaves"
+    ],
+    "management": [
+      "Install yellow sticky traps; spray systemic insecticides like Dimethoate to control thrips/mites."
+    ],
+    "causal_organism": "Chilli leaf curl virus (ChiLCV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "chilli",
+    "disease": "Mottle Virus",
+    "type": "viral",
+    "symptoms": [
+      "mottling and mosaic on leaves",
+      "reduction in leaf size",
+      "distorted small fruits"
+    ],
+    "management": [
+      "Use virus-free seeds; control aphids and thrips; maintain field sanitation."
+    ],
+    "causal_organism": "Chilli mottle virus"
+  },
+  {
+    "category": "vegetable",
+    "crop": "chilli",
+    "disease": "Powdery Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery patches on underside of leaf",
+      "yellowing of upper leaf surface",
+      "severe leaf drop"
+    ],
+    "management": [
+      "Spray Dinocap (0.1%) or Wettable Sulfur (0.2%)."
+    ],
+    "causal_organism": "Leveillula taurica"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cucumber",
+    "disease": "Angular Leaf Spot",
+    "type": "bacterial",
+    "symptoms": [
+      "angular water-soaked spots",
+      "white crusty appearance on spots when dry",
+      "fruit rot"
+    ],
+    "management": [
+      "Rotate crops; spray Copper-based fungicides; use certified disease-free seeds."
+    ],
+    "causal_organism": "Pseudomonas syringae pv. lachrymans"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cucumber",
+    "disease": "Bacterial Wilt",
+    "type": "bacterial",
+    "symptoms": [
+      "leaves wilt and stay green",
+      "sticky white thread when stem is cut and pulled",
+      "sudden plant death"
+    ],
+    "management": [
+      "Control Cucumber Beetles (vectors) with Carbaryl; remove infected plants immediately."
+    ],
+    "causal_organism": "Erwinia tracheiphila"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cucumber",
+    "disease": "Cucumber Green Mottle Mosaic",
+    "type": "viral",
+    "symptoms": [
+      "mottling and chlorotic spots",
+      "distorted leaf shape",
+      "stunting",
+      "fruit mottling"
+    ],
+    "management": [
+      "Seed heat treatment; sanitize tools/hands; 2-year crop rotation."
+    ],
+    "causal_organism": "Cucumber green mottle mosaic virus (CGMMV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cucumber",
+    "disease": "Downy mildew",
+    "type": "fungal",
+    "symptoms": [
+      "yellow angular spots",
+      "leaf drying"
+    ],
+    "management": [
+      "Improve air circulation",
+      "Avoid wet leaves",
+      "Apply fungicides"
+    ],
+    "causal_organism": "Pseudoperonospora cubensis"
+  },
+  {
+    "category": "vegetable",
+    "crop": "cucumber",
+    "disease": "Mosaic Virus",
+    "type": "viral",
+    "symptoms": [
+      "mottled yellow-green leaves",
+      "bumpy/distorted fruit",
+      "shoestring leaf effect"
+    ],
+    "management": [
+      "Control aphid vectors; remove wild cucurbit weeds."
+    ],
+    "causal_organism": "Cucumber mosaic virus (CMV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "garlic",
+    "disease": "Garlic Common Latent Virus",
+    "type": "viral",
+    "symptoms": [
+      "mild mosaic",
+      "faint yellow streaks",
+      "reduction in bulb weight"
+    ],
+    "management": [
+      "Use virus-free cloves; meristem tip culture."
+    ],
+    "causal_organism": "Garlic common latent virus (GarCLV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "garlic",
+    "disease": "Purple Blotch",
+    "type": "fungal",
+    "symptoms": [
+      "whitish lesions on leaves",
+      "centers turn purple with age",
+      "leaf tips dry and break"
+    ],
+    "management": [
+      "Spray Mancozeb (0.25%); ensure proper bulb curing; 2-year crop rotation."
+    ],
+    "causal_organism": "Alternaria porri"
+  },
+  {
+    "category": "vegetable",
+    "crop": "garlic",
+    "disease": "White Rot",
+    "type": "fungal",
+    "symptoms": [
+      "fluffy white growth at bulb base",
+      "decay of roots",
+      "yellowing and dieback of leaves"
+    ],
+    "management": [
+      "Seed bulb treatment with Tebuconazole; avoid infested fields for 4 years."
+    ],
+    "causal_organism": "Sclerotium cepivorum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "lettuce",
+    "disease": "Lettuce Mosaic Virus",
+    "type": "viral",
+    "symptoms": [
+      "mosaic patterns",
+      "mottling",
+      "serrated leaf margins",
+      "failure to form heads"
+    ],
+    "management": [
+      "Use index-tested seeds (zero virus); control aphids."
+    ],
+    "causal_organism": "Lettuce mosaic virus (LMV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "okra",
+    "disease": "Powdery mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powdery growth",
+      "leaf yellowing"
+    ],
+    "management": [
+      "Improve air circulation",
+      "Apply fungicides",
+      "Avoid overcrowding"
+    ],
+    "causal_organism": "Erysiphe cichoracearum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "okra",
+    "disease": "Reniform Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "stunted growth",
+      "leaf yellowing",
+      "reduction in fruit number",
+      "shriveled root system"
+    ],
+    "management": [
+      "Rotate with Marigold or Mustard; apply Neem cake at sowing."
+    ],
+    "causal_organism": "Rotylenchulus reniformis"
+  },
+  {
+    "category": "vegetable",
+    "crop": "okra",
+    "disease": "Yellow vein mosaic",
+    "type": "viral",
+    "symptoms": [
+      "yellow veins",
+      "distorted leaves"
+    ],
+    "management": [
+      "Control whiteflies",
+      "Remove infected plants",
+      "Use resistant varieties"
+    ],
+    "causal_organism": "Bhendi yellow vein mosaic virus (BYVMV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "okra (bhendi)",
+    "disease": "Powdery Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "grayish-white powdery spots on leaf undersides",
+      "yellowing of upper leaf",
+      "defoliation"
+    ],
+    "management": [
+      "Spray Wettable Sulfur (0.2%) or Penconazole."
+    ],
+    "causal_organism": "Erysiphe cichoracearum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "okra (bhendi)",
+    "disease": "Root-Knot Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "severe galling on roots",
+      "plant death in heavy infestations",
+      "leaf yellowing"
+    ],
+    "management": [
+      "Seed treatment with bio-agent Purpureocillium lilacinum; soil solarization."
+    ],
+    "causal_organism": "Meloidogyne incognita"
+  },
+  {
+    "category": "vegetable",
+    "crop": "okra (bhendi)",
+    "disease": "Yellow Vein Mosaic",
+    "type": "viral",
+    "symptoms": [
+      "yellowing of veins and veinlets",
+      "complete yellowing of leaves",
+      "small yellow-green fruits"
+    ],
+    "management": [
+      "Spray Acetamiprid for whitefly control; use resistant varieties like Parbhani Kranti."
+    ],
+    "causal_organism": "Bhendi yellow vein mosaic virus (BYVMV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "onion",
+    "disease": "Bacterial Soft Rot",
+    "type": "bacterial",
+    "symptoms": [
+      "bulbs turn mushy and watery",
+      "foul smell",
+      "internal scales collapse"
+    ],
+    "management": [
+      "Dry bulbs thoroughly after harvest; store in cool/dry place; avoid bruising bulbs."
+    ],
+    "causal_organism": "Pectobacterium carotovorum subsp. carotovorum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "onion",
+    "disease": "Downy Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "violet-tinted fuzzy growth",
+      "pale green patches on leaves",
+      "premature leaf collapse"
+    ],
+    "management": [
+      "Apply Copper-based fungicides; avoid high-density planting."
+    ],
+    "causal_organism": "Peronospora destructor"
+  },
+  {
+    "category": "vegetable",
+    "crop": "onion",
+    "disease": "Iris Yellow Spot Virus (IYSV)",
+    "type": "viral",
+    "symptoms": [
+      "diamond-shaped straw-colored lesions",
+      "green centers in lesions",
+      "drying of leaves",
+      "small bulbs"
+    ],
+    "management": [
+      "Control onion thrips; avoid planting near infected onion/garlic crops."
+    ],
+    "causal_organism": "Iris yellow spot virus (IYSV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "onion",
+    "disease": "Neck Rot (Botrytis)",
+    "type": "fungal",
+    "symptoms": [
+      "softening of bulb scales at the neck",
+      "gray mycelial growth",
+      "black sclerotia visible under skin"
+    ],
+    "management": [
+      "Allow tops to dry completely before harvest; provide good ventilation in storage; avoid high Nitrogen."
+    ],
+    "causal_organism": "Botrytis aclada"
+  },
+  {
+    "category": "vegetable",
+    "crop": "onion",
+    "disease": "Purple Blotch",
+    "type": "fungal",
+    "symptoms": [
+      "small water-soaked lesions",
+      "purple centers",
+      "yellow halo",
+      "drying of leaf tips"
+    ],
+    "management": [
+      "Spray Mancozeb (0.25%) or Tebuconazole; provide good drainage."
+    ],
+    "causal_organism": "Alternaria porri"
+  },
+  {
+    "category": "vegetable",
+    "crop": "onion",
+    "disease": "Purple blotch",
+    "type": "fungal",
+    "symptoms": [
+      "purple spots",
+      "leaf drying"
+    ],
+    "management": [
+      "Use healthy bulbs",
+      "Avoid overhead watering",
+      "Apply fungicides"
+    ],
+    "causal_organism": "Alternaria porri"
+  },
+  {
+    "category": "vegetable",
+    "crop": "onion",
+    "disease": "Smut",
+    "type": "fungal",
+    "symptoms": [
+      "dark lead-colored streaks on leaves",
+      "leaves swell and rupture",
+      "black powdery mass (chlamydospores)"
+    ],
+    "management": [
+      "Seed treatment with Thiram; avoid planting in infested soil for 5 years."
+    ],
+    "causal_organism": "Urocystis cepulae"
+  },
+  {
+    "category": "vegetable",
+    "crop": "onion",
+    "disease": "Stem and Bulb Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "bloated or distorted leaves",
+      "soft/spongy bulbs",
+      "splitting of the bulb base",
+      "rotting in storage"
+    ],
+    "management": [
+      "Clean seed bulbs; 3-year rotation with non-host crops; avoid reusing irrigation water."
+    ],
+    "causal_organism": "Ditylenchus dipsaci"
+  },
+  {
+    "category": "vegetable",
+    "crop": "onion",
+    "disease": "Yellow Dwarf",
+    "type": "viral",
+    "symptoms": [
+      "yellow streaks at the base of leaves",
+      "crinkled and twisted leaves",
+      "stunted bulbs"
+    ],
+    "management": [
+      "Use healthy sets/bulbs; control aphid vectors; isolate from older onion fields."
+    ],
+    "causal_organism": "Onion yellow dwarf virus (OYDV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "pea",
+    "disease": "Downy Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "purplish-gray cottony growth on underside",
+      "yellowing of top surface",
+      "brownish spots on pods"
+    ],
+    "management": [
+      "Seed treatment with Metalaxyl; avoid late sowing; remove infected vines."
+    ],
+    "causal_organism": "Peronospora viciae f. sp. pisi"
+  },
+  {
+    "category": "vegetable",
+    "crop": "pea",
+    "disease": "Pea Enation Mosaic",
+    "type": "viral",
+    "symptoms": [
+      "leaf malformation",
+      "white translucent spots (enations) on leaf undersides",
+      "pod distortion"
+    ],
+    "management": [
+      "Late sowing; control pea aphids with systemic insecticides; remove weed hosts."
+    ],
+    "causal_organism": "Pea enation mosaic virus (PEMV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "pea",
+    "disease": "Powdery Mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white flour-like coating on leaves",
+      "pod distortion",
+      "premature drying"
+    ],
+    "management": [
+      "Late October sowing; spray Sulfex (0.2%); use resistant variety like Arkel."
+    ],
+    "causal_organism": "Erysiphe pisi"
+  },
+  {
+    "category": "vegetable",
+    "crop": "pea",
+    "disease": "Powdery mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powder",
+      "leaf curling"
+    ],
+    "management": [
+      "Improve air circulation",
+      "Apply fungicides",
+      "Avoid overcrowding"
+    ],
+    "causal_organism": "Erysiphe pisi"
+  },
+  {
+    "category": "vegetable",
+    "crop": "pea",
+    "disease": "Rust",
+    "type": "fungal",
+    "symptoms": [
+      "yellow-orange pustules on leaves and stems",
+      "dark brown pustules in late stages"
+    ],
+    "management": [
+      "Spray Mancozeb (0.2%); remove collateral hosts."
+    ],
+    "causal_organism": "Uromyces fabae"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Bacterial Soft Rot",
+    "type": "bacterial",
+    "symptoms": [
+      "water-soaked mushy tissues",
+      "foul odor",
+      "tuber skin remains intact but contents liquefy"
+    ],
+    "management": [
+      "Store in well-ventilated cool areas; avoid mechanical injury during harvest; dry tubers before storage."
+    ],
+    "causal_organism": "Pectobacterium carotovorum subsp. carotovorum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Bacterial soft rot",
+    "type": "bacterial",
+    "symptoms": [
+      "soft watery rot",
+      "foul smell"
+    ],
+    "management": [
+      "Avoid injuries",
+      "Store in dry conditions",
+      "Use clean tools"
+    ],
+    "causal_organism": "Pectobacterium carotovorum subsp. carotovorum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Black Scurf",
+    "type": "fungal",
+    "symptoms": [
+      "black hard masses on tuber skin (cannot be washed off)",
+      "cankers on sprouts",
+      "wilting"
+    ],
+    "management": [
+      "Seed treatment with Pencycuron; avoid deep planting; harvest immediately after vine kill."
+    ],
+    "causal_organism": "Rhizoctonia solani"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Common Scab",
+    "type": "bacterial",
+    "symptoms": [
+      "corky brown lesions on tuber surface",
+      "pitted or raised spots",
+      "reduced marketability"
+    ],
+    "management": [
+      "Maintain high soil moisture during tuber initiation; lower soil pH to 5.2; avoid fresh manure."
+    ],
+    "causal_organism": "Streptomyces scabies"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Early Blight",
+    "type": "fungal",
+    "symptoms": [
+      "target-board lesions",
+      "dry leathery spots",
+      "premature senescence"
+    ],
+    "management": [
+      "Proper nutrition (Nitrogen/Potassium); spray Iprodione or Boscalid."
+    ],
+    "causal_organism": "Alternaria solani"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Fusarium Dry Rot",
+    "type": "fungal",
+    "symptoms": [
+      "wrinkled skin on tubers",
+      "internal cavities filled with white/yellow mold",
+      "tuber tissues become dry and powdery"
+    ],
+    "management": [
+      "Avoid tuber bruising during harvest; store at 4°C; treat seed tubers with Fludioxonil."
+    ],
+    "causal_organism": "Fusarium spp."
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Golden Cyst Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "stunted growth",
+      "temporary wilting",
+      "tiny golden-yellow cysts on roots",
+      "early senescence"
+    ],
+    "management": [
+      "Strict quarantine; 4-10 year crop rotation; use of resistant cultivars like Kufri Swarna."
+    ],
+    "causal_organism": "Globodera rostochiensis"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Late Blight",
+    "type": "fungal",
+    "symptoms": [
+      "dark water-soaked patches",
+      "white mold on leaf undersides",
+      "tuber rotting",
+      "foul odor"
+    ],
+    "management": [
+      "Use certified disease-free tubers; apply Metalaxyl or Mancozeb."
+    ],
+    "causal_organism": "Phytophthora infestans"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Late blight",
+    "type": "fungal",
+    "symptoms": [
+      "dark lesions",
+      "leaf rot"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Remove infected plants",
+      "Apply fungicides"
+    ],
+    "causal_organism": "Phytophthora infestans"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Magnesium Deficiency",
+    "type": "nutrient",
+    "symptoms": [
+      "interveinal yellowing on older leaves",
+      "leaf margins remain green initially",
+      "leaves become brittle and cup upwards"
+    ],
+    "management": [
+      "Apply Magnesium Sulphate (Epsom salt) to soil or as a foliar spray."
+    ],
+    "causal_organism": "Abiotic (Magnesium deficiency)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Potato Cyst Nematode (PCN)",
+    "type": "nematode",
+    "symptoms": [
+      "patchy growth in field",
+      "premature yellowing",
+      "tiny white/yellow cysts on roots",
+      "reduced tuber size"
+    ],
+    "management": [
+      "Strict domestic quarantine; 5-year crop rotation; use of resistant cultivars like Kufri Swarna."
+    ],
+    "causal_organism": "Globodera rostochiensis / G. pallida"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Potato Leaf Roll Virus (PLRV)",
+    "type": "viral",
+    "symptoms": [
+      "upward rolling of lower leaves",
+      "leaves become leathery and brittle",
+      "stunted growth",
+      "phloem necrosis"
+    ],
+    "management": [
+      "Control aphids; use certified virus-free seed tubers; rouge out secondary infected plants."
+    ],
+    "causal_organism": "Potato leafroll virus (PLRV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Potato Virus Y (PVY)",
+    "type": "viral",
+    "symptoms": [
+      "mosaic mottling",
+      "leaf dropping (rugose mosaic)",
+      "necrosis of veins",
+      "stunted growth"
+    ],
+    "management": [
+      "Use certified seed tubers; control aphid vectors with mineral oil sprays."
+    ],
+    "causal_organism": "Potato virus Y (PVY)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "potato",
+    "disease": "Root Lesion Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "brownish-black necrotic lesions on roots",
+      "stunted plants",
+      "early senescence",
+      "secondary fungal infections"
+    ],
+    "management": [
+      "Soil fumigation; apply composted manure to increase soil organic matter."
+    ],
+    "causal_organism": "Pratylenchus spp."
+  },
+  {
+    "category": "vegetable",
+    "crop": "pumpkin",
+    "disease": "Powdery mildew",
+    "type": "fungal",
+    "symptoms": [
+      "white powder",
+      "leaf yellowing"
+    ],
+    "management": [
+      "Ensure spacing",
+      "Apply fungicides",
+      "Remove infected leaves"
+    ],
+    "causal_organism": "Erysiphe cichoracearum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "radish",
+    "disease": "White rust",
+    "type": "fungal",
+    "symptoms": [
+      "white pustules",
+      "leaf distortion"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Remove infected plants",
+      "Apply fungicides"
+    ],
+    "causal_organism": "Albugo candida"
+  },
+  {
+    "category": "vegetable",
+    "crop": "ridge gourd",
+    "disease": "Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "dark sunken spots",
+      "fruit rot"
+    ],
+    "management": [
+      "Use disease-free seeds",
+      "Remove infected fruits",
+      "Apply fungicides"
+    ],
+    "causal_organism": "Colletotrichum orbiculare"
+  },
+  {
+    "category": "vegetable",
+    "crop": "snake gourd",
+    "disease": "Fusarium wilt",
+    "type": "fungal",
+    "symptoms": [
+      "wilting",
+      "yellow leaves"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Practice crop rotation",
+      "Avoid waterlogging"
+    ],
+    "causal_organism": "Fusarium oxysporum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "spinach",
+    "disease": "Downy mildew",
+    "type": "fungal",
+    "symptoms": [
+      "yellow patches",
+      "gray growth underside"
+    ],
+    "management": [
+      "Improve drainage",
+      "Avoid leaf wetness",
+      "Apply fungicides"
+    ],
+    "causal_organism": "Peronospora farinosa f. sp. spinaciae"
+  },
+  {
+    "category": "vegetable",
+    "crop": "squash",
+    "disease": "Zucchini Yellow Mosaic",
+    "type": "viral",
+    "symptoms": [
+      "yellow mosaic",
+      "severely distorted/bumpy fruit",
+      "shoestring leaves"
+    ],
+    "management": [
+      "Control aphids; use reflective mulches; plant resistant hybrids."
+    ],
+    "causal_organism": "Zucchini yellow mosaic virus (ZYMV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Anthracnose",
+    "type": "fungal",
+    "symptoms": [
+      "small circular sunken spots on ripe fruit",
+      "darker centers (acervuli)",
+      "fruit rot"
+    ],
+    "management": [
+      "Harvest fruit promptly; spray Chlorothalonil; 3-year crop rotation."
+    ],
+    "causal_organism": "Colletotrichum coccodes"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Bacterial Speck",
+    "type": "bacterial",
+    "symptoms": [
+      "tiny black spots with yellow halos",
+      "spots are smaller than bacterial spot",
+      "fruit show superficial black specks"
+    ],
+    "management": [
+      "Spray Copper Oxychloride; avoid overhead watering; use resistant varieties."
+    ],
+    "causal_organism": "Pseudomonas syringae pv. tomato"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Bacterial Wilt",
+    "type": "bacterial",
+    "symptoms": [
+      "sudden wilting of green leaves",
+      "milky white ooze from cut stems",
+      "stunted growth"
+    ],
+    "management": [
+      "Use resistant rootstocks; maintain soil pH above 6.5; avoid wounding roots during transplanting."
+    ],
+    "causal_organism": "Ralstonia solanacearum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Bacterial wilt",
+    "type": "bacterial",
+    "symptoms": [
+      "sudden wilting",
+      "no yellowing"
+    ],
+    "management": [
+      "Use resistant varieties",
+      "Avoid contaminated soil",
+      "Practice crop rotation"
+    ],
+    "causal_organism": "Ralstonia solanacearum"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Blossom End Rot (Calcium Deficiency)",
+    "type": "nutrient",
+    "symptoms": [
+      "water-soaked spot at the blossom end of fruit",
+      "spot turns black and leathery",
+      "premature fruit ripening"
+    ],
+    "management": [
+      "Maintain consistent soil moisture; apply Calcium Nitrate; avoid excessive Ammonium-based fertilizers."
+    ],
+    "causal_organism": "Abiotic (Calcium deficiency)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Early Blight",
+    "type": "fungal",
+    "symptoms": [
+      "concentric rings on leaves (bullseye)",
+      "yellowing around spots",
+      "stem lesions",
+      "fruit drop"
+    ],
+    "management": [
+      "Crop rotation; apply Copper Oxychloride; ensure proper spacing."
+    ],
+    "causal_organism": "Alternaria solani"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Early blight",
+    "type": "fungal",
+    "symptoms": [
+      "brown spots",
+      "yellow leaves"
+    ],
+    "management": [
+      "Remove infected leaves",
+      "Avoid overhead irrigation",
+      "Improve air circulation"
+    ],
+    "causal_organism": "Alternaria solani"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Fusarium Wilt",
+    "type": "fungal",
+    "symptoms": [
+      "yellowing of one side of the leaf",
+      "wilting of the whole plant",
+      "browning of vascular bundles"
+    ],
+    "management": [
+      "Soil solarization; apply Bio-agent Pseudomonas fluorescens; use resistant cultivars."
+    ],
+    "causal_organism": "Fusarium oxysporum f. sp. lycopersici"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Late Blight",
+    "type": "fungal",
+    "symptoms": [
+      "dark water-soaked patches",
+      "white mold on leaf undersides",
+      "rapid plant collapse",
+      "rotten fruit"
+    ],
+    "management": [
+      "Apply Metalaxyl or Cymoxanil; avoid overhead irrigation; remove 'volunteer' plants."
+    ],
+    "causal_organism": "Phytophthora infestans"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Reniform Nematode",
+    "type": "nematode",
+    "symptoms": [
+      "stunting",
+      "chlorosis",
+      "reduced root system",
+      "dirty appearance of roots due to egg masses"
+    ],
+    "management": [
+      "Soil solarization; crop rotation with maize; application of Velum Prime (Fluopyram)."
+    ],
+    "causal_organism": "Rotylenchulus reniformis"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Root-Knot Nematode (Meloidogyne spp.)",
+    "type": "nematode",
+    "symptoms": [
+      "pronounced galls/knots on roots",
+      "wilting during hot weather",
+      "stunting",
+      "yellowing"
+    ],
+    "management": [
+      "Soil solarization for 4-6 weeks; intercropping with Marigold (Tagetes spp.); application of Neem cake (2 tons/ha)."
+    ],
+    "causal_organism": "Meloidogyne incognita"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Septoria Leaf Spot",
+    "type": "fungal",
+    "symptoms": [
+      "small circular spots with dark borders",
+      "gray centers",
+      "black dots (pycnidia)",
+      "bottom-up leaf loss"
+    ],
+    "management": [
+      "Mulch to prevent soil splash; spray Copper-based fungicides."
+    ],
+    "causal_organism": "Septoria lycopersici"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Target Spot",
+    "type": "fungal",
+    "symptoms": [
+      "concentric rings on leaves",
+      "sunken brown lesions on fruit with cracks",
+      "leaf yellowing and drop"
+    ],
+    "management": [
+      "Maintain consistent moisture; spray Azoxystrobin; remove lower infected leaves."
+    ],
+    "causal_organism": "Corynespora cassiicola"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Tomato Spotted Wilt (TSWV)",
+    "type": "viral",
+    "symptoms": [
+      "bronzing of upper leaves",
+      "dark spots on leaves",
+      "concentric rings on fruit",
+      "wilting of leaf tips"
+    ],
+    "management": [
+      "Control thrips; remove weed hosts; use resistant hybrids."
+    ],
+    "causal_organism": "Tomato spotted wilt virus (TSWV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Tomato leaf curl virus",
+    "type": "viral",
+    "symptoms": [
+      "leaf curling",
+      "stunted growth"
+    ],
+    "management": [
+      "Control whiteflies",
+      "Remove infected plants",
+      "Use healthy seedlings"
+    ],
+    "causal_organism": "Tomato yellow leaf curl virus (TYLCV)"
+  },
+  {
+    "category": "vegetable",
+    "crop": "tomato",
+    "disease": "Yellow Leaf Curl (TYLCV)",
+    "type": "viral",
+    "symptoms": [
+      "upward curling of leaves",
+      "yellow leaf margins",
+      "extreme stunting",
+      "flower abortion"
+    ],
+    "management": [
+      "Install insect-proof nets; control whitefly with Acetamiprid; remove weeds."
+    ],
+    "causal_organism": "Tomato yellow leaf curl virus (TYLCV)"
+  }
+]
