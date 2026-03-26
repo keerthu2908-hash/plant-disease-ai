@@ -141,10 +141,14 @@ if st.button("Check Diagnosis", use_container_width=True):
             confidence_label = get_confidence_label(vector_score)
             matched = extract_matched_symptoms(symptoms, top_data.get("symptoms", []))
 
-            explanation = generate_explanation(
-                top_data.get("disease", top_data.get("disease_name", "Unknown")),
-                top_data.get("symptoms", symptoms)
-            )
+            disease_name = top_data.get("disease", top_data.get("disease_name", "Unknown"))
+
+            symptom_data = top_data.get("symptoms")
+
+            if not symptom_data:
+                symptom_data = symptoms  # fallback to user input
+
+            explanation = generate_explanation(disease_name, symptom_data)
             st.divider()
 
             st.subheader("🩺 Assistant Answer")
