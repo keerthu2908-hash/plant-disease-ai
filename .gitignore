@@ -1,3 +1,14 @@
 .streamlit/secrets.toml
 keys.env
+.env
+
 __pycache__/
+*.pyc
+
+# Ignore all pest-related files
+pest*
+*pest*
+check_pest_json.py
+
+# Ignore all PDF files
+*.pdf
