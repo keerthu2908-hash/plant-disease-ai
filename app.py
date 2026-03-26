@@ -27,7 +27,7 @@ def extract_matched_symptoms(user_input, stored_symptoms):
     matched = []
 
     for symptom in stored_symptoms:
-        symptom_words = set(symptom.lower().replace(",", " ").split())
+        symptom_words = set(str(symptom).lower().replace(",", " ").split())
         if user_words.intersection(symptom_words):
             matched.append(symptom)
 
@@ -62,7 +62,7 @@ def display_management(management):
 # -----------------------------
 # UI
 # -----------------------------
-st.title("🌿 Plant Disease Diagnosis Chatbot")
+st.title("🌿 Plant Disease AI Assistant")
 st.write("Select the crop and enter symptoms to find the most likely disease.")
 
 data = load_data()
@@ -142,14 +142,17 @@ if st.button("Check Diagnosis", use_container_width=True):
             matched = extract_matched_symptoms(symptoms, top_data.get("symptoms", []))
 
             explanation = generate_explanation(
-                top_data["disease"],
-                symptoms,
-                matched
+                top_data.get("disease", top_data.get("disease_name", "Unknown")),
+                top_data.get("symptoms", symptoms)
             )
+            st.divider()
+
+            st.subheader("🩺 Assistant Answer")
+            st.success(explanation)
 
             st.success("Diagnosis completed")
 
-            st.subheader(f"Most likely disease: {top_data['disease']}")
+            st.markdown(f"## 🌱 Most likely disease: **{top_data.get('disease', 'Unknown')}**")
 
             col1, col2 = st.columns(2)
 
@@ -163,10 +166,7 @@ if st.button("Check Diagnosis", use_container_width=True):
                 st.write(f"**Confidence level:** {confidence_label}")
                 st.write(f"**AI ranking score:** {round(top_match.get('rerank_score', 0), 4)}")
 
-            st.subheader("Why this diagnosis?")
-            st.info(explanation)
-
-            st.subheader("Symptom Match Analysis")
+            st.subheader("🔍 Symptom Match Analysis")
             if matched:
                 st.write("Your input matches these key symptoms:")
                 for m in matched:
@@ -174,14 +174,14 @@ if st.button("Check Diagnosis", use_container_width=True):
             else:
                 st.write(
                     f"This result was retrieved because your symptom description is semantically similar "
-                    f"to the stored profile for **{top_data['disease']}**."
+                    f"to the stored profile for **{top_data.get('disease', 'Unknown')}**."
                 )
 
-            st.subheader("Cause / Pathogen")
+            st.subheader("🧬 Causal Organism & Disease Cause")
             st.write(f"**Causal Organism:** {top_data.get('causal_organism', 'Not available')}")
             st.write(f"**Cause description:** {top_data.get('cause', 'Not available')}")
 
-            st.subheader("Suggested management")
+            st.subheader("💊 Recommended Management")
             display_management(top_data.get("management", []))
 
             with st.expander("See stored symptom profile"):
