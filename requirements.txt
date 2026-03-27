@@ -6,3 +6,6 @@ openpyxl
 scikit-learn
 torch
 transformers
+numpy
+Pillow
+requests
