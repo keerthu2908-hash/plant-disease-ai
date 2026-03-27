@@ -1,20 +1,43 @@
-from sentence_transformers import SentenceTransformer
-from pinecone import Pinecone
-import os
+from embedder import create_embedding
+import numpy as np
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+def cosine_similarity(a, b):
+    a = np.array(a, dtype=float)
+    b = np.array(b, dtype=float)
 
-pc = Pinecone(api_key="pcsk_4kYN75_Da1mpsx4eKSUb6G59kiENnsb2mn4nbAJmwT8dfE2NZoKGM8EmGXUTe2NiFU462s")
-index = pc.Index("plant-disease-384")
+    if np.linalg.norm(a) == 0 or np.linalg.norm(b) == 0:
+        return 0.0
 
+    return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
 
-def search_disease(query):
-    query_vector = model.encode(query).tolist()
+def build_search_text(entry):
+    return " ".join([
+        (entry.get("name", "") + " ") * 3,
+        (entry.get("crop", "") + " ") * 2,
+        entry.get("scientific_name", ""),
+        entry.get("diagnosis_type", ""),
+        entry.get("cause_description", ""),
+        " ".join(entry.get("symptoms", [])),
+        " ".join(entry.get("management", []))
+    ]).lower().strip()
 
-    results = index.query(
-        vector=query_vector,
-        top_k=3,
-        include_metadata=True
-    )
+def find_best_matches(query, data, selected_crop="All", top_k=5):
+    query_embedding = create_embedding(query.strip().lower())
+    results = []
 
-    return results["matches"]
+    for entry in data:
+        if selected_crop != "All" and entry.get("crop", "").lower() != selected_crop.lower():
+            continue
+
+        entry_embedding = entry.get("embedding")
+        if not entry_embedding:
+            continue
+
+        score = cosine_similarity(query_embedding, entry_embedding)
+
+        result = dict(entry)
+        result["score"] = score
+        results.append(result)
+
+    results.sort(key=lambda x: x["score"], reverse=True)
+    return results[:top_k]
