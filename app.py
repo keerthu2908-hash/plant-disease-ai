@@ -19,7 +19,6 @@ st.set_page_config(
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
-/* ===== GLOBAL ===== */
 .stApp {
     background:
         linear-gradient(rgba(7, 18, 10, 0.45), rgba(7, 18, 10, 0.68)),
@@ -29,18 +28,15 @@ st.markdown("""
     background-attachment: fixed;
     color: #f4f7f1;
 }
-
 .block-container {
     max-width: 1450px;
     padding-top: 0.8rem;
     padding-bottom: 2rem;
 }
-
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
-/* ===== HEADER ===== */
 .hero-wrap {
     width: 100%;
     text-align: center;
@@ -53,7 +49,6 @@ header {visibility: hidden;}
     border-bottom: 3px solid rgba(113, 189, 52, 0.70);
     box-shadow: 0 10px 30px rgba(0,0,0,0.34);
 }
-
 .hero-title {
     font-size: 3rem;
     font-weight: 900;
@@ -64,15 +59,6 @@ header {visibility: hidden;}
     text-shadow: 0 2px 6px rgba(0,0,0,0.45);
 }
 
-.hero-subtitle {
-    font-size: 1rem;
-    color: #eef4e8;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-/* ===== INPUT PANEL ===== */
 .top-panel {
     background: rgba(7, 24, 11, 0.52);
     border: 1px solid rgba(255,255,255,0.10);
@@ -82,15 +68,12 @@ header {visibility: hidden;}
     margin-bottom: 22px;
     backdrop-filter: blur(6px);
 }
-
 .section-title {
     font-size: 1.3rem;
     font-weight: 800;
     color: #ffffff;
     margin-bottom: 10px;
 }
-
-/* ===== CARDS ===== */
 .dashboard-card {
     background:
         linear-gradient(180deg, rgba(50,66,58,0.90), rgba(27,39,32,0.92));
@@ -101,7 +84,6 @@ header {visibility: hidden;}
     margin-bottom: 16px;
     backdrop-filter: blur(6px);
 }
-
 .card-title {
     font-size: 1.08rem;
     font-weight: 800;
@@ -110,14 +92,12 @@ header {visibility: hidden;}
     padding-bottom: 8px;
     border-bottom: 1px solid rgba(255,255,255,0.18);
 }
-
 .stat-line {
     color: #f3f7ee;
     font-size: 0.98rem;
     margin-bottom: 8px;
     line-height: 1.5;
 }
-
 .note-box {
     padding: 12px 14px;
     border-radius: 12px;
@@ -127,8 +107,6 @@ header {visibility: hidden;}
     font-size: 0.94rem;
     margin-top: 8px;
 }
-
-/* ===== RISK BAR ===== */
 .risk-banner-high {
     background: linear-gradient(90deg, #8b1914, #d94a20);
     color: white; font-weight: 900; font-size: 1.05rem;
@@ -147,8 +125,6 @@ header {visibility: hidden;}
     border-radius: 0 0 8px 8px; padding: 12px 14px;
     margin: 10px -14px -14px -14px;
 }
-
-/* ===== STATUS / ALERTS ===== */
 .status-badge {
     display: inline-block; padding: 7px 14px; border-radius: 999px;
     font-weight: 800; font-size: 0.88rem; color: white;
@@ -157,7 +133,6 @@ header {visibility: hidden;}
 .badge-green  { background: linear-gradient(90deg, #1f9d55, #2fb36d); }
 .badge-orange { background: linear-gradient(90deg, #d97706, #f59e0b); }
 .badge-red    { background: linear-gradient(90deg, #b91c1c, #ef4444); }
-
 .alert-strip {
     margin-top: 16px; margin-bottom: 14px; border-radius: 10px;
     padding: 14px 16px; color: white; font-weight: 900; font-size: 1rem;
@@ -166,8 +141,6 @@ header {visibility: hidden;}
 .alert-green  { background: linear-gradient(90deg, #17663a, #239b56); }
 .alert-orange { background: linear-gradient(90deg, #9a5a05, #dd8b14); }
 .alert-red    { background: linear-gradient(90deg, #8b1212, #d13232); }
-
-/* ===== DATA DASHBOARD ===== */
 .metric-card {
     background: linear-gradient(180deg, rgba(49,65,57,0.93), rgba(23,32,26,0.95));
     border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
@@ -177,8 +150,6 @@ header {visibility: hidden;}
 .metric-title { color: #edf3e8; font-size: 0.98rem; font-weight: 800; margin-bottom: 14px; }
 .metric-value { font-size: 2rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; }
 .metric-sub   { font-size: 0.92rem; color: #d8e3cf; }
-
-/* ===== RESULT HIGHLIGHT ===== */
 .result-highlight {
     background: linear-gradient(180deg, rgba(76,99,68,0.75), rgba(28,41,31,0.85));
     border: 1px solid rgba(211,230,184,0.15); border-radius: 14px;
@@ -192,8 +163,6 @@ header {visibility: hidden;}
     background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.10);
     color: #f4f7ef; font-size: 0.88rem; font-weight: 700;
 }
-
-/* ===== IMAGE CONFIDENCE BAR ===== */
 .img-conf-bar {
     background: rgba(255,255,255,0.08);
     border-radius: 6px; height: 10px; margin-top: 4px; margin-bottom: 8px; overflow: hidden;
@@ -210,8 +179,6 @@ header {visibility: hidden;}
     background: rgba(217, 119, 6, 0.15); border: 1px solid rgba(217, 119, 6, 0.30);
     color: #fbbf24; font-size: 0.9rem; font-weight: 600;
 }
-
-/* ===== FORM LABELS ===== */
 label, .stTextInput label, .stTextArea label, .stSelectbox label,
 .stFileUploader label, div[data-testid="stWidgetLabel"] label,
 div[data-testid="stWidgetLabel"] p {
@@ -220,8 +187,6 @@ div[data-testid="stWidgetLabel"] p {
 .stMarkdown p { color: #eef4e8; }
 p, span, small { color: #eef4e8; }
 h1, h2, h3, h4 { color: #ffffff; }
-
-/* ===== SELECT BOX ===== */
 div[data-baseweb="select"] > div {
     background: rgba(255,255,255,0.08) !important;
     border: 1px solid rgba(255,255,255,0.14) !important;
@@ -233,8 +198,6 @@ div[role="listbox"] { background-color: #1f2d22 !important; color: #ffffff !impo
 div[role="option"] { background-color: #1f2d22 !important; color: #ffffff !important; }
 div[role="option"]:hover { background-color: #2d4733 !important; color: #ffffff !important; }
 div[aria-selected="true"] { background-color: #35593d !important; color: #ffffff !important; }
-
-/* ===== TEXT AREA / INPUT ===== */
 div[data-baseweb="textarea"] textarea {
     background: rgba(255,255,255,0.92) !important; color: #1f2937 !important;
     border: 1px solid rgba(255,255,255,0.12) !important;
@@ -243,8 +206,6 @@ div[data-baseweb="textarea"] textarea {
 div[data-baseweb="textarea"] textarea::placeholder { color: #6b7280 !important; }
 input { background: rgba(255,255,255,0.92) !important; color: #1f2937 !important; border-radius: 12px !important; }
 input::placeholder { color: #6b7280 !important; }
-
-/* ===== FILE UPLOADER ===== */
 div[data-testid="stFileUploader"] section {
     background: rgba(255,255,255,0.06) !important; border-radius: 14px !important;
     border: 1px dashed rgba(255,255,255,0.22) !important; color: #ffffff !important;
@@ -252,8 +213,6 @@ div[data-testid="stFileUploader"] section {
 div[data-testid="stFileUploader"] small,
 div[data-testid="stFileUploader"] span,
 div[data-testid="stFileUploader"] p { color: #eef3ea !important; }
-
-/* ===== BUTTON ===== */
 div.stButton > button {
     width: 100%; height: 52px; border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.16);
@@ -264,15 +223,12 @@ div.stButton > button {
 div.stButton > button:hover {
     background: linear-gradient(90deg, #0a48ae, #1667d9) !important; color: #ffffff !important;
 }
-
-/* ===== EXPANDER ===== */
 .stExpander {
     border: 1px solid rgba(255,255,255,0.10) !important;
     border-radius: 14px !important; background: rgba(255,255,255,0.03) !important;
 }
 </style>
 """, unsafe_allow_html=True)
-
 
 # ─────────────────────────────────────────────
 # HELPERS
@@ -282,14 +238,11 @@ def load_data():
     with open("master_diseases_embedded.json", "r", encoding="utf-8") as f:
         return json.load(f)
 
-
 def safe_str(value):
     return str(value).strip() if value is not None else ""
 
-
 def _escape(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
-
 
 def apply_filters(records, category, crop, diagnosis_type):
     filtered = records
@@ -301,7 +254,6 @@ def apply_filters(records, category, crop, diagnosis_type):
         filtered = [r for r in filtered if safe_str(r.get("diagnosis_type")).lower() == diagnosis_type.lower()]
     return filtered
 
-
 def get_confidence_label(score):
     if score >= 0.60:
         return "HIGH CONFIDENCE", "badge-green", "alert-green"
@@ -309,10 +261,8 @@ def get_confidence_label(score):
         return "MODERATE CONFIDENCE", "badge-orange", "alert-orange"
     return "LOW CONFIDENCE", "badge-red", "alert-red"
 
-
 def estimate_match_percent(score):
     return int(max(5, min(98, round(score * 100))))
-
 
 def get_risk_ui(risk_level):
     level = str(risk_level).strip().lower()
@@ -321,7 +271,6 @@ def get_risk_ui(risk_level):
     elif level == "moderate":
         return "risk-banner-moderate", "alert-orange", "badge-orange"
     return "risk-banner-low", "alert-green", "badge-green"
-
 
 def conf_bar_color(score: float) -> str:
     if score >= 0.90:
@@ -332,28 +281,18 @@ def conf_bar_color(score: float) -> str:
         return "#f97316"
     return "#ef4444"
 
-
-def build_fusion_query(
-    user_symptoms: str,
-    image_result: dict,
-    image_weight: float,
-) -> str:
+def build_fusion_query(user_symptoms: str, image_result: dict, image_weight: float) -> str:
     symptom_text = user_symptoms.strip()
     best = image_result.get("best_prediction")
-
     if best and image_weight > 0.30:
         image_label = best.get("normalized_label", "")
         if image_label.lower() not in ("healthy", "background", ""):
             return f"{symptom_text} {image_label}".strip()
-
     return symptom_text
-
 
 def rerank_results(results: list, image_result: dict, image_weight: float) -> list:
     best_pred = image_result.get("best_prediction") if image_result else None
-    pred_label = ""
-    if best_pred:
-        pred_label = best_pred.get("normalized_label", "").lower()
+    pred_label = best_pred.get("normalized_label", "").lower() if best_pred else ""
 
     reranked = []
     for r in results:
@@ -382,7 +321,6 @@ def rerank_results(results: list, image_result: dict, image_weight: float) -> li
     reranked.sort(key=lambda x: x["combined_score"], reverse=True)
     return reranked
 
-
 def determine_evidence_source(image_result: dict, image_weight: float, has_symptoms: bool) -> str:
     trust = image_result.get("trust_level", "NONE") if image_result else "NONE"
 
@@ -403,26 +341,13 @@ def determine_evidence_source(image_result: dict, image_weight: float, has_sympt
     else:
         return "Image prediction unreliable, limited evidence"
 
-
-def calculate_roi(
-    area_acres,
-    expected_yield_per_acre,
-    market_price_per_unit,
-    disease_loss_percent,
-    recovery_percent,
-    treatment_cost
-):
+def calculate_roi(area_acres, expected_yield_per_acre, market_price_per_unit, disease_loss_percent, recovery_percent, treatment_cost):
     total_expected_yield = area_acres * expected_yield_per_acre
     expected_revenue_without_disease = total_expected_yield * market_price_per_unit
-
     estimated_loss_value = expected_revenue_without_disease * (disease_loss_percent / 100.0)
     recoverable_value = estimated_loss_value * (recovery_percent / 100.0)
     net_benefit = recoverable_value - treatment_cost
-
-    if treatment_cost > 0:
-        roi_percent = (net_benefit / treatment_cost) * 100
-    else:
-        roi_percent = 0.0
+    roi_percent = (net_benefit / treatment_cost) * 100 if treatment_cost > 0 else 0.0
 
     return {
         "expected_revenue_without_disease": round(expected_revenue_without_disease, 2),
@@ -432,6 +357,41 @@ def calculate_roi(
         "roi_percent": round(roi_percent, 2),
     }
 
+def get_profit_loss_label(net_benefit):
+    if net_benefit > 0:
+        return "Profit", "✅"
+    elif net_benefit < 0:
+        return "Loss", "⚠️"
+    return "Break-even", "➖"
+
+def get_default_risk_profile(location: str):
+    weather_data = get_weather_data(location)
+    if weather_data.get("success"):
+        humidity = float(weather_data.get("humidity", 0) or 0)
+        rainfall = float(weather_data.get("rainfall_mm", 0) or 0)
+        temperature = float(weather_data.get("temperature_c", 0) or 0)
+
+        if humidity >= 85 or rainfall >= 10:
+            return {
+                "risk_level": "High",
+                "risk_score": 80,
+                "reason": "High humidity or rainfall suggests elevated disease pressure.",
+                "weather_data": weather_data,
+            }
+        elif humidity >= 65 or rainfall >= 3 or 20 <= temperature <= 32:
+            return {
+                "risk_level": "Moderate",
+                "risk_score": 55,
+                "reason": "Moderate environmental conditions may support disease development.",
+                "weather_data": weather_data,
+            }
+
+    return {
+        "risk_level": "Low",
+        "risk_score": 25,
+        "reason": "Current conditions suggest relatively low disease pressure.",
+        "weather_data": weather_data,
+    }
 
 # ─────────────────────────────────────────────
 # LOAD DATA
@@ -513,6 +473,8 @@ with right_input:
     market_price_per_unit = st.number_input("Market price per unit ($)", min_value=0.0, value=20.0, step=1.0)
     treatment_cost = st.number_input("Estimated treatment cost ($)", min_value=0.0, value=50.0, step=5.0)
 
+    auto_calc_profit_loss = st.button("Auto Calculate Profit/Loss")
+
     st.markdown(
         '<div class="note-box">Tip: best results come from a clear leaf image plus symptom text.</div>',
         unsafe_allow_html=True
@@ -521,6 +483,123 @@ with right_input:
 run_check = st.button("Check Diagnosis")
 st.markdown('</div>', unsafe_allow_html=True)
 
+# ─────────────────────────────────────────────
+# AUTO ROI ONLY MODE
+# ─────────────────────────────────────────────
+if auto_calc_profit_loss and not run_check:
+    default_risk = get_default_risk_profile(location)
+    risk_level = default_risk["risk_level"]
+    risk_score = default_risk["risk_score"]
+    risk_reason = default_risk["reason"]
+    weather_data = default_risk["weather_data"]
+
+    if str(risk_level).lower() == "high":
+        disease_loss_percent = 30
+        recovery_percent = 60
+    elif str(risk_level).lower() == "moderate":
+        disease_loss_percent = 18
+        recovery_percent = 45
+    else:
+        disease_loss_percent = 8
+        recovery_percent = 25
+
+    roi_result = calculate_roi(
+        area_acres=area_acres,
+        expected_yield_per_acre=expected_yield_per_acre,
+        market_price_per_unit=market_price_per_unit,
+        disease_loss_percent=disease_loss_percent,
+        recovery_percent=recovery_percent,
+        treatment_cost=treatment_cost
+    )
+    profit_loss_label, profit_loss_icon = get_profit_loss_label(roi_result["net_benefit"])
+    risk_banner_class, _, _ = get_risk_ui(risk_level)
+
+    st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
+    st.markdown('<div class="card-title">Auto Profit / Loss Calculation</div>', unsafe_allow_html=True)
+
+    st.markdown(
+        f"""
+        <div class="stat-line"><b>Selected Crop:</b> {_escape(selected_crop)}</div>
+        <div class="stat-line"><b>Location:</b> {_escape(location)}</div>
+        <div class="stat-line"><b>Field Area:</b> {area_acres} acres</div>
+        <div class="stat-line"><b>Expected Yield per Acre:</b> {expected_yield_per_acre}</div>
+        <div class="stat-line"><b>Market Price per Unit:</b> ${market_price_per_unit}</div>
+        <div class="stat-line"><b>Treatment Cost:</b> ${treatment_cost}</div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    if weather_data.get("success"):
+        st.markdown(
+            f"""
+            <div class="stat-line"><b>Humidity:</b> {weather_data.get("humidity", "N/A")}%</div>
+            <div class="stat-line"><b>Temperature:</b> {weather_data.get("temperature_c", "N/A")}°C</div>
+            <div class="stat-line"><b>Rain / Precipitation:</b> {weather_data.get("rainfall_mm", "N/A")} mm</div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    st.markdown(
+        f"""
+        <div class="{risk_banner_class}">
+            ⚠ Risk Level: {str(risk_level).upper()}<br>
+            <span style="font-size:0.95rem; font-weight:700;">{_escape(str(risk_reason))}</span>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    m1, m2, m3 = st.columns(3)
+    with m1:
+        st.markdown(
+            f"""
+            <div class="metric-card">
+                <div class="metric-title">Profit / Loss</div>
+                <div class="metric-value">{profit_loss_icon} {profit_loss_label}</div>
+                <div class="metric-sub">Net benefit: ${roi_result['net_benefit']}</div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+    with m2:
+        st.markdown(
+            f"""
+            <div class="metric-card">
+                <div class="metric-title">ROI</div>
+                <div class="metric-value">{roi_result['roi_percent']}%</div>
+                <div class="metric-sub">Based on auto risk estimate</div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+    with m3:
+        st.markdown(
+            f"""
+            <div class="metric-card">
+                <div class="metric-title">Weather Risk Index</div>
+                <div class="metric-value">{risk_score}</div>
+                <div class="metric-sub">Risk score out of 100</div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
+    st.markdown('<div class="card-title">ROI Calculator</div>', unsafe_allow_html=True)
+    st.markdown(
+        f"""
+        <div class="stat-line"><b>Expected Revenue (No Disease):</b> ${roi_result['expected_revenue_without_disease']}</div>
+        <div class="stat-line"><b>Estimated Disease Loss Value:</b> ${roi_result['estimated_loss_value']}</div>
+        <div class="stat-line"><b>Recoverable Value After Treatment:</b> ${roi_result['recoverable_value']}</div>
+        <div class="stat-line"><b>Treatment Cost:</b> ${round(treatment_cost, 2)}</div>
+        <div class="stat-line"><b>Net Benefit:</b> ${roi_result['net_benefit']}</div>
+        <div class="stat-line"><b>ROI:</b> {roi_result['roi_percent']}%</div>
+        <div class="stat-line"><b>Final Result:</b> {profit_loss_icon} {profit_loss_label}</div>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────
 # MAIN DIAGNOSIS LOGIC
@@ -584,7 +663,7 @@ if run_check:
     results = rerank_results(results, image_result, image_weight)
 
     top_result = results[0]
-    other_results = results[1:3]   # only 2 other matches
+    other_results = results[1:3]
 
     evidence_source = determine_evidence_source(image_result, image_weight, has_symptoms)
 
@@ -612,8 +691,6 @@ if run_check:
     top_scientific = _escape(safe_str(top_result.get("scientific_name")) or "N/A")
     top_type = _escape(safe_str(top_result.get("diagnosis_type")) or "N/A")
 
-    recommendation_count = len(top_management) if isinstance(top_management, list) else 0
-
     risk_level = risk_result.get("risk_level", "Low")
     risk_score = risk_result.get("risk_score", 0)
     risk_reason = risk_result.get("reason", "")
@@ -637,10 +714,8 @@ if run_check:
         recovery_percent=recovery_percent,
         treatment_cost=treatment_cost
     )
+    profit_loss_label, profit_loss_icon = get_profit_loss_label(roi_result["net_benefit"])
 
-    # ─────────────────────────────────────────
-    # TOP DASHBOARD
-    # ─────────────────────────────────────────
     left_col, right_col = st.columns([1.03, 1.08])
 
     with left_col:
@@ -760,7 +835,7 @@ if run_check:
             st.markdown(
                 f"""
                 <div class="metric-card">
-                    <div class="metric-title">Disease Incidence</div>
+                    <div class="metric-title">Diagnosis Confidence</div>
                     <div class="metric-value">{match_percent}%</div>
                     <div class="metric-sub">{top_name}</div>
                 </div>
@@ -772,8 +847,8 @@ if run_check:
             st.markdown(
                 f"""
                 <div class="metric-card">
-                    <div class="metric-title">Return on Investment</div>
-                    <div class="metric-value">{roi_result['roi_percent']}%</div>
+                    <div class="metric-title">Profit / Loss</div>
+                    <div class="metric-value">{profit_loss_icon} {profit_loss_label}</div>
                     <div class="metric-sub">Net benefit: ${roi_result['net_benefit']}</div>
                 </div>
                 """,
@@ -805,15 +880,13 @@ if run_check:
             <div class="stat-line"><b>Treatment Cost:</b> ${round(treatment_cost, 2)}</div>
             <div class="stat-line"><b>Net Benefit:</b> ${roi_result['net_benefit']}</div>
             <div class="stat-line"><b>ROI:</b> {roi_result['roi_percent']}%</div>
+            <div class="stat-line"><b>Final Result:</b> {profit_loss_icon} {profit_loss_label}</div>
             """,
             unsafe_allow_html=True
         )
 
         st.markdown('</div>', unsafe_allow_html=True)
 
-    # ─────────────────────────────────────────
-    # ALERT STRIP
-    # ─────────────────────────────────────────
     st.markdown(
         f"""
         <div class="alert-strip {final_alert_class}">
@@ -823,17 +896,11 @@ if run_check:
         unsafe_allow_html=True
     )
 
-    # ─────────────────────────────────────────
-    # AI EXPLANATION
-    # ─────────────────────────────────────────
     st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
     st.markdown('<div class="card-title">AI Explanation</div>', unsafe_allow_html=True)
     st.write(explanation)
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # ─────────────────────────────────────────
-    # MAIN RESULT CARD
-    # ─────────────────────────────────────────
     st.markdown(
         f"""
         <div class="result-highlight">
@@ -863,9 +930,6 @@ if run_check:
         else:
             st.write("No management data available.")
 
-    # ─────────────────────────────────────────
-    # OTHER POSSIBLE MATCHES (ONLY 2)
-    # ─────────────────────────────────────────
     if other_results:
         st.markdown(
             '<div class="section-title" style="margin-top:18px;">Other Possible Matches</div>',
