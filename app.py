@@ -2,233 +2,464 @@ import json
 import streamlit as st
 from retriever import find_best_matches
 from explainer import generate_explanation
-from image_predictor import (
-    predict_disease_from_image,
-    compute_image_weight,
-)
+from image_predictor import predict_disease_from_image, compute_image_weight
 from weather_utils import get_weather_data, calculate_risk
 
 st.set_page_config(
-    page_title="Smart Crop Health Advisor",
+    page_title="Crop AI Doctor",
     page_icon="🌿",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed",
 )
 
 # ─────────────────────────────────────────────
-# CUSTOM CSS
+# CUSTOM CSS — FULL PREMIUM STYLE
 # ─────────────────────────────────────────────
-st.markdown("""
+st.markdown(
+    """
 <style>
+:root {
+    --glass: rgba(20, 23, 20, 0.58);
+    --glass-2: rgba(28, 31, 28, 0.72);
+    --stroke: rgba(255,255,255,0.12);
+    --muted: #dfdfd6;
+    --text: #fbfbf7;
+    --gold-1: #d5ab46;
+    --gold-2: #f0cf6b;
+    --green-1: #7ecb67;
+    --green-2: #223426;
+    --danger-1: #c84a3b;
+    --warn-1: #d6992d;
+}
+
+html, body, [class*="css"]  {
+    font-family: "Inter", "Segoe UI", sans-serif;
+}
+
 .stApp {
     background:
-        linear-gradient(rgba(7, 18, 10, 0.45), rgba(7, 18, 10, 0.68)),
-        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80");
+        linear-gradient(rgba(20, 14, 7, 0.22), rgba(10, 10, 10, 0.62)),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: #f4f7f1;
+    color: var(--text);
 }
+
 .block-container {
-    max-width: 1450px;
-    padding-top: 0.8rem;
+    max-width: 1320px;
+    padding-top: 1.2rem;
     padding-bottom: 2rem;
 }
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
 
-.hero-wrap {
-    width: 100%;
-    text-align: center;
-    padding: 18px 20px 14px 20px;
-    margin-bottom: 22px;
-    border-radius: 0;
-    background:
-        linear-gradient(180deg, rgba(45,70,55,0.70), rgba(25,42,28,0.76)),
-        linear-gradient(90deg, rgba(59,89,63,0.80), rgba(113,84,40,0.50));
-    border-bottom: 3px solid rgba(113, 189, 52, 0.70);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.34);
+#MainMenu, footer, header {visibility: hidden;}
+
+.hero-shell {
+    position: relative;
+    padding: 1.1rem 0 1.3rem 0;
+    margin-bottom: 1rem;
+}
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.9fr;
+    gap: 1.2rem;
+    align-items: start;
+}
+.hero-left {
+    padding: 0.6rem 0.2rem;
 }
 .hero-title {
-    font-size: 3rem;
+    font-size: clamp(2.3rem, 4vw, 4.1rem);
+    line-height: 1.02;
     font-weight: 900;
-    color: #ffffff;
-    text-align: center;
-    line-height: 1.1;
+    color: #f6f5ef;
+    margin-bottom: 0.9rem;
+    letter-spacing: -0.04em;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.30);
+}
+.hero-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #ece8dc;
+    max-width: 680px;
+    margin-bottom: 1rem;
+}
+.badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+.hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(37, 38, 31, 0.48);
+    color: #f8f8f2;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+    backdrop-filter: blur(10px);
+}
+.hero-right {
+    background: linear-gradient(180deg, rgba(38,31,21,0.56), rgba(24,22,18,0.68));
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 24px;
+    padding: 1rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.22);
+    backdrop-filter: blur(12px);
+}
+.mini-note {
+    color: #f4efdf;
+    font-size: 0.95rem;
+    line-height: 1.55;
     margin: 0;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
 }
 
-.top-panel {
-    background: rgba(7, 24, 11, 0.52);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 18px;
-    padding: 18px;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-    margin-bottom: 22px;
-    backdrop-filter: blur(6px);
+.glass-card {
+    background: linear-gradient(180deg, rgba(20,20,20,0.52), rgba(14,14,14,0.70));
+    border: 1px solid rgba(255,255,255,0.11);
+    border-radius: 24px;
+    box-shadow: 0 20px 46px rgba(0,0,0,0.25);
+    backdrop-filter: blur(12px);
+}
+.section-card {
+    padding: 1.2rem;
+    margin-bottom: 1rem;
 }
 .section-title {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 10px;
+    color: #fbfbf6;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
 }
-.dashboard-card {
-    background:
-        linear-gradient(180deg, rgba(50,66,58,0.90), rgba(27,39,32,0.92));
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
-    padding: 14px;
-    box-shadow: 0 10px 22px rgba(0,0,0,0.30);
-    margin-bottom: 16px;
-    backdrop-filter: blur(6px);
+.section-sub {
+    color: #dbd7ca;
+    font-size: 0.98rem;
+    margin-bottom: 0.9rem;
 }
-.card-title {
+
+.upload-shell {
+    border: 1.4px dashed rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.03);
+    border-radius: 22px;
+    padding: 0.45rem;
+}
+
+.result-card {
+    background: linear-gradient(180deg, rgba(30,31,27,0.66), rgba(18,18,18,0.86));
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 22px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+}
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+}
+.result-name {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: #fcfcf7;
+}
+.result-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(205,166,63,0.92), rgba(238,206,102,0.92));
+    color: #2a2210;
+    font-size: 0.86rem;
+    font-weight: 900;
+    margin-left: 0.45rem;
+}
+.conf-wrap {
+    margin-top: 0.6rem;
+}
+.conf-top {
+    display: flex;
+    justify-content: space-between;
+    color: #f2efdf;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+.conf-bar {
+    width: 100%;
+    height: 14px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.conf-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #7ed26f 0%, #c9ce4e 54%, #edc55b 100%);
+}
+
+.soft-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.48rem 0.8rem;
+    border-radius: 999px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: #f7f3e8;
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.metric-tile {
+    background: linear-gradient(180deg, rgba(36,38,33,0.68), rgba(20,20,19,0.86));
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 20px;
+    padding: 1rem;
+    min-height: 145px;
+}
+.metric-kicker {
+    color: #e2dcc8;
+    font-size: 0.92rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+.metric-big {
+    color: #fffdf7;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 0.35rem;
+}
+.metric-foot {
+    color: #d7d4c8;
+    font-size: 0.92rem;
+}
+
+.notice-box {
+    border-radius: 18px;
+    padding: 0.95rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    color: #f0ede3;
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.risk-high {
+    background: linear-gradient(90deg, rgba(166,42,42,0.95), rgba(216,94,54,0.95));
+}
+.risk-moderate {
+    background: linear-gradient(90deg, rgba(145,93,13,0.95), rgba(210,165,37,0.95));
+}
+.risk-low {
+    background: linear-gradient(90deg, rgba(28,102,63,0.95), rgba(61,161,101,0.95));
+}
+.risk-banner {
+    border-radius: 18px;
+    padding: 1rem 1rem;
+    color: white;
+    font-weight: 800;
+    margin-top: 0.85rem;
+    box-shadow: 0 14px 24px rgba(0,0,0,0.18);
+}
+
+.sub-block {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 18px;
+    padding: 1rem;
+    margin-top: 0.8rem;
+}
+.sub-heading {
+    color: #fffaf2;
     font-size: 1.08rem;
     font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.18);
+    margin-bottom: 0.6rem;
 }
-.stat-line {
-    color: #f3f7ee;
-    font-size: 0.98rem;
-    margin-bottom: 8px;
-    line-height: 1.5;
+
+div.stButton > button {
+    width: 100%;
+    min-height: 56px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.16) !important;
+    background: linear-gradient(90deg, var(--gold-1), var(--gold-2)) !important;
+    color: #1a1408 !important;
+    -webkit-text-fill-color: #1a1408 !important;
+    font-weight: 900 !important;
+    font-size: 1.05rem !important;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.22);
 }
-.note-box {
-    padding: 12px 14px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.10);
-    color: #e3ebdb;
-    font-size: 0.94rem;
-    margin-top: 8px;
+div.stButton > button * {
+    color: #1a1408 !important;
+    fill: #1a1408 !important;
+    -webkit-text-fill-color: #1a1408 !important;
 }
-.risk-banner-high {
-    background: linear-gradient(90deg, #8b1914, #d94a20);
-    color: white; font-weight: 900; font-size: 1.05rem;
-    border-radius: 0 0 8px 8px; padding: 12px 14px;
-    margin: 10px -14px -14px -14px;
+div.stButton > button p,
+div.stButton > button span,
+div.stButton > button div {
+    color: #1a1408 !important;
+    fill: #1a1408 !important;
+    -webkit-text-fill-color: #1a1408 !important;
+    font-weight: 900 !important;
 }
-.risk-banner-moderate {
-    background: linear-gradient(90deg, #8f5409, #db9d18);
-    color: white; font-weight: 900; font-size: 1.05rem;
-    border-radius: 0 0 8px 8px; padding: 12px 14px;
-    margin: 10px -14px -14px -14px;
+div.stButton > button:hover {
+    filter: brightness(1.03);
+    transform: translateY(-1px);
 }
-.risk-banner-low {
-    background: linear-gradient(90deg, #17663a, #239b56);
-    color: white; font-weight: 900; font-size: 1.05rem;
-    border-radius: 0 0 8px 8px; padding: 12px 14px;
-    margin: 10px -14px -14px -14px;
-}
-.status-badge {
-    display: inline-block; padding: 7px 14px; border-radius: 999px;
-    font-weight: 800; font-size: 0.88rem; color: white;
-    margin-top: 8px; margin-bottom: 8px;
-}
-.badge-green  { background: linear-gradient(90deg, #1f9d55, #2fb36d); }
-.badge-orange { background: linear-gradient(90deg, #d97706, #f59e0b); }
-.badge-red    { background: linear-gradient(90deg, #b91c1c, #ef4444); }
-.alert-strip {
-    margin-top: 16px; margin-bottom: 14px; border-radius: 10px;
-    padding: 14px 16px; color: white; font-weight: 900; font-size: 1rem;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-}
-.alert-green  { background: linear-gradient(90deg, #17663a, #239b56); }
-.alert-orange { background: linear-gradient(90deg, #9a5a05, #dd8b14); }
-.alert-red    { background: linear-gradient(90deg, #8b1212, #d13232); }
-.metric-card {
-    background: linear-gradient(180deg, rgba(49,65,57,0.93), rgba(23,32,26,0.95));
-    border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
-    padding: 14px; min-height: 170px;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.20);
-}
-.metric-title { color: #edf3e8; font-size: 0.98rem; font-weight: 800; margin-bottom: 14px; }
-.metric-value { font-size: 2rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; }
-.metric-sub   { font-size: 0.92rem; color: #d8e3cf; }
-.result-highlight {
-    background: linear-gradient(180deg, rgba(76,99,68,0.75), rgba(28,41,31,0.85));
-    border: 1px solid rgba(211,230,184,0.15); border-radius: 14px;
-    padding: 18px; margin-bottom: 16px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.22);
-}
-.result-title { font-size: 1.45rem; font-weight: 900; color: #ffffff; margin-bottom: 12px; }
-.info-chip {
-    display: inline-block; margin-right: 8px; margin-bottom: 8px;
-    padding: 7px 12px; border-radius: 999px;
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.10);
-    color: #f4f7ef; font-size: 0.88rem; font-weight: 700;
-}
-.img-conf-bar {
-    background: rgba(255,255,255,0.08);
-    border-radius: 6px; height: 10px; margin-top: 4px; margin-bottom: 8px; overflow: hidden;
-}
-.img-conf-fill {
-    height: 100%; border-radius: 6px; transition: width 0.3s;
-}
-.img-pred-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 4px 0; font-size: 0.9rem; color: #e8f0e2;
-}
-.img-warn-box {
-    padding: 10px 14px; border-radius: 10px; margin-top: 8px;
-    background: rgba(217, 119, 6, 0.15); border: 1px solid rgba(217, 119, 6, 0.30);
-    color: #fbbf24; font-size: 0.9rem; font-weight: 600;
-}
+
 label, .stTextInput label, .stTextArea label, .stSelectbox label,
 .stFileUploader label, div[data-testid="stWidgetLabel"] label,
 div[data-testid="stWidgetLabel"] p {
-    color: #ffffff !important; font-weight: 800 !important; opacity: 1 !important;
+    color: #fffef8 !important;
+    font-weight: 800 !important;
+    opacity: 1 !important;
 }
-.stMarkdown p { color: #eef4e8; }
-p, span, small { color: #eef4e8; }
-h1, h2, h3, h4 { color: #ffffff; }
-div[data-baseweb="select"] > div {
-    background: rgba(255,255,255,0.08) !important;
-    border: 1px solid rgba(255,255,255,0.14) !important;
-    border-radius: 12px !important; color: #ffffff !important; min-height: 48px !important;
+
+input, textarea {
+    border-radius: 16px !important;
 }
-div[data-baseweb="select"] span { color: #ffffff !important; }
-div[role="listbox"] { background-color: #1f2d22 !important; color: #ffffff !important;
-    border: 1px solid rgba(255,255,255,0.14) !important; border-radius: 10px !important; }
-div[role="option"] { background-color: #1f2d22 !important; color: #ffffff !important; }
-div[role="option"]:hover { background-color: #2d4733 !important; color: #ffffff !important; }
-div[aria-selected="true"] { background-color: #35593d !important; color: #ffffff !important; }
+
+input {
+    background: rgba(255,255,255,0.95) !important;
+    color: #1f2937 !important;
+}
+input::placeholder, textarea::placeholder { color: #6b7280 !important; }
+
 div[data-baseweb="textarea"] textarea {
-    background: rgba(255,255,255,0.92) !important; color: #1f2937 !important;
+    background: rgba(255,255,255,0.96) !important;
+    color: #202734 !important;
+    border-radius: 16px !important;
+    min-height: 135px !important;
+}
+
+div[data-baseweb="select"] > div {
+    background: rgba(255,255,255,0.94) !important;
     border: 1px solid rgba(255,255,255,0.12) !important;
-    border-radius: 12px !important; min-height: 130px !important;
+    border-radius: 16px !important;
+    min-height: 52px !important;
 }
-div[data-baseweb="textarea"] textarea::placeholder { color: #6b7280 !important; }
-input { background: rgba(255,255,255,0.92) !important; color: #1f2937 !important; border-radius: 12px !important; }
-input::placeholder { color: #6b7280 !important; }
-div[data-testid="stFileUploader"] section {
-    background: rgba(255,255,255,0.06) !important; border-radius: 14px !important;
-    border: 1px dashed rgba(255,255,255,0.22) !important; color: #ffffff !important;
+div[data-baseweb="select"] span,
+div[data-baseweb="select"] input {
+    color: #1f2937 !important;
+    font-weight: 600 !important;
 }
-div[data-testid="stFileUploader"] small,
-div[data-testid="stFileUploader"] span,
-div[data-testid="stFileUploader"] p { color: #eef3ea !important; }
-div.stButton > button {
-    width: 100%; height: 52px; border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.16);
-    background: linear-gradient(90deg, #0f5ad6, #1b7bff) !important;
-    color: #ffffff !important; font-size: 1rem; font-weight: 900;
-    box-shadow: 0 10px 18px rgba(0,0,0,0.25); opacity: 1 !important;
+div[role="listbox"] {
+    background: #f8f7f2 !important;
+    color: #202734 !important;
+    border-radius: 14px !important;
 }
-div.stButton > button:hover {
-    background: linear-gradient(90deg, #0a48ae, #1667d9) !important; color: #ffffff !important;
+div[role="option"] {
+    color: #202734 !important;
 }
-.stExpander {
+div[role="option"]:hover { background: #ebe8dd !important; }
+
+section[data-testid="stFileUploadDropzone"] {
+    background: rgba(255,255,255,0.04) !important;
+    border: 1.5px dashed rgba(255,255,255,0.18) !important;
+    border-radius: 22px !important;
+    min-height: 130px !important;
+}
+section[data-testid="stFileUploadDropzone"] * {
+    color: #f6f2e7 !important;
+}
+
+
+div[data-testid="stTabPanel"] {
+    background: linear-gradient(180deg, rgba(20,20,20,0.46), rgba(14,14,14,0.60));
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 24px;
+    box-shadow: 0 20px 46px rgba(0,0,0,0.22);
+    backdrop-filter: blur(12px);
+    padding: 1.2rem 1.2rem 1rem 1.2rem;
+    margin-top: 0.8rem;
+}
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0.8rem;
+    border-bottom: none !important;
+}
+.stTabs [data-baseweb="tab"] {
+    min-height: 52px;
+    border-radius: 16px 16px 0 0;
+    color: #f3eee2 !important;
+    background: rgba(255,255,255,0.06) !important;
     border: 1px solid rgba(255,255,255,0.10) !important;
-    border-radius: 14px !important; background: rgba(255,255,255,0.03) !important;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 0 1.15rem;
+}
+.stTabs [data-baseweb="tab"] * {
+    color: #f3eee2 !important;
+    fill: #f3eee2 !important;
+}
+.stTabs [data-baseweb="tab"]:hover {
+    background: rgba(255,255,255,0.10) !important;
+}
+.stTabs [aria-selected="true"] {
+    color: #111111 !important;
+    background: linear-gradient(135deg, #d4af37, #f2d06b) !important;
+    border: 1px solid rgba(255,255,255,0.16) !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18) !important;
+}
+.stTabs [aria-selected="true"] * {
+    color: #111111 !important;
+    fill: #111111 !important;
+}
+.stTabs [data-baseweb="tab-highlight"] {
+    background: transparent !important;
+}
+
+div[data-testid="stExpander"] {
+    border: 1px solid rgba(255,255,255,0.10) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    background: rgba(255,255,255,0.035) !important;
+}
+div[data-testid="stExpander"] summary {
+    background: rgba(255,255,255,0.04) !important;
+    color: #fffaf0 !important;
+    font-weight: 800 !important;
+}
+div[data-testid="stExpanderDetails"] {
+    background: rgba(0,0,0,0.14) !important;
+}
+
+img {
+    border-radius: 20px;
+}
+
+small, p, li, span {
+    color: #f2eee1;
+}
+
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-right {
+        padding: 0.9rem;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .block-container {
+        padding-top: 0.7rem;
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+    }
 }
 </style>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 # ─────────────────────────────────────────────
 # HELPERS
@@ -238,48 +469,101 @@ def load_data():
     with open("master_diseases_embedded.json", "r", encoding="utf-8") as f:
         return json.load(f)
 
+
 def safe_str(value):
     return str(value).strip() if value is not None else ""
 
-def _escape(text: str) -> str:
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
 
-def apply_filters(records, category, crop, diagnosis_type):
+def _escape(text: str) -> str:
+    return (
+        text.replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
+
+
+def group_crop_options(records):
+    grouped = {}
+    for item in records:
+        category = safe_str(item.get("category")) or "Other"
+        crop = safe_str(item.get("crop"))
+        if crop:
+            grouped.setdefault(category, set()).add(crop)
+
+    preferred_order = [
+        "Cereals",
+        "Pulses",
+        "Oilseeds",
+        "Vegetables",
+        "Fruits",
+        "Commercial Crops",
+        "Spices",
+        "Plantation Crops",
+        "Flowers",
+        "Other",
+    ]
+
+    ordered_categories = [c for c in preferred_order if c in grouped]
+    ordered_categories += sorted([c for c in grouped if c not in preferred_order])
+
+    options = ["All Crops"]
+    for category in ordered_categories:
+        options.append(f"──── {category} ────")
+        for crop in sorted(grouped[category]):
+            options.append(f"   {crop}")
+    return options
+
+
+def extract_crop_name(grouped_option: str) -> str:
+    if not grouped_option or grouped_option == "All Crops":
+        return "All"
+    if grouped_option.strip().startswith("────"):
+        return ""
+    return grouped_option.strip()
+
+
+def get_type_options(records, selected_crop_name):
     filtered = records
-    if category != "All":
-        filtered = [r for r in filtered if safe_str(r.get("category")) == category]
+    if selected_crop_name != "All":
+        filtered = [
+            r for r in records if safe_str(r.get("crop")).lower() == selected_crop_name.lower()
+        ]
+    types = sorted({safe_str(r.get("diagnosis_type")) for r in filtered if safe_str(r.get("diagnosis_type"))})
+    return ["All"] + types
+
+
+def apply_filters(records, crop, diagnosis_type):
+    filtered = records
     if crop != "All":
         filtered = [r for r in filtered if safe_str(r.get("crop")).lower() == crop.lower()]
     if diagnosis_type != "All":
-        filtered = [r for r in filtered if safe_str(r.get("diagnosis_type")).lower() == diagnosis_type.lower()]
+        filtered = [
+            r for r in filtered if safe_str(r.get("diagnosis_type")).lower() == diagnosis_type.lower()
+        ]
     return filtered
+
 
 def get_confidence_label(score):
     if score >= 0.60:
-        return "HIGH CONFIDENCE", "badge-green", "alert-green"
+        return "High Confidence", "#2fb36d"
     elif score >= 0.40:
-        return "MODERATE CONFIDENCE", "badge-orange", "alert-orange"
-    return "LOW CONFIDENCE", "badge-red", "alert-red"
+        return "Moderate Confidence", "#f59e0b"
+    return "Low Confidence", "#ef4444"
+
 
 def estimate_match_percent(score):
     return int(max(5, min(98, round(score * 100))))
 
+
 def get_risk_ui(risk_level):
     level = str(risk_level).strip().lower()
     if level == "high":
-        return "risk-banner-high", "alert-red", "badge-red"
+        return "risk-high"
     elif level == "moderate":
-        return "risk-banner-moderate", "alert-orange", "badge-orange"
-    return "risk-banner-low", "alert-green", "badge-green"
+        return "risk-moderate"
+    return "risk-low"
 
-def conf_bar_color(score: float) -> str:
-    if score >= 0.90:
-        return "#22c55e"
-    elif score >= 0.75:
-        return "#f59e0b"
-    elif score >= 0.50:
-        return "#f97316"
-    return "#ef4444"
 
 def build_fusion_query(user_symptoms: str, image_result: dict, image_weight: float) -> str:
     symptom_text = user_symptoms.strip()
@@ -289,6 +573,7 @@ def build_fusion_query(user_symptoms: str, image_result: dict, image_weight: flo
         if image_label.lower() not in ("healthy", "background", ""):
             return f"{symptom_text} {image_label}".strip()
     return symptom_text
+
 
 def rerank_results(results: list, image_result: dict, image_weight: float) -> list:
     best_pred = image_result.get("best_prediction") if image_result else None
@@ -321,6 +606,7 @@ def rerank_results(results: list, image_result: dict, image_weight: float) -> li
     reranked.sort(key=lambda x: x["combined_score"], reverse=True)
     return reranked
 
+
 def determine_evidence_source(image_result: dict, image_weight: float, has_symptoms: bool) -> str:
     trust = image_result.get("trust_level", "NONE") if image_result else "NONE"
 
@@ -329,17 +615,17 @@ def determine_evidence_source(image_result: dict, image_weight: float, has_sympt
     elif trust == "NONE":
         return "Based on symptom text only"
     elif trust == "STRONG" and has_symptoms:
-        return "Image + symptom evidence (strong fusion)"
+        return "Image + symptom evidence"
     elif trust == "STRONG" and not has_symptoms:
-        return "Based on image prediction (high confidence)"
+        return "Based on image prediction"
     elif trust == "MODERATE" and has_symptoms:
-        return "Primarily symptom-based, image as supporting evidence"
+        return "Primarily symptom-based, image as support"
     elif trust == "MODERATE":
-        return "Image prediction (moderate confidence, no symptoms provided)"
+        return "Image prediction with moderate confidence"
     elif trust == "WEAK" and has_symptoms:
-        return "Based on symptom text (image confidence too low)"
-    else:
-        return "Image prediction unreliable, limited evidence"
+        return "Based on symptom text; image confidence is low"
+    return "Image prediction unreliable, limited evidence"
+
 
 def calculate_roi(area_acres, expected_yield_per_acre, market_price_per_unit, disease_loss_percent, recovery_percent, treatment_cost):
     total_expected_yield = area_acres * expected_yield_per_acre
@@ -357,12 +643,14 @@ def calculate_roi(area_acres, expected_yield_per_acre, market_price_per_unit, di
         "roi_percent": round(roi_percent, 2),
     }
 
+
 def get_profit_loss_label(net_benefit):
     if net_benefit > 0:
         return "Profit", "✅"
     elif net_benefit < 0:
         return "Loss", "⚠️"
     return "Break-even", "➖"
+
 
 def get_default_risk_profile(location: str):
     weather_data = get_weather_data(location)
@@ -393,100 +681,183 @@ def get_default_risk_profile(location: str):
         "weather_data": weather_data,
     }
 
+
+def severity_from_risk_and_confidence(risk_level, match_percent):
+    rl = str(risk_level).lower()
+    if rl == "high" and match_percent >= 75:
+        return "High"
+    if rl in ("high", "moderate") and match_percent >= 55:
+        return "Moderate"
+    return "Mild"
+
+
+def plain_weather_text(weather_data):
+    if not weather_data.get("success"):
+        return "Weather data unavailable"
+    return (
+        f"Humidity {weather_data.get('humidity', 'N/A')}%, "
+        f"Temperature {weather_data.get('temperature_c', 'N/A')}°C, "
+        f"Rain {weather_data.get('rainfall_mm', 'N/A')} mm"
+    )
+
+
 # ─────────────────────────────────────────────
 # LOAD DATA
 # ─────────────────────────────────────────────
 data = load_data()
+crop_options = group_crop_options(data)
 
 # ─────────────────────────────────────────────
-# HEADER
+# SESSION STATE
 # ─────────────────────────────────────────────
-st.markdown("""
-<div class="hero-wrap">
-    <div class="hero-title">Smart Crop Health Advisor</div>
+if "diag_result" not in st.session_state:
+    st.session_state.diag_result = None
+if "roi_only" not in st.session_state:
+    st.session_state.roi_only = None
+
+# ─────────────────────────────────────────────
+# HERO
+# ─────────────────────────────────────────────
+st.markdown(
+    """
+<div class="hero-shell">
+    <div class="hero-grid">
+        <div class="hero-left">
+            <div class="hero-title">Crop AI Doctor</div>
+            <div class="hero-subtitle">
+                Upload a photo to diagnose plant diseases, review weather-driven risk,
+                and estimate field-level impact with a cleaner, decision-friendly dashboard.
+            </div>
+            <div class="badge-row">
+                <div class="hero-pill">🌿 AI Diagnosis</div>
+                <div class="hero-pill">☁️ Weather Risk</div>
+                <div class="hero-pill">💰 Profit / Loss</div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <p class="mini-note"><b>Best results:</b> add a clear leaf image and 1–2 symptom details such as spots, curling, yellowing, wilting, chewing damage, or leaf blight.</p>
+        </div>
+    </div>
 </div>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 # ─────────────────────────────────────────────
-# INPUT PANEL
+# MAIN TABS
 # ─────────────────────────────────────────────
-st.markdown('<div class="top-panel">', unsafe_allow_html=True)
-st.markdown('<div class="section-title">Input Details</div>', unsafe_allow_html=True)
+tab_diag, tab_weather, tab_profit = st.tabs(["Diagnosis", "Weather Risk", "Profit/Loss"])
 
-fcol1, fcol2, fcol3 = st.columns([1, 1, 1])
+with tab_diag:
+    st.markdown('<div class="section-title">Diagnosis</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-sub">Upload a plant image, add symptoms if you have them, and select the crop once.</div>', unsafe_allow_html=True)
 
-category_list = sorted({safe_str(item.get("category")) for item in data if safe_str(item.get("category"))})
-category_options = ["All"] + category_list
+    left_input, right_input = st.columns([1.1, 0.9], gap="large")
 
-with fcol1:
-    selected_category = st.selectbox("Select category", category_options)
+    with left_input:
+        st.markdown('<div class="upload-shell">', unsafe_allow_html=True)
+        uploaded_file = st.file_uploader(
+            "Upload Plant Image",
+            type=["jpg", "jpeg", "png"],
+            help="Clear leaf images improve results.",
+        )
+    
+        user_input = st.text_area(
+            "Enter Symptoms (optional)",
+            placeholder="Example: white powder on leaves, yellow halo, curling, leaf spots, wilting, chewing damage",
+            height=140,
+        )
 
-filtered_for_crop = data
-if selected_category != "All":
-    filtered_for_crop = [item for item in data if safe_str(item.get("category")) == selected_category]
+        selected_crop_option = st.selectbox("Select Crop", crop_options)
+        selected_crop = extract_crop_name(selected_crop_option)
+        if selected_crop_option.strip().startswith("────"):
+            st.caption("Choose a crop item below the category heading.")
 
-crop_list = sorted({safe_str(item.get("crop")) for item in filtered_for_crop if safe_str(item.get("crop"))})
-crop_options = ["All"] + crop_list
+        diagnosis_type_options = get_type_options(data, selected_crop if selected_crop else "All")
+        selected_diagnosis_type = st.selectbox(
+            "Select Disease / Pest Type",
+            diagnosis_type_options,
+        )
 
-with fcol2:
-    selected_crop = st.selectbox("Select crop", crop_options)
+        run_check = st.button("Check Diagnosis", key="analyze_plant")
 
-filtered_for_type = filtered_for_crop
-if selected_crop != "All":
-    filtered_for_type = [
-        item for item in filtered_for_type
-        if safe_str(item.get("crop")).lower() == selected_crop.lower()
-    ]
+    with right_input:
+        preview_card = st.container()
+        with preview_card:
+            if uploaded_file is not None:
+                uploaded_file.seek(0)
+                st.image(uploaded_file, use_container_width=True)
+            else:
+                st.markdown(
+                    '<div class="notice-box">No image uploaded yet. Your leaf preview will appear here once you upload a photo.</div>',
+                    unsafe_allow_html=True,
+                )
+        
 
-diagnosis_type_list = sorted({
-    safe_str(item.get("diagnosis_type"))
-    for item in filtered_for_type
-    if safe_str(item.get("diagnosis_type"))
-})
-diagnosis_type_options = ["All"] + diagnosis_type_list
+with tab_weather:
+    st.markdown('<div class="section-title">Weather Risk</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-sub">Use local conditions to estimate environmental disease pressure.</div>', unsafe_allow_html=True)
 
-with fcol3:
-    selected_diagnosis_type = st.selectbox("Select disease / pest type", diagnosis_type_options)
+    wcol1, wcol2 = st.columns([1, 1], gap="large")
+    with wcol1:
+        weather_location = st.text_input("Location", value="Detroit", key="weather_location_only")
+        weather_check = st.button("Check Weather Risk", key="check_weather_risk")
+    with wcol2:
+        st.markdown(
+            '<div class="notice-box">This section estimates disease-favoring conditions from humidity, temperature, and rainfall. It supports decision-making but does not replace field inspection.</div>',
+            unsafe_allow_html=True,
+        )
 
-left_input, right_input = st.columns([1.2, 1])
+with tab_profit:
+    st.markdown('<div class="section-title">Profit / Loss Estimator</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-sub">Estimate treatment value against likely disease-driven loss.</div>', unsafe_allow_html=True)
 
-with left_input:
-    user_input = st.text_area(
-        "Enter symptoms",
-        placeholder="Example: brown leaf spots, yellow halo, wilting, blight, chewing damage, curling, lesions, drying",
-        height=140
-    )
-
-with right_input:
-    uploaded_file = st.file_uploader(
-        "Upload leaf image (optional)",
-        type=["jpg", "jpeg", "png"]
-    )
-    location = st.text_input(
-        "Enter location for weather-based risk assessment",
-        value="Detroit",
-        placeholder="Example: Detroit, Michigan"
-    )
-
-    area_acres = st.number_input("Field area (acres)", min_value=0.0, value=1.0, step=0.5)
-    expected_yield_per_acre = st.number_input("Expected yield per acre", min_value=0.0, value=25.0, step=1.0)
-    market_price_per_unit = st.number_input("Market price per unit ($)", min_value=0.0, value=20.0, step=1.0)
-    treatment_cost = st.number_input("Estimated treatment cost ($)", min_value=0.0, value=50.0, step=5.0)
-
-    auto_calc_profit_loss = st.button("Auto Calculate Profit/Loss")
-
-    st.markdown(
-        '<div class="note-box">Tip: best results come from a clear leaf image plus symptom text.</div>',
-        unsafe_allow_html=True
-    )
-
-run_check = st.button("Check Diagnosis")
-st.markdown('</div>', unsafe_allow_html=True)
+    pcol1, pcol2 = st.columns([1, 1], gap="large")
+    with pcol1:
+        location = st.text_input("Location", value="Detroit", key="profit_location")
+        area_acres = st.number_input("Field Area (acres)", min_value=0.0, value=1.0, step=0.5)
+        expected_yield_per_acre = st.number_input("Yield per Acre", min_value=0.0, value=25.0, step=1.0)
+    with pcol2:
+        market_price_per_unit = st.number_input("Market Price per Unit ($)", min_value=0.0, value=20.0, step=1.0)
+        treatment_cost = st.number_input("Estimated Treatment Cost ($)", min_value=0.0, value=50.0, step=5.0)
+        auto_calc_profit_loss = st.button("Calculate Profit / Loss", key="auto_profit_loss")
 
 # ─────────────────────────────────────────────
-# AUTO ROI ONLY MODE
+# WEATHER ONLY TAB ACTION
 # ─────────────────────────────────────────────
-if auto_calc_profit_loss and not run_check:
+if weather_check:
+    weather_data_only = get_weather_data(weather_location)
+    weather_profile = get_default_risk_profile(weather_location)
+    risk_level = weather_profile["risk_level"]
+    risk_class = get_risk_ui(risk_level)
+
+    with tab_weather:
+        st.markdown('<div class="section-title">Weather Overview</div>', unsafe_allow_html=True)
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            st.markdown(
+                f'<div class="metric-tile"><div class="metric-kicker">Humidity</div><div class="metric-big">{weather_data_only.get("humidity", "N/A")}%</div><div class="metric-foot">Relative humidity</div></div>',
+                unsafe_allow_html=True,
+            )
+        with c2:
+            st.markdown(
+                f'<div class="metric-tile"><div class="metric-kicker">Temperature</div><div class="metric-big">{weather_data_only.get("temperature_c", "N/A")}°C</div><div class="metric-foot">Ambient temperature</div></div>',
+                unsafe_allow_html=True,
+            )
+        with c3:
+            st.markdown(
+                f'<div class="metric-tile"><div class="metric-kicker">Rain</div><div class="metric-big">{weather_data_only.get("rainfall_mm", "N/A")} mm</div><div class="metric-foot">Recent precipitation</div></div>',
+                unsafe_allow_html=True,
+            )
+        st.markdown(
+            f'<div class="risk-banner {risk_class}">Risk Level: {risk_level.upper()}<br><span style="font-size:0.95rem; font-weight:700;">{_escape(weather_profile["reason"])}</span></div>',
+            unsafe_allow_html=True,
+        )
+    
+# ─────────────────────────────────────────────
+# PROFIT / LOSS ONLY MODE
+# ─────────────────────────────────────────────
+if auto_calc_profit_loss:
     default_risk = get_default_risk_profile(location)
     risk_level = default_risk["risk_level"]
     risk_score = default_risk["risk_score"]
@@ -509,110 +880,65 @@ if auto_calc_profit_loss and not run_check:
         market_price_per_unit=market_price_per_unit,
         disease_loss_percent=disease_loss_percent,
         recovery_percent=recovery_percent,
-        treatment_cost=treatment_cost
+        treatment_cost=treatment_cost,
     )
     profit_loss_label, profit_loss_icon = get_profit_loss_label(roi_result["net_benefit"])
-    risk_banner_class, _, _ = get_risk_ui(risk_level)
+    st.session_state.roi_only = {
+        "risk_level": risk_level,
+        "risk_score": risk_score,
+        "risk_reason": risk_reason,
+        "weather_data": weather_data,
+        "roi_result": roi_result,
+        "profit_loss_label": profit_loss_label,
+        "profit_loss_icon": profit_loss_icon,
+        "location": location,
+    }
 
-    st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
-    st.markdown('<div class="card-title">Auto Profit / Loss Calculation</div>', unsafe_allow_html=True)
-
-    st.markdown(
-        f"""
-        <div class="stat-line"><b>Selected Crop:</b> {_escape(selected_crop)}</div>
-        <div class="stat-line"><b>Location:</b> {_escape(location)}</div>
-        <div class="stat-line"><b>Field Area:</b> {area_acres} acres</div>
-        <div class="stat-line"><b>Expected Yield per Acre:</b> {expected_yield_per_acre}</div>
-        <div class="stat-line"><b>Market Price per Unit:</b> ${market_price_per_unit}</div>
-        <div class="stat-line"><b>Treatment Cost:</b> ${treatment_cost}</div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    if weather_data.get("success"):
+if st.session_state.roi_only:
+    info = st.session_state.roi_only
+    risk_class = get_risk_ui(info["risk_level"])
+    with tab_profit:
+        cols = st.columns(3)
+        metrics = [
+            ("Expected Revenue", f"${info['roi_result']['expected_revenue_without_disease']}", "Without disease loss"),
+            ("Net Benefit", f"{info['profit_loss_icon']} ${info['roi_result']['net_benefit']}", info['profit_loss_label']),
+            ("ROI", f"{info['roi_result']['roi_percent']}%", "Treatment return estimate"),
+        ]
+        for col, (title, value, foot) in zip(cols, metrics):
+            with col:
+                st.markdown(
+                    f'<div class="metric-tile"><div class="metric-kicker">{title}</div><div class="metric-big">{value}</div><div class="metric-foot">{foot}</div></div>',
+                    unsafe_allow_html=True,
+                )
         st.markdown(
-            f"""
-            <div class="stat-line"><b>Humidity:</b> {weather_data.get("humidity", "N/A")}%</div>
-            <div class="stat-line"><b>Temperature:</b> {weather_data.get("temperature_c", "N/A")}°C</div>
-            <div class="stat-line"><b>Rain / Precipitation:</b> {weather_data.get("rainfall_mm", "N/A")} mm</div>
-            """,
-            unsafe_allow_html=True
+            f'<div class="risk-banner {risk_class}">Risk Level: {info["risk_level"].upper()}<br><span style="font-size:0.95rem; font-weight:700;">{_escape(info["risk_reason"])}</span></div>',
+            unsafe_allow_html=True,
         )
-
-    st.markdown(
-        f"""
-        <div class="{risk_banner_class}">
-            ⚠ Risk Level: {str(risk_level).upper()}<br>
-            <span style="font-size:0.95rem; font-weight:700;">{_escape(str(risk_reason))}</span>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    m1, m2, m3 = st.columns(3)
-    with m1:
         st.markdown(
-            f"""
-            <div class="metric-card">
-                <div class="metric-title">Profit / Loss</div>
-                <div class="metric-value">{profit_loss_icon} {profit_loss_label}</div>
-                <div class="metric-sub">Net benefit: ${roi_result['net_benefit']}</div>
-            </div>
-            """,
-            unsafe_allow_html=True
+            f'<div class="sub-block"><div class="sub-heading">Calculation Details</div>'
+            f'<p><b>Location:</b> {_escape(info["location"])}<br>'
+            f'<b>Weather:</b> {_escape(plain_weather_text(info["weather_data"]))}<br>'
+            f'<b>Estimated Disease Loss Value:</b> ${info["roi_result"]["estimated_loss_value"]}<br>'
+            f'<b>Recoverable Value After Treatment:</b> ${info["roi_result"]["recoverable_value"]}</p></div>',
+            unsafe_allow_html=True,
         )
-    with m2:
-        st.markdown(
-            f"""
-            <div class="metric-card">
-                <div class="metric-title">ROI</div>
-                <div class="metric-value">{roi_result['roi_percent']}%</div>
-                <div class="metric-sub">Based on auto risk estimate</div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-    with m3:
-        st.markdown(
-            f"""
-            <div class="metric-card">
-                <div class="metric-title">Weather Risk Index</div>
-                <div class="metric-value">{risk_score}</div>
-                <div class="metric-sub">Risk score out of 100</div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-    st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
-    st.markdown('<div class="card-title">ROI Calculator</div>', unsafe_allow_html=True)
-    st.markdown(
-        f"""
-        <div class="stat-line"><b>Expected Revenue (No Disease):</b> ${roi_result['expected_revenue_without_disease']}</div>
-        <div class="stat-line"><b>Estimated Disease Loss Value:</b> ${roi_result['estimated_loss_value']}</div>
-        <div class="stat-line"><b>Recoverable Value After Treatment:</b> ${roi_result['recoverable_value']}</div>
-        <div class="stat-line"><b>Treatment Cost:</b> ${round(treatment_cost, 2)}</div>
-        <div class="stat-line"><b>Net Benefit:</b> ${roi_result['net_benefit']}</div>
-        <div class="stat-line"><b>ROI:</b> {roi_result['roi_percent']}%</div>
-        <div class="stat-line"><b>Final Result:</b> {profit_loss_icon} {profit_loss_label}</div>
-        """,
-        unsafe_allow_html=True
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-
+    
 # ─────────────────────────────────────────────
 # MAIN DIAGNOSIS LOGIC
 # ─────────────────────────────────────────────
 if run_check:
+    if selected_crop_option.strip().startswith("────"):
+        st.warning("Please select a crop item, not the category heading.")
+        st.stop()
+
     if not user_input.strip() and uploaded_file is None:
         st.warning("Please enter symptoms or upload an image.")
         st.stop()
 
-    filtered_data = apply_filters(data, selected_category, selected_crop, selected_diagnosis_type)
+    filtered_data = apply_filters(data, selected_crop if selected_crop else "All", selected_diagnosis_type)
 
     if not filtered_data:
-        st.error("No records match the selected filters. Try broadening your selection.")
+        st.error("No records match the selected crop or type. Try broadening your selection.")
         st.stop()
 
     crop_for_search = "All" if selected_crop == "All" else selected_crop
@@ -629,7 +955,7 @@ if run_check:
     if uploaded_file is not None:
         try:
             uploaded_file.seek(0)
-            with st.spinner("Analyzing uploaded image with strict confidence checks..."):
+            with st.spinner("Analyzing uploaded image..."):
                 image_result = predict_disease_from_image(
                     uploaded_file,
                     selected_crop=crop_for_search,
@@ -657,30 +983,29 @@ if run_check:
         results = find_best_matches(combined_query, filtered_data, crop_for_search, top_k=5)
 
     if not results:
-        st.error("No matching disease or pest found. Try different symptoms or broader filters.")
+        st.error("No matching disease or pest found. Try different symptoms or broader selection.")
         st.stop()
 
     results = rerank_results(results, image_result, image_weight)
-
     top_result = results[0]
     other_results = results[1:3]
-
     evidence_source = determine_evidence_source(image_result, image_weight, has_symptoms)
 
     weather_data = get_weather_data(location)
     risk_result = calculate_risk(
         diagnosis_name=top_result.get("name", ""),
         diagnosis_type=top_result.get("diagnosis_type", ""),
-        weather=weather_data
+        weather=weather_data,
     )
 
     explanation = generate_explanation(
-        top_result.get("name"),
-        top_result.get("symptoms")
+        disease=top_result.get("name"),
+        symptoms=top_result.get("symptoms"),
+        weather=weather_data,
     )
 
     score = float(top_result.get("combined_score", top_result.get("score", 0.0)))
-    confidence_label, confidence_badge_class, confidence_alert_class = get_confidence_label(score)
+    confidence_label, conf_color = get_confidence_label(score)
     match_percent = estimate_match_percent(score)
 
     top_symptoms = top_result.get("symptoms", [])
@@ -694,7 +1019,8 @@ if run_check:
     risk_level = risk_result.get("risk_level", "Low")
     risk_score = risk_result.get("risk_score", 0)
     risk_reason = risk_result.get("reason", "")
-    risk_banner_class, final_alert_class, risk_badge_class = get_risk_ui(risk_level)
+    risk_class = get_risk_ui(risk_level)
+    severity = severity_from_risk_and_confidence(risk_level, match_percent)
 
     if str(risk_level).lower() == "high":
         disease_loss_percent = 30
@@ -712,272 +1038,222 @@ if run_check:
         market_price_per_unit=market_price_per_unit,
         disease_loss_percent=disease_loss_percent,
         recovery_percent=recovery_percent,
-        treatment_cost=treatment_cost
+        treatment_cost=treatment_cost,
     )
     profit_loss_label, profit_loss_icon = get_profit_loss_label(roi_result["net_benefit"])
 
-    left_col, right_col = st.columns([1.03, 1.08])
+    st.session_state.diag_result = {
+        "top_result": top_result,
+        "other_results": other_results,
+        "evidence_source": evidence_source,
+        "weather_data": weather_data,
+        "risk_level": risk_level,
+        "risk_score": risk_score,
+        "risk_reason": risk_reason,
+        "risk_class": risk_class,
+        "severity": severity,
+        "explanation": explanation,
+        "score": score,
+        "match_percent": match_percent,
+        "confidence_label": confidence_label,
+        "conf_color": conf_color,
+        "top_symptoms": top_symptoms,
+        "top_management": top_management,
+        "top_cause": top_cause,
+        "top_name": top_name,
+        "top_crop": top_crop,
+        "top_scientific": top_scientific,
+        "top_type": top_type,
+        "image_result": image_result,
+        "image_weight": image_weight,
+        "roi_result": roi_result,
+        "profit_loss_label": profit_loss_label,
+        "profit_loss_icon": profit_loss_icon,
+        "uploaded_file": uploaded_file,
+    }
 
-    with left_col:
-        st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
-        st.markdown('<div class="card-title">Uploaded Image Analysis</div>', unsafe_allow_html=True)
+# ─────────────────────────────────────────────
+# RENDER DIAGNOSIS RESULTS
+# ─────────────────────────────────────────────
+if st.session_state.diag_result:
+    r = st.session_state.diag_result
+    with tab_diag:
+        dleft, dright = st.columns([1.08, 0.92], gap="large")
 
-        if uploaded_file is not None:
-            uploaded_file.seek(0)
-            st.image(uploaded_file, use_container_width=True)
-        else:
+        with dleft:
+            st.markdown('<div class="result-card">', unsafe_allow_html=True)
             st.markdown(
-                '<div class="note-box">No image uploaded. Diagnosis is based on symptom text only.</div>',
-                unsafe_allow_html=True
-            )
-
-        st.markdown(
-            f"""
-            <div class="stat-line">✅ <b>Diagnosis:</b> {top_name} <i>({top_scientific})</i></div>
-            <div class="stat-line">✅ <b>Match:</b> {match_percent}% combined confidence</div>
-            <div class="stat-line">📊 <b>Evidence:</b> {_escape(evidence_source)}</div>
-            """,
-            unsafe_allow_html=True
-        )
-
-        if uploaded_file is not None and image_result.get("predictions"):
-            preds = image_result["predictions"]
-            trust_level = image_result.get("trust_level", "NONE")
-
-            st.markdown(
-                f"<div style='margin-top:10px; font-weight:800; font-size:0.95rem; color:#fff;'>"
-                f"Image Model Predictions (trust: {trust_level})</div>",
+                f'''
+                <div class="result-header">
+                    <div>
+                        <div class="result-name">{r['top_name']} <span class="result-chip">{r['top_type']}</span></div>
+                    </div>
+                    <div style="font-size:2rem; font-weight:900; color:#fff6df;">{r['match_percent']}%</div>
+                </div>
+                <div class="conf-wrap">
+                    <div class="conf-top">
+                        <span>{r['confidence_label']}</span>
+                        <span>Severity: {r['severity']}</span>
+                    </div>
+                    <div class="conf-bar"><div class="conf-fill" style="width:{r['match_percent']}%;"></div></div>
+                </div>
+                <div style="margin-top:0.9rem;">
+                    <span class="soft-chip">Crop: {r['top_crop']}</span>
+                    <span class="soft-chip">Scientific: <i>{r['top_scientific']}</i></span>
+                    <span class="soft-chip">Evidence: {_escape(r['evidence_source'])}</span>
+                    <span class="soft-chip">Image Weight: {int(r['image_weight'] * 100)}%</span>
+                </div>
+                ''',
                 unsafe_allow_html=True,
             )
-
-            for p in preds[:5]:
-                pct = int(round(p["score"] * 100))
-                color = conf_bar_color(p["score"])
-                label_display = _escape(p["normalized_label"])
-                crop_icon = "✅" if p["crop_relevant"] else "⚠️"
-
+            if r["top_cause"]:
                 st.markdown(
-                    f"""
-                    <div class="img-pred-row">
-                        <span>{crop_icon} {label_display}</span>
-                        <span style="font-weight:700;">{pct}%</span>
-                    </div>
-                    <div class="img-conf-bar">
-                        <div class="img-conf-fill" style="width:{pct}%; background:{color};"></div>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
+                    f'<div class="sub-block"><div class="sub-heading">Likely Cause</div><p>{_escape(r["top_cause"])}</p></div>',
+                    unsafe_allow_html=True,
                 )
-
-            warning = image_result.get("warning", "")
-            if warning:
-                st.markdown(
-                    f'<div class="img-warn-box">⚠ {_escape(warning)}</div>',
-                    unsafe_allow_html=True
-                )
-
-        st.markdown(f'<div class="status-badge {confidence_badge_class}">{confidence_label}</div>',
-                    unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
-        st.markdown('<div class="card-title">Management Recommendations</div>', unsafe_allow_html=True)
-
-        if top_management:
-            for item in top_management[:5]:
-                st.markdown(f"<div class='stat-line'>✅ {_escape(str(item))}</div>", unsafe_allow_html=True)
-        else:
-            st.markdown("<div class='stat-line'>No management data available.</div>", unsafe_allow_html=True)
-
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        action_col1, action_col2 = st.columns(2)
-        with action_col1:
-            st.button("👤 Submit for Expert Review", key="expert_review")
-        with action_col2:
-            st.button("💾 Save Report", key="save_report")
-
-    with right_col:
-        st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
-        st.markdown('<div class="card-title">Weather & Risk Assessment</div>', unsafe_allow_html=True)
-
-        if weather_data.get("success"):
-            st.markdown(
-                f"""
-                <div class="stat-line"><b>Location:</b> {_escape(str(weather_data.get("location", "N/A")))}</div>
-                <div class="stat-line"><b>Humidity:</b> {weather_data.get("humidity", "N/A")}%</div>
-                <div class="stat-line"><b>Temperature:</b> {weather_data.get("temperature_c", "N/A")}°C</div>
-                <div class="stat-line"><b>Rain / Precipitation:</b> {weather_data.get("rainfall_mm", "N/A")} mm</div>
-                <div class="stat-line"><b>Condition:</b> {_escape(str(weather_data.get("weather_desc", "N/A")))}</div>
-                """,
-                unsafe_allow_html=True
-            )
-        else:
-            st.markdown("<div class='stat-line'>Weather data unavailable.</div>", unsafe_allow_html=True)
-
-        st.markdown(
-            f"""
-            <div class="{risk_banner_class}">
-                ⚠ Risk Level: {str(risk_level).upper()}<br>
-                <span style="font-size:0.95rem; font-weight:700;">{_escape(str(risk_reason))}</span>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
-        st.markdown('<div class="card-title">Data Dashboard</div>', unsafe_allow_html=True)
-
-        m1, m2, m3 = st.columns(3)
-
-        with m1:
-            st.markdown(
-                f"""
-                <div class="metric-card">
-                    <div class="metric-title">Diagnosis Confidence</div>
-                    <div class="metric-value">{match_percent}%</div>
-                    <div class="metric-sub">{top_name}</div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-        with m2:
-            st.markdown(
-                f"""
-                <div class="metric-card">
-                    <div class="metric-title">Profit / Loss</div>
-                    <div class="metric-value">{profit_loss_icon} {profit_loss_label}</div>
-                    <div class="metric-sub">Net benefit: ${roi_result['net_benefit']}</div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-        with m3:
-            st.markdown(
-                f"""
-                <div class="metric-card">
-                    <div class="metric-title">Weather Risk Index</div>
-                    <div class="metric-value">{risk_score}</div>
-                    <div class="metric-sub">Risk score out of 100</div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
-        st.markdown('<div class="card-title">ROI Calculator</div>', unsafe_allow_html=True)
-
-        st.markdown(
-            f"""
-            <div class="stat-line"><b>Expected Revenue (No Disease):</b> ${roi_result['expected_revenue_without_disease']}</div>
-            <div class="stat-line"><b>Estimated Disease Loss Value:</b> ${roi_result['estimated_loss_value']}</div>
-            <div class="stat-line"><b>Recoverable Value After Treatment:</b> ${roi_result['recoverable_value']}</div>
-            <div class="stat-line"><b>Treatment Cost:</b> ${round(treatment_cost, 2)}</div>
-            <div class="stat-line"><b>Net Benefit:</b> ${roi_result['net_benefit']}</div>
-            <div class="stat-line"><b>ROI:</b> {roi_result['roi_percent']}%</div>
-            <div class="stat-line"><b>Final Result:</b> {profit_loss_icon} {profit_loss_label}</div>
-            """,
-            unsafe_allow_html=True
-        )
-
-        st.markdown('</div>', unsafe_allow_html=True)
-
-    st.markdown(
-        f"""
-        <div class="alert-strip {final_alert_class}">
-            ⚠ Alert: {str(risk_level).title()} risk of disease spread. Recommend immediate review and action.
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    st.markdown('<div class="dashboard-card">', unsafe_allow_html=True)
-    st.markdown('<div class="card-title">AI Explanation</div>', unsafe_allow_html=True)
-    st.write(explanation)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    st.markdown(
-        f"""
-        <div class="result-highlight">
-            <div class="result-title">{top_name}</div>
-            <span class="info-chip">Crop: {top_crop}</span>
-            <span class="info-chip">Scientific: <i>{top_scientific}</i></span>
-            <span class="info-chip">Type: {top_type}</span>
-            <span class="info-chip">Score: {score:.3f}</span>
-            <span class="info-chip">Image weight: {int(image_weight * 100)}%</span>
-            {"<div style='margin-top:12px; color:#e8f0e2;'><b>Cause:</b> " + _escape(top_cause) + "</div>" if top_cause else ""}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    with st.expander("Symptoms of likely diagnosis", expanded=True):
-        if top_symptoms:
-            for item in top_symptoms:
-                st.write(f"- {item}")
-        else:
-            st.write("No symptom data available.")
-
-    with st.expander("Management of likely diagnosis", expanded=True):
-        if top_management:
-            for item in top_management:
-                st.write(f"- {item}")
-        else:
-            st.write("No management data available.")
-
-    if other_results:
-        st.markdown(
-            '<div class="section-title" style="margin-top:18px;">Other Possible Matches</div>',
-            unsafe_allow_html=True
-        )
-
-        for idx, result in enumerate(other_results, start=2):
-            symptoms = result.get("symptoms", [])
-            management = result.get("management", [])
-            cause_description = _escape(safe_str(result.get("cause_description")))
-            result_score = float(result.get("combined_score", result.get("score", 0.0)))
-            result_percent = estimate_match_percent(result_score)
-            img_boost = result.get("image_boost", 0.0)
-            boost_tag = ""
-            if img_boost > 0.5:
-                boost_tag = " <span style='color:#22c55e; font-size:0.85rem;'>✅ Image match</span>"
-            elif img_boost > 0:
-                boost_tag = " <span style='color:#f59e0b; font-size:0.85rem;'>~ Partial image match</span>"
-
-            r_name = _escape(safe_str(result.get("name")) or "Unknown")
-            r_crop = _escape(safe_str(result.get("crop")) or "N/A")
-            r_sci = _escape(safe_str(result.get("scientific_name")) or "N/A")
-            r_type = _escape(safe_str(result.get("diagnosis_type")) or "N/A")
-
-            st.markdown(
-                f"""
-                <div class="dashboard-card">
-                    <div class="card-title">{idx}. {r_name}{boost_tag}</div>
-                    <div class="stat-line"><b>Crop:</b> {r_crop}</div>
-                    <div class="stat-line"><b>Scientific Name:</b> <i>{r_sci}</i></div>
-                    <div class="stat-line"><b>Diagnosis Type:</b> {r_type}</div>
-                    {"<div class='stat-line'><b>Cause:</b> " + cause_description + "</div>" if cause_description else ""}
-                    <div class="stat-line"><b>Combined Score:</b> {result_score:.3f} ({result_percent}%)</div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-            with st.expander(f"Symptoms — {r_name}"):
-                if symptoms:
-                    for item in symptoms:
+        
+            st.markdown('<div class="result-card">', unsafe_allow_html=True)
+            st.markdown('<div class="sub-heading">Explanation</div>', unsafe_allow_html=True)
+            st.write(r["explanation"])
+        
+            with st.expander("Symptoms of likely diagnosis", expanded=True):
+                if r["top_symptoms"]:
+                    for item in r["top_symptoms"]:
                         st.write(f"- {item}")
                 else:
                     st.write("No symptom data available.")
 
-            with st.expander(f"Management — {r_name}"):
-                if management:
-                    for item in management:
+            with st.expander("Treatment advice", expanded=True):
+                if r["top_management"]:
+                    for item in r["top_management"]:
                         st.write(f"- {item}")
                 else:
                     st.write("No management data available.")
+
+        with dright:
+            st.markdown('<div class="result-card">', unsafe_allow_html=True)
+            if r["uploaded_file"] is not None:
+                r["uploaded_file"].seek(0)
+                st.image(r["uploaded_file"], use_container_width=True)
+            else:
+                st.markdown(
+                    '<div class="notice-box">No image was uploaded for this diagnosis. Results are based on symptom text and retrieval.</div>',
+                    unsafe_allow_html=True,
+                )
+
+            if r["image_result"].get("predictions"):
+                st.markdown('<div class="sub-heading" style="margin-top:0.8rem;">Image Model Predictions</div>', unsafe_allow_html=True)
+                for p in r["image_result"]["predictions"][:5]:
+                    pct = int(round(p["score"] * 100))
+                    color = "#2fb36d" if pct >= 90 else "#f59e0b" if pct >= 75 else "#ef4444"
+                    label_display = _escape(p["normalized_label"])
+                    crop_icon = "✅" if p["crop_relevant"] else "⚠️"
+                    st.markdown(
+                        f"<p style='margin-bottom:0.2rem;'><b>{crop_icon} {label_display}</b> — {pct}%</p>",
+                        unsafe_allow_html=True,
+                    )
+                    st.markdown(
+                        f"<div class='conf-bar' style='height:10px; margin-bottom:0.55rem;'><div class='conf-fill' style='width:{pct}%; background:{color};'></div></div>",
+                        unsafe_allow_html=True,
+                    )
+
+                warning = r["image_result"].get("warning", "")
+                if warning:
+                    st.markdown(
+                        f'<div class="notice-box" style="margin-top:0.8rem;">⚠ {_escape(warning)}</div>',
+                        unsafe_allow_html=True,
+                    )
+        
+            st.markdown('<div class="result-card">', unsafe_allow_html=True)
+            st.markdown('<div class="sub-heading">Weather & Risk</div>', unsafe_allow_html=True)
+            st.markdown(
+                f'<p><b>Location:</b> {_escape(str(r["weather_data"].get("location", "N/A")))}<br>'
+                f'<b>Condition:</b> {_escape(str(r["weather_data"].get("weather_desc", "N/A")))}<br>'
+                f'<b>Weather:</b> {_escape(plain_weather_text(r["weather_data"]))}</p>',
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f'<div class="risk-banner {r["risk_class"]}">Risk Level: {r["risk_level"].upper()}<br><span style="font-size:0.95rem; font-weight:700;">{_escape(str(r["risk_reason"]))}</span></div>',
+                unsafe_allow_html=True,
+            )
+        
+    with tab_weather:
+            cols = st.columns(3)
+            metrics = [
+            ("Humidity", f"{r['weather_data'].get('humidity', 'N/A')}%", "Disease favorability"),
+            ("Temperature", f"{r['weather_data'].get('temperature_c', 'N/A')}°C", "Ambient condition"),
+            ("Risk Index", f"{r['risk_score']}", "Out of 100"),
+        ]
+    for col, (title, value, foot) in zip(cols, metrics):
+            with col:
+                st.markdown(
+                    f'<div class="metric-tile"><div class="metric-kicker">{title}</div><div class="metric-big">{value}</div><div class="metric-foot">{foot}</div></div>',
+                    unsafe_allow_html=True,
+                )
+    st.markdown(
+        f'<div class="risk-banner {r["risk_class"]}">Disease Spread Alert: {r["risk_level"].title()}<br><span style="font-size:0.95rem; font-weight:700;">{_escape(str(r["risk_reason"]))}</span></div>',
+        unsafe_allow_html=True,
+        )
+    
+    with tab_profit:
+            cols = st.columns(3)
+            metrics = [
+            ("Diagnosis Confidence", f"{r['match_percent']}%", r['top_name']),
+            ("Net Benefit", f"{r['profit_loss_icon']} ${r['roi_result']['net_benefit']}", r['profit_loss_label']),
+            ("ROI", f"{r['roi_result']['roi_percent']}%", "Treatment outcome estimate"),
+        ]
+    for col, (title, value, foot) in zip(cols, metrics):
+            with col:
+                st.markdown(
+                    f'<div class="metric-tile"><div class="metric-kicker">{title}</div><div class="metric-big">{value}</div><div class="metric-foot">{foot}</div></div>',
+                    unsafe_allow_html=True,
+                )
+            st.markdown(
+            f'<div class="sub-block"><div class="sub-heading">ROI Breakdown</div>'
+            f'<p><b>Expected Revenue:</b> ${r["roi_result"]["expected_revenue_without_disease"]}<br>'
+            f'<b>Estimated Disease Loss Value:</b> ${r["roi_result"]["estimated_loss_value"]}<br>'
+            f'<b>Recoverable Value After Treatment:</b> ${r["roi_result"]["recoverable_value"]}<br>'
+            f'<b>Net Benefit:</b> ${r["roi_result"]["net_benefit"]}</p></div>',
+            unsafe_allow_html=True,
+        )
+    
+    if r["other_results"]:
+        with tab_diag:
+                    st.markdown('<div class="section-title">Other Possible Matches</div>', unsafe_allow_html=True)
+        for idx, result in enumerate(r["other_results"], start=2):
+                symptoms = result.get("symptoms", [])
+                management = result.get("management", [])
+                cause_description = _escape(safe_str(result.get("cause_description")))
+                result_score = float(result.get("combined_score", result.get("score", 0.0)))
+                result_percent = estimate_match_percent(result_score)
+                img_boost = result.get("image_boost", 0.0)
+                boost_tag = ""
+                if img_boost > 0.5:
+                    boost_tag = "✅ Image match"
+                elif img_boost > 0:
+                    boost_tag = "~ Partial image match"
+
+                r_name = _escape(safe_str(result.get("name")) or "Unknown")
+                r_crop = _escape(safe_str(result.get("crop")) or "N/A")
+                r_sci = _escape(safe_str(result.get("scientific_name")) or "N/A")
+                r_type = _escape(safe_str(result.get("diagnosis_type")) or "N/A")
+
+                st.markdown(
+                    f'<div class="sub-block"><div class="sub-heading">{idx}. {r_name}</div>'
+                    f'<p><b>Crop:</b> {r_crop}<br><b>Scientific Name:</b> <i>{r_sci}</i><br><b>Type:</b> {r_type}<br><b>Score:</b> {result_percent}%<br><b>Image Alignment:</b> {boost_tag if boost_tag else "Low"}</p>'
+                    + (f'<p><b>Cause:</b> {cause_description}</p>' if cause_description else '') + '</div>',
+                    unsafe_allow_html=True,
+                )
+                with st.expander(f"Symptoms — {r_name}"):
+                    if symptoms:
+                        for item in symptoms:
+                            st.write(f"- {item}")
+                    else:
+                        st.write("No symptom data available.")
+                with st.expander(f"Management — {r_name}"):
+                    if management:
+                        for item in management:
+                            st.write(f"- {item}")
+                    else:
+                        st.write("No management data available.")
+        
