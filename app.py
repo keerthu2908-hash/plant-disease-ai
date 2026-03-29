@@ -6,7 +6,7 @@ from image_predictor import predict_disease_from_image, compute_image_weight
 from weather_utils import get_weather_data, calculate_risk
 
 st.set_page_config(
-    page_title="Crop AI Doctor",
+    page_title="Smart Crop Health Advisor",
     page_icon="🌿",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -723,7 +723,7 @@ st.markdown(
 <div class="hero-shell">
     <div class="hero-grid">
         <div class="hero-left">
-            <div class="hero-title">Crop AI Doctor</div>
+            <div class="hero-title">Smart Crop Health Advisor</div>
             <div class="hero-subtitle">
                 Upload a photo to diagnose plant diseases, review weather-driven risk,
                 and estimate field-level impact with a cleaner, decision-friendly dashboard.
