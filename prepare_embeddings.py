@@ -2,15 +2,17 @@ import json
 from embedder import create_embedding
 
 def build_search_text(entry):
-    return " ".join([
-        (entry.get("name", "") + " ") * 3,
-        (entry.get("crop", "") + " ") * 2,
-        entry.get("scientific_name", ""),
-        entry.get("diagnosis_type", ""),
-        entry.get("cause_description", ""),
-        " ".join(entry.get("symptoms", [])),
-        " ".join(entry.get("management", []))
-    ]).lower().strip()
+    return f"""
+    Crop: {entry.get('crop', '')}
+    Category: {entry.get('category', '')}
+    Type: {entry.get('diagnosis_type', '')}
+    Name: {entry.get('name', '')}
+    Scientific Name: {entry.get('scientific_name', '')}
+    Cause: {entry.get('cause_description', '')}
+    Symptoms: {'; '.join(entry.get('symptoms', []))}
+    Identification: {'; '.join(entry.get('identification', []))}
+    Management: {'; '.join(entry.get('management', []))}
+    """.lower().strip()
 
 input_file = "master_diseases.json"
 output_file = "master_diseases_embedded.json"

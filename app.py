@@ -761,7 +761,33 @@ with tab_diag:
             type=["jpg", "jpeg", "png"],
             help="Clear leaf images improve results.",
         )
-    
+        st.markdown("""
+        <style>
+
+        /* Upload box button (Browse files) */
+        div[data-testid="stFileUploader"] button {
+            background-color: black !important;
+            color: white !important;
+            border-radius: 8px !important;
+            border: none !important;
+            font-weight: 600 !important;
+            padding: 6px 14px !important;
+        }
+
+        /* Hover effect */
+        div[data-testid="stFileUploader"] button:hover {
+            background-color: #222 !important;
+            color: white !important;
+        }
+
+        /* Fix drag-drop area text visibility */
+        div[data-testid="stFileUploader"] {
+            color: #333 !important;
+        }
+
+        </style>
+        """, unsafe_allow_html=True)
+              
         user_input = st.text_area(
             "Enter Symptoms (optional)",
             placeholder="Example: white powder on leaves, yellow halo, curling, leaf spots, wilting, chewing damage",
@@ -1178,37 +1204,37 @@ if st.session_state.diag_result:
             )
         
     with tab_weather:
-            cols = st.columns(3)
-            metrics = [
+        cols = st.columns(3)
+        metrics = [
             ("Humidity", f"{r['weather_data'].get('humidity', 'N/A')}%", "Disease favorability"),
             ("Temperature", f"{r['weather_data'].get('temperature_c', 'N/A')}°C", "Ambient condition"),
             ("Risk Index", f"{r['risk_score']}", "Out of 100"),
         ]
-    for col, (title, value, foot) in zip(cols, metrics):
+        for col, (title, value, foot) in zip(cols, metrics):
             with col:
                 st.markdown(
                     f'<div class="metric-tile"><div class="metric-kicker">{title}</div><div class="metric-big">{value}</div><div class="metric-foot">{foot}</div></div>',
                     unsafe_allow_html=True,
                 )
-    st.markdown(
-        f'<div class="risk-banner {r["risk_class"]}">Disease Spread Alert: {r["risk_level"].title()}<br><span style="font-size:0.95rem; font-weight:700;">{_escape(str(r["risk_reason"]))}</span></div>',
-        unsafe_allow_html=True,
+        st.markdown(
+            f'<div class="risk-banner {r["risk_class"]}">Disease Spread Alert: {r["risk_level"].title()}<br><span style="font-size:0.95rem; font-weight:700;">{_escape(str(r["risk_reason"]))}</span></div>',
+            unsafe_allow_html=True,
         )
     
     with tab_profit:
-            cols = st.columns(3)
-            metrics = [
+        cols = st.columns(3)
+        metrics = [
             ("Diagnosis Confidence", f"{r['match_percent']}%", r['top_name']),
             ("Net Benefit", f"{r['profit_loss_icon']} ${r['roi_result']['net_benefit']}", r['profit_loss_label']),
             ("ROI", f"{r['roi_result']['roi_percent']}%", "Treatment outcome estimate"),
         ]
-    for col, (title, value, foot) in zip(cols, metrics):
+        for col, (title, value, foot) in zip(cols, metrics):
             with col:
                 st.markdown(
                     f'<div class="metric-tile"><div class="metric-kicker">{title}</div><div class="metric-big">{value}</div><div class="metric-foot">{foot}</div></div>',
                     unsafe_allow_html=True,
                 )
-            st.markdown(
+        st.markdown(
             f'<div class="sub-block"><div class="sub-heading">ROI Breakdown</div>'
             f'<p><b>Expected Revenue:</b> ${r["roi_result"]["expected_revenue_without_disease"]}<br>'
             f'<b>Estimated Disease Loss Value:</b> ${r["roi_result"]["estimated_loss_value"]}<br>'
@@ -1219,8 +1245,8 @@ if st.session_state.diag_result:
     
     if r["other_results"]:
         with tab_diag:
-                    st.markdown('<div class="section-title">Other Possible Matches</div>', unsafe_allow_html=True)
-        for idx, result in enumerate(r["other_results"], start=2):
+            st.markdown('<div class="section-title">Other Possible Matches</div>', unsafe_allow_html=True)
+            for idx, result in enumerate(r["other_results"], start=2):
                 symptoms = result.get("symptoms", [])
                 management = result.get("management", [])
                 cause_description = _escape(safe_str(result.get("cause_description")))
