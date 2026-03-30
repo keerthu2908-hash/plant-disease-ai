@@ -1,4 +1,6 @@
 streamlit
+langchain-openai
+langchain-core
 sentence-transformers
 pinecone
 pandas
