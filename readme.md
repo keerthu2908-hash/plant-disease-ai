@@ -1,60 +1,74 @@
-# 🌱 Plant Disease AI Assistant
+# 🌿 AI Crop Disease Diagnostic System
 
-An AI-powered web application that helps identify plant diseases using semantic search.  
-Users can search by disease name, crop, or symptoms — even with spelling mistakes.
-
-🔗 **Live App:** https://plant-disease-analyzer-bot.streamlit.app/  
-💻 **GitHub Repo:** https://github.com/keerthu2908-hash/plant-disease-ai
+An end-to-end AI-powered agricultural decision support system that combines **computer vision, RAG (Retrieval-Augmented Generation), and LLM reasoning** to diagnose plant diseases and provide actionable insights.
 
 ---
 
-## 🚀 Features
-
-- 🔍 Semantic search (understands meaning, not just keywords)
-- ✨ Works even with typos and spelling mistakes
-- 🌿 Covers multiple crops and plant diseases
-- 📊 Displays:
-  - Disease name
-  - Crop
-  - Symptoms
-  - Diagnosis
-  - Management
-  - Causal organism
-- ⚡ Fast and user-friendly interface
+## 🚀 Live Demo
+🔗 https://plant-disease-analyzer-bot.streamlit.app/
 
 ---
 
-## 🧠 How It Works (Simple Explanation)
+## 🧠 Key Features
 
-1. Plant disease data is stored in JSON format  
-2. Each disease is converted into vector embeddings  
-3. Stored in Pinecone (vector database)  
-4. User query → converted to embedding  
-5. Similar diseases are retrieved using semantic search  
+### 🔍 AI-Based Disease Diagnosis
+- Image-based classification using **MobileNetV2 (Hugging Face)**
+- Supports multi-crop disease detection
+- Confidence scoring (High / Moderate / Low)
+
+### 🔥 Explainable AI (Grad-CAM)
+- Visual heatmaps highlighting affected regions
+- Improves model transparency and trust
+
+### 📚 RAG-Based Symptom Analysis
+- Semantic search using **vector embeddings (sentence-transformers)**
+- Matches user symptoms with disease database (1000+ records)
+
+### 🤖 LLM Reasoning Layer
+- Integrated **OpenAI (GPT-4o-mini)** via LangChain
+- Generates short, human-readable explanations
+
+### 🔄 Agentic Workflow (LangGraph)
+- Multi-stage AI pipeline:
+  - Image prediction
+  - Symptom retrieval
+  - LLM explanation
+- Orchestrated using **LangGraph**
+
+### 🌦 Weather-Based Risk Analysis *(Optional / Extendable)*
+- Supports integration with weather APIs
+- Predicts disease spread likelihood
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-- Python  
-- Streamlit  
-- Sentence Transformers  
-- Pinecone  
+**Languages**
+- Python
+
+**AI / ML**
+- Hugging Face Transformers
+- PyTorch
+- Scikit-learn
+
+**GenAI & RAG**
+- OpenAI API
+- LangChain
+- LangGraph
+- Sentence Transformers
+
+**Explainability**
+- Grad-CAM
+- OpenCV
+
+**Frontend & Deployment**
+- Streamlit
+- GitHub
+- Streamlit Cloud
 
 ---
 
-## 📂 Project Structure
-
-plant-disease-ai/  
-├── app.py  
-├── embedder.py  
-├── retriever.py  
-├── pinecone_db.py  
-├── disease_data.json  
-├── requirements.txt  
-└── README.md  
-
----
+## 🏗 Architecture
 
 ## ▶️ How to Run Locally
 
