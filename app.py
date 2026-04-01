@@ -1,9 +1,14 @@
 import json
 import streamlit as st
 from retriever import find_best_matches
-from explainer import generate_explanation
+from llm_chain import generate_llm_explanation
+from explanation_utils import generate_dynamic_explanation
 from image_predictor import predict_disease_from_image, compute_image_weight
+from image_predictor import get_loaded_model
 from weather_utils import get_weather_data, calculate_risk
+from graph_flow import graph
+from gradcam_utils import generate_gradcam
+from PIL import Image
 
 st.set_page_config(
     page_title="Smart Crop Health Advisor",
@@ -156,6 +161,45 @@ html, body, [class*="css"]  {
     margin-bottom: 1rem;
     box-shadow: 0 16px 30px rgba(0,0,0,0.18);
 }
+.explain-box {
+    background: rgba(18, 18, 18, 0.82);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 22px;
+    padding: 1.2rem 1.3rem;
+    margin-top: 0.8rem;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.22);
+    backdrop-filter: blur(10px);
+}
+
+.explain-title {
+    color: #fffaf2;
+    font-size: 1.9rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.explain-subtitle {
+    color: #fff7ea;
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-top: 1rem;
+    margin-bottom: 0.7rem;
+}
+
+.explain-list {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.explain-list li {
+    color: #fffdf7 !important;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    font-weight: 600;
+    margin-bottom: 0.45rem;
+    text-shadow: none !important;
+}
+
 .result-header {
     display: flex;
     justify-content: space-between;
@@ -361,14 +405,128 @@ div[role="option"] {
 }
 div[role="option"]:hover { background: #ebe8dd !important; }
 
+/* ---------- FILE UPLOADER: full visibility fix ---------- */
+
 section[data-testid="stFileUploadDropzone"] {
-    background: rgba(255,255,255,0.04) !important;
-    border: 1.5px dashed rgba(255,255,255,0.18) !important;
+    background: rgba(255,255,255,0.96) !important;
+    border: 1.5px dashed rgba(0,0,0,0.18) !important;
     border-radius: 22px !important;
     min-height: 130px !important;
 }
+
 section[data-testid="stFileUploadDropzone"] * {
-    color: #f6f2e7 !important;
+    color: #1f2937 !important;
+    fill: #1f2937 !important;
+    stroke: #1f2937 !important;
+}
+
+/* drag-drop title + helper text */
+section[data-testid="stFileUploadDropzone"] small,
+section[data-testid="stFileUploadDropzone"] span,
+section[data-testid="stFileUploadDropzone"] p,
+section[data-testid="stFileUploadDropzone"] div {
+    color: #1f2937 !important;
+}
+
+/* browse files button */
+div[data-testid="stFileUploader"] button {
+    background: #111111 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border-radius: 10px !important;
+    border: 1px solid #111111 !important;
+    font-weight: 700 !important;
+}
+
+div[data-testid="stFileUploader"] button * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+div[data-testid="stFileUploader"] button:hover {
+    background: #222222 !important;
+    color: #ffffff !important;
+    border-color: #222222 !important;
+}
+
+/* uploaded file row */
+div[data-testid="stFileUploaderFile"] {
+    background: rgba(255,255,255,0.10) !important;
+    border: 1px solid rgba(255,255,255,0.16) !important;
+    border-radius: 14px !important;
+    padding: 0.35rem 0.55rem !important;
+}
+
+div[data-testid="stFileUploaderFile"] * {
+    color: #f8fafc !important;
+    fill: #f8fafc !important;
+    stroke: #f8fafc !important;
+}
+
+/* remove / clear / toolbar icon buttons near uploaded file */
+div[data-testid="stFileUploader"] [role="button"],
+div[data-testid="stFileUploader"] button[kind="icon"],
+div[data-testid="stFileUploader"] .st-emotion-cache-1erivf3,
+div[data-testid="stFileUploader"] .st-emotion-cache-1pbsqtx {
+    background: #111111 !important;
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-radius: 10px !important;
+}
+
+/* specifically force SVG icons visible */
+div[data-testid="stFileUploader"] svg {
+    fill: currentColor !important;
+    stroke: currentColor !important;
+    color: inherit !important;
+}
+
+/* file uploader labels */
+div[data-testid="stFileUploader"] label,
+div[data-testid="stFileUploader"] label p,
+div[data-testid="stFileUploader"] label span {
+    color: #fffef8 !important;
+    font-weight: 800 !important;
+}
+
+/* ensure aria/title icon buttons are fully visible */
+div[data-testid="stFileUploader"] [aria-label],
+div[data-testid="stFileUploader"] [title] {
+    opacity: 1 !important;
+}
+
+/* ---------- TOOLTIP FIX (IMPORTANT) ---------- */
+
+div[data-testid="stTooltipContent"],
+div[data-testid="stTooltipContent"] * {
+    background: rgba(20,20,20,0.9) !important;
+    backdrop-filter: blur(6px);
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    padding: 6px 10px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+}
+
+/* arrow of tooltip */
+div[data-testid="stTooltipContent"]::before {
+    background: rgba(20,20,20,0.9) !important;
+}
+
+/* ensure tooltip text is never white-on-white */
+div[data-testid="stTooltipContent"] span,
+div[data-testid="stTooltipContent"] p {
+    color: #ffffff !important;
+}
+
+/* make the info icon visible */
+div[data-testid="stFileUploader"] svg {
+    color: #111111 !important;
+    fill: #111111 !important;
 }
 
 
@@ -436,8 +594,12 @@ img {
     border-radius: 20px;
 }
 
-small, p, li, span {
+small, p, span {
     color: #f2eee1;
+}
+
+li {
+    color: #fffdf7;
 }
 
 @media (max-width: 900px) {
@@ -761,33 +923,6 @@ with tab_diag:
             type=["jpg", "jpeg", "png"],
             help="Clear leaf images improve results.",
         )
-        st.markdown("""
-        <style>
-
-        /* Upload box button (Browse files) */
-        div[data-testid="stFileUploader"] button {
-            background-color: black !important;
-            color: white !important;
-            border-radius: 8px !important;
-            border: none !important;
-            font-weight: 600 !important;
-            padding: 6px 14px !important;
-        }
-
-        /* Hover effect */
-        div[data-testid="stFileUploader"] button:hover {
-            background-color: #222 !important;
-            color: white !important;
-        }
-
-        /* Fix drag-drop area text visibility */
-        div[data-testid="stFileUploader"] {
-            color: #333 !important;
-        }
-
-        </style>
-        """, unsafe_allow_html=True)
-              
         user_input = st.text_area(
             "Enter Symptoms (optional)",
             placeholder="Example: white powder on leaves, yellow halo, curling, leaf spots, wilting, chewing damage",
@@ -988,7 +1123,25 @@ if run_check:
                     dataset_records=filtered_data,
                 )
         except Exception as e:
-            st.error(f"Image prediction failed: {e}")
+            gradcam_image = None
+            print("Grad-CAM DEBUG:", e)  # console only
+
+    gradcam_image = None
+
+    if uploaded_file is not None:
+        try:
+            uploaded_file.seek(0)
+            pil_img = Image.open(uploaded_file).convert("RGB")
+
+            model, processor = get_loaded_model()
+
+            if model is not None and processor is not None:
+                gradcam_image = generate_gradcam(model, processor, pil_img)
+            else:
+                st.warning("Grad-CAM skipped: model or processor not loaded.")
+
+        except Exception as e:
+            st.warning(f"Grad-CAM failed: {e}")
 
     image_weight = compute_image_weight(
         trust_level=image_result.get("trust_level", "NONE"),
@@ -1024,13 +1177,45 @@ if run_check:
         weather=weather_data,
     )
 
-    explanation = generate_explanation(
+    llm_output = generate_llm_explanation(
         disease=top_result.get("name"),
         symptoms=top_result.get("symptoms"),
         weather=weather_data,
+    
+    )
+    # 🔥 LANGGRAPH STARTS HERE
+    
+    score = float(top_result.get("combined_score", top_result.get("score", 0.0)))
+
+    state = {
+        "results": results,
+        "llm_output": llm_output,
+        "confidence": score,
+        "weather": weather_data,
+    }
+
+    final = graph.invoke(state)
+    if final.get("warning"):
+        st.warning(final["warning"])
+    if final.get("weather_risk"):
+        st.info(final["weather_risk"])
+
+    results = final["results"]
+    llm_output = final["llm_output"]
+    best_prediction = image_result.get("best_prediction") or {}
+    user_selected_symptoms = [part.strip() for part in user_input.split(",") if part.strip()]
+    humidity = weather_data.get("humidity")
+    temperature = weather_data.get("temperature_c")
+    explanation = generate_dynamic_explanation(
+        disease_name=best_prediction.get("normalized_label") or top_result.get("name", ""),
+        symptoms=user_selected_symptoms,
+        weather={
+            "humidity": humidity,
+            "temperature": temperature,
+        },
+        confidence=best_prediction.get("score", score),
     )
 
-    score = float(top_result.get("combined_score", top_result.get("score", 0.0)))
     confidence_label, conf_color = get_confidence_label(score)
     match_percent = estimate_match_percent(score)
 
@@ -1079,6 +1264,7 @@ if run_check:
         "risk_class": risk_class,
         "severity": severity,
         "explanation": explanation,
+        "gradcam_image": gradcam_image,
         "score": score,
         "match_percent": match_percent,
         "confidence_label": confidence_label,
@@ -1138,9 +1324,33 @@ if st.session_state.diag_result:
                     unsafe_allow_html=True,
                 )
         
-            st.markdown('<div class="result-card">', unsafe_allow_html=True)
-            st.markdown('<div class="sub-heading">Explanation</div>', unsafe_allow_html=True)
-            st.write(r["explanation"])
+            st.markdown('<div class="explain-box">', unsafe_allow_html=True)
+            st.markdown('<div class="explain-title">Explanation</div>', unsafe_allow_html=True)
+
+            explanation = r.get("explanation") or {}
+            if isinstance(explanation, dict):
+                why_match = explanation.get("why_match", [])
+                difference = explanation.get("difference", [])
+
+                st.markdown('<div class="explain-subtitle">1. Why This Disease Matches</div>', unsafe_allow_html=True)
+                st.markdown(
+                    "<ul class='explain-list'>" +
+                    "".join([f"<li>{item}</li>" for item in why_match]) +
+                    "</ul>",
+                    unsafe_allow_html=True,
+                )
+
+                st.markdown('<div class="explain-subtitle">2. What Makes It Different from Similar Diseases</div>', unsafe_allow_html=True)
+                st.markdown(
+                    "<ul class='explain-list'>" +
+                    "".join([f"<li>{item}</li>" for item in difference]) +
+                    "</ul>",
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.write(explanation)
+
+            st.markdown("</div>", unsafe_allow_html=True)
         
             with st.expander("Symptoms of likely diagnosis", expanded=True):
                 if r["top_symptoms"]:
@@ -1161,6 +1371,14 @@ if st.session_state.diag_result:
             if r["uploaded_file"] is not None:
                 r["uploaded_file"].seek(0)
                 st.image(r["uploaded_file"], use_container_width=True)
+                if r.get("gradcam_image") is not None:
+                    st.markdown("### 🔍 AI Focus (Grad-CAM)")
+                    st.image(r["gradcam_image"], use_container_width=True)
+                else:
+                    st.markdown(
+                        '<div class="notice-box">Grad-CAM is not available for this prediction yet, but the uploaded image was used for diagnosis.</div>',
+                        unsafe_allow_html=True,
+                    )
             else:
                 st.markdown(
                     '<div class="notice-box">No image was uploaded for this diagnosis. Results are based on symptom text and retrieval.</div>',
@@ -1168,8 +1386,17 @@ if st.session_state.diag_result:
                 )
 
             if r["image_result"].get("predictions"):
+                filtered_preds = [
+                    p for p in r["image_result"]["predictions"]
+                    if p["crop_relevant"]
+                ]
+                
+                if not filtered_preds:
+                    st.warning("No crop-specific match found. Showing closest visual matches.")
+                    filtered_preds = r["image_result"]["predictions"]
+                
                 st.markdown('<div class="sub-heading" style="margin-top:0.8rem;">Image Model Predictions</div>', unsafe_allow_html=True)
-                for p in r["image_result"]["predictions"][:5]:
+                for p in filtered_preds[:5]:
                     pct = int(round(p["score"] * 100))
                     color = "#2fb36d" if pct >= 90 else "#f59e0b" if pct >= 75 else "#ef4444"
                     label_display = _escape(p["normalized_label"])
