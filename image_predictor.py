@@ -12,7 +12,9 @@ THRESHOLD_STRONG = 0.90
 THRESHOLD_MODERATE = 0.75
 THRESHOLD_WEAK = 0.75
 
-_model = None
+_model_mobilenet = None
+_model_resnet = None
+_model_efficientnet = None
 _processor = None
 
 
@@ -38,16 +40,37 @@ class ManualImageProcessor:
         return {"pixel_values": tensor}
 
 
-def _get_classifier():
-    global _model, _processor
+def _get_classifiers():
+    global _model_mobilenet, _model_resnet, _model_efficientnet, _processor
 
-    if _model is None or _processor is None:
-        model_name = "linkanjarad/mobilenet_v2_1.0_224-plant-disease-identification"
-        _model = AutoModelForImageClassification.from_pretrained(model_name)
-        _model.eval()
+    if _model_mobilenet is None:
+        _model_mobilenet = AutoModelForImageClassification.from_pretrained(
+            "linkanjarad/mobilenet_v2_1.0_224-plant-disease-identification"
+        )
+        _model_mobilenet.eval()
+
+    if _model_resnet is None:
+        _model_resnet = AutoModelForImageClassification.from_pretrained(
+            "microsoft/resnet-50"
+        )
+        _model_resnet.eval()
+
+    if _model_efficientnet is None:
+        _model_efficientnet = AutoModelForImageClassification.from_pretrained(
+            "google/efficientnet-b0"
+        )
+        _model_efficientnet.eval()
+
+    if _processor is None:
         _processor = ManualImageProcessor()
 
-    return _model, _processor
+    return _model_mobilenet, _model_resnet, _model_efficientnet, _processor
+
+
+def _get_classifier():
+    # Backward-compatible single-model accessor.
+    model_mobilenet, _, _, processor = _get_classifiers()
+    return model_mobilenet, processor
 
 
 def get_loaded_model():
@@ -107,6 +130,9 @@ CROP_KEYWORDS_IN_LABELS = {
 }
 
 
+NON_DISEASE_LABELS = {"healthy", "background"}
+
+
 def normalize_label(raw_label: str) -> str:
     cleaned = raw_label.replace("_", " ").replace("-", " ")
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
@@ -129,24 +155,67 @@ def check_crop_relevance(predicted_label: str, selected_crop: str) -> bool:
     label_lower = predicted_label.lower().replace("_", " ").replace("-", " ")
     crop_lower = selected_crop.lower()
 
-    if crop_lower in label_lower:
-        return True
+    supported_crop_names = {
+        name.lower()
+        for names in CROP_KEYWORDS_IN_LABELS.values()
+        for name in names
+    }
+    supported_crop_keys = {key.lower() for key in CROP_KEYWORDS_IN_LABELS}
 
-    for crop_key, crop_names in CROP_KEYWORDS_IN_LABELS.items():
-        if crop_lower in [n.lower() for n in crop_names] or crop_lower == crop_key:
-            for name in crop_names:
-                if name.lower() in label_lower:
-                    return True
+    # If selected crop is supported, use normal matching.
+    if crop_lower in supported_crop_keys or crop_lower in supported_crop_names:
+        if crop_lower in label_lower:
+            return True
 
-    has_any_crop = any(
+        for crop_key, crop_names in CROP_KEYWORDS_IN_LABELS.items():
+            if crop_lower in [n.lower() for n in crop_names] or crop_lower == crop_key:
+                for name in crop_names:
+                    if name.lower() in label_lower:
+                        return True
+
+        has_any_crop = any(
+            name.lower() in label_lower
+            for names in CROP_KEYWORDS_IN_LABELS.values()
+            for name in names
+        )
+        if not has_any_crop:
+            return True
+
+        return False
+
+    # If selected crop is unsupported (for example, okra), reject labels
+    # that explicitly mention any known other crop.
+    has_known_other_crop = any(
         name.lower() in label_lower
         for names in CROP_KEYWORDS_IN_LABELS.values()
         for name in names
     )
-    if not has_any_crop:
-        return True
 
-    return False
+    if has_known_other_crop:
+        return False
+
+    return True
+
+
+def get_first_usable_image_label(image_result: dict) -> str:
+    """
+    Return the first non-healthy, non-background normalized label
+    from best_prediction or predictions list.
+    """
+    if not image_result:
+        return ""
+
+    best = image_result.get("best_prediction") or {}
+    best_label = str(best.get("normalized_label") or best.get("label") or "").strip()
+    if best_label and best_label.lower() not in NON_DISEASE_LABELS:
+        return best_label
+
+    for pred in image_result.get("predictions", []) or []:
+        label = str(pred.get("normalized_label") or pred.get("label") or "").strip()
+        if label and label.lower() not in NON_DISEASE_LABELS:
+            return label
+
+    return ""
 
 
 def get_confidence_tier(score: float) -> str:
@@ -178,6 +247,26 @@ def label_matches_dataset(normalized_label: str, dataset_records: list) -> bool:
     return False
 
 
+def is_plant_image(image: Image.Image) -> bool:
+    """
+    Basic plant vs non-plant detection.
+    Returns True if likely plant, else False.
+    """
+    try:
+        img = image.resize((64, 64))
+        pixels = list(img.getdata())
+
+        green_pixels = 0
+        for r, g, b in pixels:
+            if g > r and g > b:
+                green_pixels += 1
+
+        ratio = green_pixels / len(pixels)
+        return ratio > 0.15
+    except Exception:
+        return True
+
+
 def predict_disease_from_image(uploaded_file, selected_crop: str = "All", dataset_records: list = None) -> dict:
     result = {
         "predictions": [],
@@ -189,22 +278,52 @@ def predict_disease_from_image(uploaded_file, selected_crop: str = "All", datase
 
     try:
         image = Image.open(uploaded_file).convert("RGB")
+
+        if not is_plant_image(image):
+            result["warning"] = "❌ Uploaded image does not appear to be a plant. Please upload a clear crop/leaf image."
+            result["trust_level"] = "NONE"
+            result["trust_image"] = False
+            return result
     except Exception as e:
         result["warning"] = f"Failed to read image: {e}"
         return result
 
     try:
-        model, processor = _get_classifier()
+        model1, model2, model3, processor = _get_classifiers()
         inputs = processor(images=image, return_tensors="pt")
 
-        with torch.no_grad():
-            outputs = model(**inputs)
+        def run_model(model, model_inputs):
+            with torch.no_grad():
+                outputs = model(**model_inputs)
+            probs_tensor = torch.nn.functional.softmax(outputs.logits[0], dim=-1)
+            return probs_tensor
 
-        probs = torch.nn.functional.softmax(outputs.logits[0], dim=-1)
+        valid_probs = []
+        valid_models = []
+
+        for model in [model1, model2, model3]:
+            try:
+                probs_tensor = run_model(model, inputs)
+
+                if valid_probs and probs_tensor.shape != valid_probs[0].shape:
+                    continue
+
+                valid_probs.append(probs_tensor)
+                valid_models.append(model)
+            except Exception:
+                continue
+
+        if not valid_probs:
+            result["warning"] = "Image model failed: no valid model outputs available."
+            return result
+
+        probs = sum(valid_probs) / len(valid_probs)
+
         top_k = min(5, probs.shape[0])
         top_scores, top_indices = torch.topk(probs, k=top_k)
 
-        id2label = getattr(model.config, "id2label", {}) or {}
+        label_model = valid_models[0]
+        id2label = getattr(label_model.config, "id2label", {}) or {}
         raw_predictions = [
             {
                 "label": id2label.get(int(idx.item()), str(int(idx.item()))),
@@ -244,14 +363,24 @@ def predict_disease_from_image(uploaded_file, selected_crop: str = "All", datase
 
     best = None
     for p in processed:
-        if p["normalized_label"].lower() in ("healthy", "background"):
+        if p["normalized_label"].lower() in NON_DISEASE_LABELS:
             continue
 
         if p["confidence_tier"] == "STRONG" and p["crop_relevant"]:
             best = p
             break
-        elif p["confidence_tier"] == "MODERATE" and p["crop_relevant"] and best is None:
+        elif p["confidence_tier"] == "STRONG" and best is None:
             best = p
+
+    if best is None:
+        for p in processed:
+            if p["normalized_label"].lower() in NON_DISEASE_LABELS:
+                continue
+            if p["confidence_tier"] == "MODERATE" and p["crop_relevant"]:
+                best = p
+                break
+            elif p["confidence_tier"] == "MODERATE" and best is None:
+                best = p
 
     if best:
         result["best_prediction"] = best

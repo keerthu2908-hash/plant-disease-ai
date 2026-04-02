@@ -187,132 +187,11 @@ html, body, [class*="css"] {
     padding: 0.75rem 0.25rem;
 }
 
-.uploaded-images-shell [data-testid="stImage"] img {
-    border-radius: 16px;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-}
-.uploaded-image-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.16);
-    border-radius: 16px;
-    padding: 0.45rem;
-    margin-bottom: 0.65rem;
-}
-.uploaded-image-card.primary {
-    border-color: rgba(49, 184, 108, 0.95);
-    box-shadow: 0 0 0 1px rgba(49,184,108,0.45), 0 14px 30px rgba(31,143,82,0.24);
-}
-.uploaded-image-name {
-    color: #f8fafc;
-    font-size: 0.78rem;
-    font-weight: 700;
-    margin: 0.25rem 0 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.uploaded-image-tag {
-    color: #e2e8f0;
-    font-size: 0.74rem;
-    font-weight: 700;
-    margin: 0.18rem 0 0;
-}
-
 .upload-shell {
     border: 1px solid rgba(15,23,42,0.08);
     background: rgba(255,255,255,0.44);
     border-radius: 22px;
     padding: 0.55rem;
-}
-
-/* File uploader action controls: force strong contrast and consistent visibility */
-div[data-testid="stFileUploader"] {
-    --uploader-action-bg: #0f172a;
-    --uploader-action-bg-hover: #1e293b;
-    --uploader-action-border: rgba(255,255,255,0.22);
-}
-div[data-testid="stFileUploader"] button,
-div[data-testid="stFileUploader"] [role="button"] {
-    color: #ffffff !important;
-    background: var(--uploader-action-bg) !important;
-    border: 1px solid var(--uploader-action-border) !important;
-    border-radius: 10px !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    box-shadow: 0 8px 18px rgba(2, 6, 23, 0.35) !important;
-}
-div[data-testid="stFileUploader"] button:hover,
-div[data-testid="stFileUploader"] [role="button"]:hover {
-    background: var(--uploader-action-bg-hover) !important;
-    border-color: rgba(255,255,255,0.36) !important;
-}
-div[data-testid="stFileUploader"] button:focus,
-div[data-testid="stFileUploader"] [role="button"]:focus,
-div[data-testid="stFileUploader"] button:focus-visible,
-div[data-testid="stFileUploader"] [role="button"]:focus-visible {
-    outline: 2px solid rgba(148, 163, 184, 0.9) !important;
-    outline-offset: 1px !important;
-}
-
-/* Ensure uploader SVG icons are always visible */
-div[data-testid="stFileUploader"] button svg,
-div[data-testid="stFileUploader"] [role="button"] svg,
-div[data-testid="stFileUploader"] button svg *,
-div[data-testid="stFileUploader"] [role="button"] svg * {
-    color: #ffffff !important;
-    fill: #ffffff !important;
-    stroke: #ffffff !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-/* Uploaded file rows: readable filename + visible remove action */
-div[data-testid="stFileUploader"] [data-testid*="FileUploader"],
-div[data-testid="stFileUploader"] [class*="uploadedFile"],
-div[data-testid="stFileUploader"] [class*="fileUploaderFile"] {
-    color: #f8fafc !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-div[data-testid="stFileUploader"] p,
-div[data-testid="stFileUploader"] span,
-div[data-testid="stFileUploader"] small {
-    color: #f8fafc !important;
-    opacity: 1 !important;
-}
-
-/* Add-more / browse area: keep control visible after initial upload */
-div[data-testid="stFileUploaderDropzone"],
-div[data-testid="stFileUploader"] section {
-    border-radius: 14px !important;
-}
-div[data-testid="stFileUploaderDropzone"] [data-testid="stMarkdownContainer"] p,
-div[data-testid="stFileUploaderDropzone"] [data-testid="stMarkdownContainer"] span,
-div[data-testid="stFileUploaderDropzone"] small,
-div[data-testid="stFileUploaderDropzoneInstructions"] p,
-div[data-testid="stFileUploaderDropzoneInstructions"] span,
-div[data-testid="stFileUploader"] [data-testid="stFileUploaderDropzone"] p {
-    color: #000000 !important;
-    fill: #000000 !important;
-    stroke: #000000 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    font-weight: 400 !important;
-    text-shadow: none !important;
-}
-div[data-testid="stFileUploader"] [aria-label*="Browse" i],
-div[data-testid="stFileUploader"] [aria-label*="Add" i],
-div[data-testid="stFileUploader"] [title*="Browse" i],
-div[data-testid="stFileUploader"] [title*="Add" i],
-div[data-testid="stFileUploader"] [aria-label*="Remove" i],
-div[data-testid="stFileUploader"] [title*="Remove" i] {
-    color: #ffffff !important;
-    background: var(--uploader-action-bg) !important;
-    border: 1px solid var(--uploader-action-border) !important;
-    border-radius: 10px !important;
-    opacity: 1 !important;
-    visibility: visible !important;
 }
 
 .result-card {
@@ -687,6 +566,47 @@ section[data-testid="stFileUploadDropzone"] * {
     fill: #1f2937 !important;
     stroke: #1f2937 !important;
 }
+
+/* Uploaded file row visibility fix (applies only after a file is selected) */
+div[data-testid="stFileUploader"] div[data-testid="stFileUploaderFile"] {
+    background: rgba(15,23,42,0.88) !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    border-radius: 12px !important;
+    padding: 8px 10px !important;
+}
+div[data-testid="stFileUploader"] div[data-testid="stFileUploaderFileName"],
+div[data-testid="stFileUploader"] div[data-testid="stFileUploaderFile"] small,
+div[data-testid="stFileUploader"] div[data-testid="stFileUploaderFile"] span,
+div[data-testid="stFileUploader"] section[data-testid="stFileUploadDropzone"] + div small {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
+}
+div[data-testid="stFileUploader"] div[data-testid="stFileUploaderFile"] svg,
+div[data-testid="stFileUploader"] section[data-testid="stFileUploadDropzone"] + div svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    opacity: 1 !important;
+}
+div[data-testid="stFileUploader"] div[data-testid="stFileUploaderFile"] button {
+    background: rgba(255,255,255,0.14) !important;
+    border: 1px solid rgba(255,255,255,0.26) !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+div[data-testid="stFileUploader"] div[data-testid="stFileUploaderFile"] button * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    opacity: 1 !important;
+}
+div[data-testid="stFileUploader"] div[data-testid="stFileUploaderFile"] button:hover {
+    background: rgba(255,255,255,0.24) !important;
+    border-color: rgba(255,255,255,0.34) !important;
+}
+
 div[data-testid="stFileUploader"] button {
     background: #0f172a !important;
     color: #ffffff !important;
@@ -926,6 +846,49 @@ body .stApp h6 {
     color: #ffffff !important;
 }
 
+/* HIDE EMPTY MARKDOWN-CREATED WRAPPER DIVS */
+.panel-card:empty,
+.result-card:empty,
+.preview-card:empty,
+.notice-box:empty,
+.sub-block:empty,
+.metric-tile:empty,
+.ring-wrap:empty,
+.metric-grid-2:empty,
+.metric-grid-3:empty,
+.soft-chip-row:empty {
+    display: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    min-height: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+}
+
+/* Streamlit wraps each st.markdown call; opening wrapper divs can become visible empty cards */
+div[data-testid="stMarkdownContainer"] > div.panel-card:empty,
+div[data-testid="stMarkdownContainer"] > div.result-card:empty,
+div[data-testid="stMarkdownContainer"] > div.preview-card:empty,
+div[data-testid="stMarkdownContainer"] > div.notice-box:empty,
+div[data-testid="stMarkdownContainer"] > div.sub-block:empty,
+div[data-testid="stMarkdownContainer"] > div.metric-tile:empty {
+    display: none !important;
+}
+
+/* Remove accidental empty placeholder blocks without affecting populated cards */
+div[data-testid="stMarkdownContainer"] > div:empty {
+    display: none !important;
+}
+
+/* Extra guard against rounded white bars generated by standalone opening tags */
+div.result-card.diagnosis-surface:empty,
+div.preview-card:empty,
+div.panel-card.input-panel:empty {
+    display: none !important;
+}
+
 </style>
 """,
     unsafe_allow_html=True,
@@ -1098,83 +1061,6 @@ def determine_evidence_source(image_result: dict, image_weight: float, has_sympt
     return "Image prediction unreliable, limited evidence"
 
 
-def trust_level_priority(trust_level: str) -> int:
-    rank = {
-        "NONE": 0,
-        "WEAK": 1,
-        "MODERATE": 2,
-        "STRONG": 3,
-    }
-    return rank.get(str(trust_level).upper(), 0)
-
-
-def select_best_image_result(image_results: list) -> dict:
-    best_item = None
-    best_rank = (-1, -1, -1, -1.0)
-
-    for item in image_results:
-        result = item.get("image_result") or {}
-        best_prediction = result.get("best_prediction") or {}
-
-        has_valid_prediction = 1 if best_prediction else 0
-        crop_relevant = 1 if bool(best_prediction.get("crop_relevant")) else 0
-        trust_rank = trust_level_priority(result.get("trust_level", "NONE"))
-        pred_score = float(best_prediction.get("score", 0.0) or 0.0)
-
-        current_rank = (has_valid_prediction, crop_relevant, trust_rank, pred_score)
-        if current_rank > best_rank:
-            best_rank = current_rank
-            best_item = item
-
-    return best_item
-
-
-def serialize_uploaded_images(uploaded_files: list) -> list:
-    serialized = []
-    for idx, file_obj in enumerate(uploaded_files or []):
-        try:
-            file_obj.seek(0)
-            image_bytes = file_obj.read()
-            file_obj.seek(0)
-            if image_bytes:
-                serialized.append(
-                    {
-                        "name": file_obj.name or f"image_{idx + 1}.png",
-                        "bytes": image_bytes,
-                    }
-                )
-        except Exception:
-            continue
-    return serialized
-
-
-def render_uploaded_images_grid(images: list, selected_index: int = None):
-    if not images:
-        return
-
-    col_count = 1 if len(images) == 1 else (2 if len(images) <= 4 else 3)
-
-    st.markdown('<div class="uploaded-images-shell">', unsafe_allow_html=True)
-    for row_start in range(0, len(images), col_count):
-        row_items = images[row_start : row_start + col_count]
-        cols = st.columns(col_count, gap="small")
-        for col_idx, image_item in enumerate(row_items):
-            absolute_idx = row_start + col_idx
-            with cols[col_idx]:
-                is_primary = selected_index is not None and absolute_idx == selected_index
-                card_class = "uploaded-image-card primary" if is_primary else "uploaded-image-card"
-                label = "Primary image used for diagnosis" if is_primary else "Supporting image"
-                image_name = _escape(str(image_item.get("name", f"Image {absolute_idx + 1}")))
-                image_data = image_item.get("data") or image_item.get("bytes")
-
-                st.markdown(f'<div class="{card_class}">', unsafe_allow_html=True)
-                st.image(image_data, use_container_width=True)
-                st.markdown(f'<div class="uploaded-image-name">{image_name}</div>', unsafe_allow_html=True)
-                st.markdown(f'<div class="uploaded-image-tag">{label}</div>', unsafe_allow_html=True)
-                st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-
 def calculate_roi(area_acres, expected_yield_per_acre, market_price_per_unit, disease_loss_percent, recovery_percent, treatment_cost):
     total_expected_yield = area_acres * expected_yield_per_acre
     expected_revenue_without_disease = total_expected_yield * market_price_per_unit
@@ -1313,7 +1199,7 @@ st.markdown(
             </div>
         </div>
         <div class="hero-right">
-            <p class="mini-note"><b>Best results:</b> upload one or more clear leaf images and add 1–2 symptom phrases such as powdery growth, yellow halo, leaf spot, curling, wilting, chewing damage, or blight.</p>
+            <p class="mini-note"><b>Best results:</b> upload one clear leaf image and add 1–2 symptom phrases such as powdery growth, yellow halo, leaf spot, curling, wilting, chewing damage, or blight.</p>
         </div>
     </div>
 </div>
@@ -1334,10 +1220,9 @@ with tab_diag:
 
     with left_input:
         st.markdown('<div class="panel-card input-panel">', unsafe_allow_html=True)
-        uploaded_files = st.file_uploader(
-            "Upload Plant Images",
+        uploaded_file = st.file_uploader(
+            "Upload Plant Image",
             type=["jpg", "jpeg", "png"],
-            accept_multiple_files=True,
             help="Clear leaf images improve results.",
         )
         user_input = st.text_area(
@@ -1361,28 +1246,13 @@ with tab_diag:
 
     with right_input:
         st.markdown('<div class="preview-card">', unsafe_allow_html=True)
-        st.markdown('<div class="preview-title">Uploaded Images</div>', unsafe_allow_html=True)
-        selected_preview_index = None
-        if st.session_state.diag_result:
-            selected_preview_name = st.session_state.diag_result.get("selected_best_image_name")
-            if selected_preview_name:
-                for idx, file_obj in enumerate(uploaded_files or []):
-                    if file_obj.name == selected_preview_name:
-                        selected_preview_index = idx
-                        break
-
-        if uploaded_files:
-            preview_images = [
-                {
-                    "name": file_obj.name or f"Image {idx + 1}",
-                    "data": file_obj,
-                }
-                for idx, file_obj in enumerate(uploaded_files)
-            ]
-            render_uploaded_images_grid(preview_images, selected_index=selected_preview_index)
+        st.markdown('<div class="preview-title">Leaf Preview</div>', unsafe_allow_html=True)
+        if uploaded_file is not None:
+            uploaded_file.seek(0)
+            st.image(uploaded_file, use_container_width=True)
         else:
             st.markdown(
-                '<div class="preview-empty">No images uploaded yet.<br>Your previews will appear here once you upload plant photos.</div>',
+                '<div class="preview-empty">No image uploaded yet.<br>Your preview will appear here once you upload a plant photo.</div>',
                 unsafe_allow_html=True,
             )
         st.markdown('</div>', unsafe_allow_html=True)
@@ -1527,8 +1397,8 @@ if run_check:
         st.warning("Please select a crop item, not the category heading.")
         st.stop()
 
-    if not user_input.strip() and not uploaded_files:
-        st.warning("Please enter symptoms or upload at least one image.")
+    if not user_input.strip() and uploaded_file is None:
+        st.warning("Please enter symptoms or upload an image.")
         st.stop()
 
     filtered_data = apply_filters(data, selected_crop if selected_crop else "All", selected_diagnosis_type)
@@ -1547,55 +1417,26 @@ if run_check:
         "trust_level": "NONE",
         "warning": "",
     }
-    image_results = []
-    selected_best_image_index = None
-    selected_best_image_name = ""
 
-    if uploaded_files:
-        with st.spinner("Analyzing uploaded images..."):
-            for idx, file_obj in enumerate(uploaded_files):
-                try:
-                    file_obj.seek(0)
-                    result = predict_disease_from_image(
-                        file_obj,
-                        selected_crop=crop_for_search,
-                        dataset_records=filtered_data,
-                    )
-                    image_results.append(
-                        {
-                            "index": idx,
-                            "name": file_obj.name or f"image_{idx + 1}",
-                            "image_result": result,
-                        }
-                    )
-                except Exception as e:
-                    image_results.append(
-                        {
-                            "index": idx,
-                            "name": file_obj.name or f"image_{idx + 1}",
-                            "image_result": {
-                                "predictions": [],
-                                "best_prediction": None,
-                                "trust_image": False,
-                                "trust_level": "NONE",
-                                "warning": f"Image analysis failed: {e}",
-                            },
-                        }
-                    )
-
-        selected_image = select_best_image_result(image_results)
-        if selected_image:
-            image_result = selected_image.get("image_result", image_result)
-            selected_best_image_index = selected_image.get("index")
-            selected_best_image_name = selected_image.get("name", "")
+    if uploaded_file is not None:
+        try:
+            uploaded_file.seek(0)
+            with st.spinner("Analyzing uploaded image..."):
+                image_result = predict_disease_from_image(
+                    uploaded_file,
+                    selected_crop=crop_for_search,
+                    dataset_records=filtered_data,
+                )
+        except Exception as e:
+            gradcam_image = None
+            print("Grad-CAM DEBUG:", e)
 
     gradcam_image = None
 
-    if uploaded_files and selected_best_image_index is not None:
+    if uploaded_file is not None:
         try:
-            selected_file = uploaded_files[selected_best_image_index]
-            selected_file.seek(0)
-            pil_img = Image.open(selected_file).convert("RGB")
+            uploaded_file.seek(0)
+            pil_img = Image.open(uploaded_file).convert("RGB")
             model, processor = get_loaded_model()
             if model is not None and processor is not None:
                 gradcam_image = generate_gradcam(model, processor, pil_img)
@@ -1740,10 +1581,7 @@ if run_check:
         "roi_result": roi_result,
         "profit_loss_label": profit_loss_label,
         "profit_loss_icon": profit_loss_icon,
-        "uploaded_files": serialize_uploaded_images(uploaded_files),
-        "selected_best_image_index": selected_best_image_index,
-        "selected_best_image_name": selected_best_image_name,
-        "image_results": image_results,
+        "uploaded_file": uploaded_file,
     }
 
 # ─────────────────────────────────────────────
@@ -1878,15 +1716,13 @@ if st.session_state.diag_result:
             st.markdown('<div class="side-stack">', unsafe_allow_html=True)
 
             st.markdown('<div class="result-card">', unsafe_allow_html=True)
-            st.markdown('<div class="sub-heading" style="color:#0f172a !important;">Uploaded Images</div>', unsafe_allow_html=True)
-            if r.get("uploaded_files"):
-                render_uploaded_images_grid(
-                    r["uploaded_files"],
-                    selected_index=r.get("selected_best_image_index"),
-                )
+            st.markdown('<div class="sub-heading" style="color:#0f172a !important;">Uploaded Image</div>', unsafe_allow_html=True)
+            if r["uploaded_file"] is not None:
+                r["uploaded_file"].seek(0)
+                st.image(r["uploaded_file"], use_container_width=True)
             else:
                 st.markdown(
-                    '<div class="notice-box light-note">No images were uploaded. Results are based on symptom text and retrieval.</div>',
+                    '<div class="notice-box light-note">No image was uploaded. Results are based on symptom text and retrieval.</div>',
                     unsafe_allow_html=True,
                 )
             st.markdown('</div>', unsafe_allow_html=True)
@@ -1992,71 +1828,3 @@ if st.session_state.diag_result:
         )
 
 st.markdown('</div>', unsafe_allow_html=True)
-
-
-
-# ─────────────────────────────────────────────
-# TREATMENT ENGINE (NO JSON CHANGE)
-# ─────────────────────────────────────────────
-TREATMENT_GUIDE = {
-    "Powdery mildew": {
-        "difficulty": "Easy",
-        "organic": ["Spray neem oil every 7–10 days","Use baking soda spray early"],
-        "chemical": ["Apply wettable sulfur","Use penconazole/hexaconazole as per label"],
-        "prevention": ["Avoid overhead watering","Improve air circulation","Remove infected leaves"]
-    },
-    "Early blight": {
-        "difficulty": "Moderate",
-        "organic": ["Remove infected leaves","Use biofungicide"],
-        "chemical": ["Apply mancozeb or chlorothalonil"],
-        "prevention": ["Crop rotation","Avoid leaf wetness","Field sanitation"]
-    }
-}
-
-def get_treatment_advice(disease_name, severity="Moderate", confidence_label=""):
-    guide = TREATMENT_GUIDE.get(disease_name, {})
-    if not guide:
-        return {
-            "difficulty": severity,
-            "organic": ["Remove infected parts early"],
-            "chemical": ["Use recommended pesticide after confirmation"],
-            "prevention": ["Avoid excess moisture","Proper spacing","Monitor regularly"],
-            "safety_note": "Confirm diagnosis before chemical use if confidence is low."
-        }
-    safety_note = ""
-    if "Low" in str(confidence_label):
-        safety_note = "Low confidence prediction. Verify before chemical use."
-    return {**guide, "safety_note": safety_note}
-
-# ─────────────────────────────────────────────
-# RENDER TREATMENT (call this after diagnosis)
-# ─────────────────────────────────────────────
-def render_treatment_block(result):
-    if not result: return
-    t = get_treatment_advice(
-        disease_name=result.get("name",""),
-        severity=result.get("severity","Moderate"),
-        confidence_label=result.get("confidence_label","")
-    )
-    st.markdown("<h3 style='color:#ffffff;'>🌿 Treatment & Actionable Advice</h3>", unsafe_allow_html=True)
-    st.markdown(f"<p style='color:#ffffff; font-weight:700; margin-bottom:0.75rem;'>Difficulty: {t['difficulty']}</p>", unsafe_allow_html=True)
-    c1,c2,c3 = st.columns(3)
-    with c1:
-        st.markdown("<p style='color:#ffffff; font-weight:800;'>Organic</p>", unsafe_allow_html=True)
-        for i in t["organic"]:
-            st.markdown(f"<p style='color:#ffffff; margin:0.1rem 0;'>- {_escape(str(i))}</p>", unsafe_allow_html=True)
-    with c2:
-        st.markdown("<p style='color:#ffffff; font-weight:800;'>Chemical</p>", unsafe_allow_html=True)
-        for i in t["chemical"]:
-            st.markdown(f"<p style='color:#ffffff; margin:0.1rem 0;'>- {_escape(str(i))}</p>", unsafe_allow_html=True)
-    with c3:
-        st.markdown("<p style='color:#ffffff; font-weight:800;'>Prevention</p>", unsafe_allow_html=True)
-        for i in t["prevention"]:
-            st.markdown(f"<p style='color:#ffffff; margin:0.1rem 0;'>- {_escape(str(i))}</p>", unsafe_allow_html=True)
-    if t.get("safety_note"):
-        st.warning(t["safety_note"])
-
-
-if st.session_state.diag_result:
-    top_result = st.session_state.diag_result.get("top_result")
-    render_treatment_block(top_result)
