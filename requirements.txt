@@ -15,4 +15,4 @@ numpy
 Pillow
 requests
 grad-cam
-opencv-python-headless
+opencv-python-headless==4.10.0.84
