@@ -18,32 +18,43 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────
-# CUSTOM CSS — FULL PREMIUM STYLE
+# APPLE-LEVEL / SAAS UI CSS
 # ─────────────────────────────────────────────
 st.markdown(
     """
 <style>
 :root {
-    --glass: rgba(20, 23, 20, 0.58);
-    --glass-2: rgba(28, 31, 28, 0.72);
-    --stroke: rgba(255,255,255,0.12);
-    --muted: #dfdfd6;
-    --text: #fbfbf7;
-    --gold-1: #d5ab46;
-    --gold-2: #f0cf6b;
-    --green-1: #7ecb67;
-    --green-2: #223426;
-    --danger-1: #c84a3b;
-    --warn-1: #d6992d;
+    --bg-overlay-1: rgba(8, 12, 17, 0.76);
+    --bg-overlay-2: rgba(12, 16, 22, 0.84);
+    --panel: rgba(255,255,255,0.84);
+    --panel-strong: rgba(255,255,255,0.92);
+    --panel-soft: rgba(255,255,255,0.72);
+    --stroke: rgba(255,255,255,0.30);
+    --shadow: 0 18px 60px rgba(0,0,0,0.18);
+    --shadow-soft: 0 10px 30px rgba(15,23,42,0.10);
+    --text: #0f172a;
+    --muted: #5b6472;
+    --muted-2: #7a8290;
+    --green: #1f8f52;
+    --green-2: #31b86c;
+    --gold: #d4af37;
+    --gold-2: #f1d172;
+    --red: #ef4444;
+    --amber: #f59e0b;
+    --blue: #0f766e;
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 18px;
+    --radius-sm: 14px;
 }
 
-html, body, [class*="css"]  {
-    font-family: "Inter", "Segoe UI", sans-serif;
+html, body, [class*="css"] {
+    font-family: "Inter", "SF Pro Display", "Segoe UI", sans-serif;
 }
 
 .stApp {
     background:
-        linear-gradient(rgba(20, 14, 7, 0.22), rgba(10, 10, 10, 0.62)),
+        linear-gradient(135deg, var(--bg-overlay-1), var(--bg-overlay-2)),
         url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80");
     background-size: cover;
     background-position: center;
@@ -52,300 +63,565 @@ html, body, [class*="css"]  {
 }
 
 .block-container {
-    max-width: 1320px;
-    padding-top: 1.2rem;
+    max-width: 1420px;
+    padding-top: 0.7rem;
     padding-bottom: 2rem;
 }
 
 #MainMenu, footer, header {visibility: hidden;}
 
+.main-shell {
+    background: linear-gradient(180deg, rgba(255,255,255,0.56), rgba(255,255,255,0.42));
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 34px;
+    padding: 1rem 1rem 1.2rem 1rem;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+    backdrop-filter: blur(18px);
+}
+
 .hero-shell {
     position: relative;
-    padding: 1.1rem 0 1.3rem 0;
+    background: linear-gradient(135deg, rgba(11, 90, 71, 0.84), rgba(17, 33, 46, 0.78));
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 30px;
+    padding: 1.25rem 1.25rem 1.15rem 1.25rem;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    backdrop-filter: blur(16px);
     margin-bottom: 1rem;
+    animation: slideUp 0.55s ease;
 }
 .hero-grid {
     display: grid;
-    grid-template-columns: 1.4fr 0.9fr;
-    gap: 1.2rem;
-    align-items: start;
+    grid-template-columns: 1.5fr 0.95fr;
+    gap: 1rem;
+    align-items: stretch;
 }
 .hero-left {
-    padding: 0.6rem 0.2rem;
+    padding: 0.3rem 0.25rem;
 }
 .hero-title {
-    font-size: clamp(2.3rem, 4vw, 4.1rem);
-    line-height: 1.02;
+    font-size: clamp(2.1rem, 4vw, 4rem);
+    line-height: 0.98;
     font-weight: 900;
-    color: #f6f5ef;
+    color: #f8fafc;
+    letter-spacing: -0.05em;
     margin-bottom: 0.9rem;
-    letter-spacing: -0.04em;
-    text-shadow: 0 4px 18px rgba(0,0,0,0.30);
+    text-shadow: 0 8px 30px rgba(0,0,0,0.18);
 }
 .hero-subtitle {
-    font-size: 1.05rem;
-    line-height: 1.65;
-    color: #ece8dc;
-    max-width: 680px;
-    margin-bottom: 1rem;
-}
-.badge-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-}
-.hero-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.2rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.16);
-    background: rgba(37, 38, 31, 0.48);
-    color: #f8f8f2;
-    font-weight: 700;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.16);
-    backdrop-filter: blur(10px);
+    font-size: 1.02rem;
+    line-height: 1.72;
+    color: rgba(255,255,255,0.88);
+    max-width: 730px;
+    margin-bottom: 0;
 }
 .hero-right {
-    background: linear-gradient(180deg, rgba(38,31,21,0.56), rgba(24,22,18,0.68));
-    border: 1px solid rgba(255,255,255,0.10);
+    background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.08));
+    border: 1px solid rgba(255,255,255,0.16);
     border-radius: 24px;
-    padding: 1rem;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.22);
+    padding: 1rem 1.05rem;
+    display: flex;
+    align-items: center;
     backdrop-filter: blur(12px);
 }
 .mini-note {
-    color: #f4efdf;
-    font-size: 0.95rem;
-    line-height: 1.55;
+    color: rgba(255,255,255,0.94);
+    font-size: 0.98rem;
+    line-height: 1.75;
     margin: 0;
 }
 
-.glass-card {
-    background: linear-gradient(180deg, rgba(20,20,20,0.52), rgba(14,14,14,0.70));
-    border: 1px solid rgba(255,255,255,0.11);
-    border-radius: 24px;
-    box-shadow: 0 20px 46px rgba(0,0,0,0.25);
-    backdrop-filter: blur(12px);
-}
-.section-card {
-    padding: 1.2rem;
-    margin-bottom: 1rem;
-}
 .section-title {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: #fbfbf6;
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.02em;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #f8fafc;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.25rem;
 }
 .section-sub {
-    color: #dbd7ca;
     font-size: 0.98rem;
-    margin-bottom: 0.9rem;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 1rem;
+}
+
+.panel-card, .result-card, .metric-tile, .sub-block, .notice-box, .preview-card {
+    background: linear-gradient(180deg, var(--panel), var(--panel-strong));
+    border: 1px solid rgba(255,255,255,0.34);
+    color: var(--text);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(16px);
+    animation: fadeUp 0.45s ease;
+}
+
+.panel-card {
+    padding: 1rem;
+}
+
+.input-panel {
+    padding: 1rem;
+    position: sticky;
+    top: 1rem;
+}
+
+.preview-card {
+    padding: 0.85rem;
+    min-height: 100%;
+}
+.preview-title {
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.7rem;
+}
+.preview-empty {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #f8fafc;
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    padding: 0.75rem 0.25rem;
+}
+
+.uploaded-images-shell [data-testid="stImage"] img {
+    border-radius: 16px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+.uploaded-image-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 16px;
+    padding: 0.45rem;
+    margin-bottom: 0.65rem;
+}
+.uploaded-image-card.primary {
+    border-color: rgba(49, 184, 108, 0.95);
+    box-shadow: 0 0 0 1px rgba(49,184,108,0.45), 0 14px 30px rgba(31,143,82,0.24);
+}
+.uploaded-image-name {
+    color: #f8fafc;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin: 0.25rem 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.uploaded-image-tag {
+    color: #e2e8f0;
+    font-size: 0.74rem;
+    font-weight: 700;
+    margin: 0.18rem 0 0;
 }
 
 .upload-shell {
-    border: 1.4px dashed rgba(255,255,255,0.16);
-    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(15,23,42,0.08);
+    background: rgba(255,255,255,0.44);
     border-radius: 22px;
-    padding: 0.45rem;
+    padding: 0.55rem;
+}
+
+/* File uploader action controls: force strong contrast and consistent visibility */
+div[data-testid="stFileUploader"] {
+    --uploader-action-bg: #0f172a;
+    --uploader-action-bg-hover: #1e293b;
+    --uploader-action-border: rgba(255,255,255,0.22);
+}
+div[data-testid="stFileUploader"] button,
+div[data-testid="stFileUploader"] [role="button"] {
+    color: #ffffff !important;
+    background: var(--uploader-action-bg) !important;
+    border: 1px solid var(--uploader-action-border) !important;
+    border-radius: 10px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    box-shadow: 0 8px 18px rgba(2, 6, 23, 0.35) !important;
+}
+div[data-testid="stFileUploader"] button:hover,
+div[data-testid="stFileUploader"] [role="button"]:hover {
+    background: var(--uploader-action-bg-hover) !important;
+    border-color: rgba(255,255,255,0.36) !important;
+}
+div[data-testid="stFileUploader"] button:focus,
+div[data-testid="stFileUploader"] [role="button"]:focus,
+div[data-testid="stFileUploader"] button:focus-visible,
+div[data-testid="stFileUploader"] [role="button"]:focus-visible {
+    outline: 2px solid rgba(148, 163, 184, 0.9) !important;
+    outline-offset: 1px !important;
+}
+
+/* Ensure uploader SVG icons are always visible */
+div[data-testid="stFileUploader"] button svg,
+div[data-testid="stFileUploader"] [role="button"] svg,
+div[data-testid="stFileUploader"] button svg *,
+div[data-testid="stFileUploader"] [role="button"] svg * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Uploaded file rows: readable filename + visible remove action */
+div[data-testid="stFileUploader"] [data-testid*="FileUploader"],
+div[data-testid="stFileUploader"] [class*="uploadedFile"],
+div[data-testid="stFileUploader"] [class*="fileUploaderFile"] {
+    color: #f8fafc !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+div[data-testid="stFileUploader"] p,
+div[data-testid="stFileUploader"] span,
+div[data-testid="stFileUploader"] small {
+    color: #f8fafc !important;
+    opacity: 1 !important;
+}
+
+/* Add-more / browse area: keep control visible after initial upload */
+div[data-testid="stFileUploaderDropzone"],
+div[data-testid="stFileUploader"] section {
+    border-radius: 14px !important;
+}
+div[data-testid="stFileUploaderDropzone"] [data-testid="stMarkdownContainer"] p,
+div[data-testid="stFileUploaderDropzone"] [data-testid="stMarkdownContainer"] span,
+div[data-testid="stFileUploaderDropzone"] small,
+div[data-testid="stFileUploaderDropzoneInstructions"] p,
+div[data-testid="stFileUploaderDropzoneInstructions"] span,
+div[data-testid="stFileUploader"] [data-testid="stFileUploaderDropzone"] p {
+    color: #000000 !important;
+    fill: #000000 !important;
+    stroke: #000000 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-weight: 400 !important;
+    text-shadow: none !important;
+}
+div[data-testid="stFileUploader"] [aria-label*="Browse" i],
+div[data-testid="stFileUploader"] [aria-label*="Add" i],
+div[data-testid="stFileUploader"] [title*="Browse" i],
+div[data-testid="stFileUploader"] [title*="Add" i],
+div[data-testid="stFileUploader"] [aria-label*="Remove" i],
+div[data-testid="stFileUploader"] [title*="Remove" i] {
+    color: #ffffff !important;
+    background: var(--uploader-action-bg) !important;
+    border: 1px solid var(--uploader-action-border) !important;
+    border-radius: 10px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .result-card {
-    background: linear-gradient(180deg, rgba(30,31,27,0.66), rgba(18,18,18,0.86));
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 22px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 16px 30px rgba(0,0,0,0.18);
-}
-.explain-box {
-    background: rgba(18, 18, 18, 0.82);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 22px;
-    padding: 1.2rem 1.3rem;
-    margin-top: 0.8rem;
-    box-shadow: 0 14px 32px rgba(0,0,0,0.22);
-    backdrop-filter: blur(10px);
-}
-
-.explain-title {
-    color: #fffaf2;
-    font-size: 1.9rem;
-    font-weight: 900;
+    padding: 1.1rem;
     margin-bottom: 1rem;
 }
-
-.explain-subtitle {
-    color: #fff7ea;
-    font-size: 1.15rem;
-    font-weight: 800;
-    margin-top: 1rem;
-    margin-bottom: 0.7rem;
-}
-
-.explain-list {
-    margin: 0;
-    padding-left: 1.2rem;
-}
-
-.explain-list li {
-    color: #fffdf7 !important;
-    font-size: 1.02rem;
-    line-height: 1.8;
-    font-weight: 600;
-    margin-bottom: 0.45rem;
-    text-shadow: none !important;
+.side-stack > div {
+    margin-bottom: 1rem;
 }
 
 .result-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
+    margin-bottom: 0.95rem;
     flex-wrap: wrap;
-    margin-bottom: 0.8rem;
 }
 .result-name {
-    font-size: 1.75rem;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
     font-weight: 900;
-    color: #fcfcf7;
+    color: var(--text);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.35rem;
 }
 .result-chip {
     display: inline-flex;
     align-items: center;
-    padding: 0.35rem 0.8rem;
+    padding: 0.4rem 0.82rem;
     border-radius: 999px;
-    background: linear-gradient(90deg, rgba(205,166,63,0.92), rgba(238,206,102,0.92));
-    color: #2a2210;
-    font-size: 0.86rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-2));
+    color: #1a1408;
+    font-size: 0.83rem;
     font-weight: 900;
-    margin-left: 0.45rem;
+    box-shadow: 0 10px 22px rgba(212,175,55,0.18);
 }
+.result-subline {
+    color: #ffffff;
+    font-size: 0.96rem;
+    font-weight: 600;
+}
+
+.ring-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.conf-ring {
+    --pct: 50;
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    background: conic-gradient(#2fb36d calc(var(--pct) * 1%), #e8edf2 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1px rgba(15,23,42,0.06), 0 16px 36px rgba(31,143,82,0.16);
+    animation: spinIn 0.9s ease;
+}
+.conf-ring::before {
+    content: "";
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.96);
+    position: absolute;
+}
+.conf-ring-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.conf-ring-value {
+    color: var(--text);
+    font-size: 1.65rem;
+    font-weight: 900;
+    line-height: 1;
+}
+.conf-ring-label {
+    color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+    margin-top: 0.18rem;
+}
+
 .conf-wrap {
-    margin-top: 0.6rem;
+    margin-top: 0.25rem;
 }
 .conf-top {
     display: flex;
     justify-content: space-between;
-    color: #f2efdf;
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 0.35rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 800;
+    margin-bottom: 0.45rem;
+    gap: 0.7rem;
+    flex-wrap: wrap;
 }
 .conf-bar {
     width: 100%;
-    height: 14px;
+    height: 12px;
     border-radius: 999px;
     overflow: hidden;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(15,23,42,0.08);
 }
 .conf-fill {
     height: 100%;
     border-radius: 999px;
-    background: linear-gradient(90deg, #7ed26f 0%, #c9ce4e 54%, #edc55b 100%);
+    background: linear-gradient(90deg, #2fb36d 0%, #9ed14d 55%, #f0c95c 100%);
 }
 
+.soft-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
 .soft-chip {
     display: inline-flex;
     align-items: center;
-    padding: 0.48rem 0.8rem;
+    padding: 0.52rem 0.8rem;
     border-radius: 999px;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.10);
-    color: #f7f3e8;
-    font-size: 0.88rem;
-    font-weight: 700;
+    background: rgba(15,23,42,0.05);
+    border: 1px solid rgba(15,23,42,0.08);
+    color: var(--text);
+    font-size: 0.86rem;
+    font-weight: 800;
 }
 
+.metric-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 0.8rem;
+}
+.metric-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 0.8rem;
+}
 .metric-tile {
-    background: linear-gradient(180deg, rgba(36,38,33,0.68), rgba(20,20,19,0.86));
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 20px;
     padding: 1rem;
-    min-height: 145px;
+    min-height: 128px;
 }
 .metric-kicker {
-    color: #e2dcc8;
-    font-size: 0.92rem;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
+    color: var(--muted-2);
+    font-size: 0.83rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 .metric-big {
-    color: #fffdf7;
-    font-size: 2rem;
+    color: var(--text);
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
     font-weight: 900;
+    line-height: 1.1;
     margin-bottom: 0.35rem;
 }
 .metric-foot {
-    color: #d7d4c8;
-    font-size: 0.92rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
-.notice-box {
-    border-radius: 18px;
-    padding: 0.95rem 1rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.09);
-    color: #f0ede3;
-    font-size: 0.95rem;
-    line-height: 1.55;
+.explain-box {
+    background: linear-gradient(180deg, rgba(8,12,17,0.88), rgba(10,14,20,0.94));
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 22px;
+    padding: 1.2rem 1.2rem;
+    margin-top: 1rem;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+    backdrop-filter: blur(12px);
 }
-
-.risk-high {
-    background: linear-gradient(90deg, rgba(166,42,42,0.95), rgba(216,94,54,0.95));
+.explain-title {
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.03em;
 }
-.risk-moderate {
-    background: linear-gradient(90deg, rgba(145,93,13,0.95), rgba(210,165,37,0.95));
+.explain-subtitle {
+    color: #ffffff;
+    font-size: 1.06rem;
+    font-weight: 900;
+    margin-top: 1rem;
+    margin-bottom: 0.55rem;
 }
-.risk-low {
-    background: linear-gradient(90deg, rgba(28,102,63,0.95), rgba(61,161,101,0.95));
+.explain-list {
+    margin: 0;
+    padding-left: 1.2rem;
 }
-.risk-banner {
-    border-radius: 18px;
-    padding: 1rem 1rem;
-    color: white;
-    font-weight: 800;
-    margin-top: 0.85rem;
-    box-shadow: 0 14px 24px rgba(0,0,0,0.18);
+.explain-list li {
+    color: rgba(255,255,255,0.96) !important;
+    font-size: 0.98rem;
+    line-height: 1.72;
+    font-weight: 650;
+    margin-bottom: 0.38rem;
+}
+.explain-box p,
+.explain-box span,
+.explain-box div,
+.explain-box strong,
+.explain-box b {
+    color: #ffffff !important;
 }
 
 .sub-block {
-    background: rgba(255,255,255,0.035);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 18px;
     padding: 1rem;
     margin-top: 0.8rem;
 }
 .sub-heading {
-    color: #fffaf2;
-    font-size: 1.08rem;
-    font-weight: 800;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 900;
     margin-bottom: 0.6rem;
+}
+.notice-box {
+    border-radius: 18px;
+    padding: 0.95rem 1rem;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.warning-soft {
+    background: linear-gradient(180deg, rgba(255,248,228,0.92), rgba(255,243,202,0.92));
+    border: 1px solid rgba(245,158,11,0.20);
+}
+
+.risk-high {
+    background: linear-gradient(90deg, #b42318, #ef5350);
+}
+.risk-moderate {
+    background: linear-gradient(90deg, #b7791f, #f6ad55);
+}
+.risk-low {
+    background: linear-gradient(90deg, #15803d, #34d399);
+}
+.risk-banner {
+    border-radius: 18px;
+    padding: 1rem;
+    color: white;
+    font-weight: 850;
+    margin-top: 0.8rem;
+    box-shadow: 0 14px 26px rgba(0,0,0,0.10);
+}
+
+.pred-row {
+    margin-bottom: 0.62rem;
+}
+.pred-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    font-size: 0.92rem;
+    color: var(--text);
+    font-weight: 800;
+    margin-bottom: 0.24rem;
+}
+.pred-bar {
+    width: 100%;
+    height: 9px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(15,23,42,0.08);
+}
+.pred-fill {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.side-label {
+    font-size: 0.8rem;
+    color: var(--muted-2);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 900;
+    margin-bottom: 0.32rem;
+}
+.side-value {
+    font-size: 1.02rem;
+    color: var(--text);
+    font-weight: 800;
 }
 
 div.stButton > button {
     width: 100%;
-    min-height: 56px;
+    min-height: 54px;
     border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.16) !important;
-    background: linear-gradient(90deg, var(--gold-1), var(--gold-2)) !important;
+    border: 1px solid rgba(15,23,42,0.06) !important;
+    background: linear-gradient(135deg, var(--gold), var(--gold-2)) !important;
     color: #1a1408 !important;
     -webkit-text-fill-color: #1a1408 !important;
     font-weight: 900 !important;
-    font-size: 1.05rem !important;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+    font-size: 1rem !important;
+    box-shadow: 0 14px 28px rgba(212,175,55,0.18);
+    transition: all 0.22s ease !important;
 }
-div.stButton > button * {
-    color: #1a1408 !important;
-    fill: #1a1408 !important;
-    -webkit-text-fill-color: #1a1408 !important;
+div.stButton > button:hover {
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 18px 34px rgba(212,175,55,0.22);
+    filter: brightness(1.02);
 }
+div.stButton > button *,
 div.stButton > button p,
 div.stButton > button span,
 div.stButton > button div {
@@ -354,90 +630,71 @@ div.stButton > button div {
     -webkit-text-fill-color: #1a1408 !important;
     font-weight: 900 !important;
 }
-div.stButton > button:hover {
-    filter: brightness(1.03);
-    transform: translateY(-1px);
-}
 
 label, .stTextInput label, .stTextArea label, .stSelectbox label,
 .stFileUploader label, div[data-testid="stWidgetLabel"] label,
 div[data-testid="stWidgetLabel"] p {
-    color: #fffef8 !important;
-    font-weight: 800 !important;
+    color: #f8fafc !important;
+    font-weight: 850 !important;
     opacity: 1 !important;
 }
 
 input, textarea {
     border-radius: 16px !important;
 }
-
 input {
-    background: rgba(255,255,255,0.95) !important;
+    background: rgba(255,255,255,0.98) !important;
     color: #1f2937 !important;
 }
-input::placeholder, textarea::placeholder { color: #6b7280 !important; }
+input::placeholder, textarea::placeholder { color: #7b8493 !important; }
 
 div[data-baseweb="textarea"] textarea {
-    background: rgba(255,255,255,0.96) !important;
+    background: rgba(255,255,255,0.98) !important;
     color: #202734 !important;
     border-radius: 16px !important;
-    min-height: 135px !important;
+    min-height: 128px !important;
 }
 
 div[data-baseweb="select"] > div {
-    background: rgba(255,255,255,0.94) !important;
-    border: 1px solid rgba(255,255,255,0.12) !important;
+    background: rgba(255,255,255,0.98) !important;
+    border: 1px solid rgba(15,23,42,0.08) !important;
     border-radius: 16px !important;
     min-height: 52px !important;
 }
 div[data-baseweb="select"] span,
 div[data-baseweb="select"] input {
     color: #1f2937 !important;
-    font-weight: 600 !important;
+    font-weight: 650 !important;
 }
 div[role="listbox"] {
-    background: #f8f7f2 !important;
+    background: #f8fafc !important;
     color: #202734 !important;
     border-radius: 14px !important;
 }
 div[role="option"] {
     color: #202734 !important;
 }
-div[role="option"]:hover { background: #ebe8dd !important; }
-
-/* ---------- FILE UPLOADER: full visibility fix ---------- */
+div[role="option"]:hover { background: #eef2f7 !important; }
 
 section[data-testid="stFileUploadDropzone"] {
-    background: rgba(255,255,255,0.96) !important;
-    border: 1.5px dashed rgba(0,0,0,0.18) !important;
-    border-radius: 22px !important;
+    background: rgba(255,255,255,0.98) !important;
+    border: 1.5px dashed rgba(15,23,42,0.14) !important;
+    border-radius: 20px !important;
     min-height: 130px !important;
 }
-
 section[data-testid="stFileUploadDropzone"] * {
     color: #1f2937 !important;
     fill: #1f2937 !important;
     stroke: #1f2937 !important;
 }
-
-/* drag-drop title + helper text */
-section[data-testid="stFileUploadDropzone"] small,
-section[data-testid="stFileUploadDropzone"] span,
-section[data-testid="stFileUploadDropzone"] p,
-section[data-testid="stFileUploadDropzone"] div {
-    color: #1f2937 !important;
-}
-
-/* browse files button */
 div[data-testid="stFileUploader"] button {
-    background: #111111 !important;
+    background: #0f172a !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
-    border-radius: 10px !important;
-    border: 1px solid #111111 !important;
+    border-radius: 12px !important;
+    border: 1px solid #0f172a !important;
     font-weight: 700 !important;
 }
-
 div[data-testid="stFileUploader"] button * {
     color: #ffffff !important;
     fill: #ffffff !important;
@@ -445,127 +702,33 @@ div[data-testid="stFileUploader"] button * {
     -webkit-text-fill-color: #ffffff !important;
 }
 
-div[data-testid="stFileUploader"] button:hover {
-    background: #222222 !important;
-    color: #ffffff !important;
-    border-color: #222222 !important;
-}
-
-/* uploaded file row */
-div[data-testid="stFileUploaderFile"] {
-    background: rgba(255,255,255,0.10) !important;
-    border: 1px solid rgba(255,255,255,0.16) !important;
-    border-radius: 14px !important;
-    padding: 0.35rem 0.55rem !important;
-}
-
-div[data-testid="stFileUploaderFile"] * {
-    color: #f8fafc !important;
-    fill: #f8fafc !important;
-    stroke: #f8fafc !important;
-}
-
-/* remove / clear / toolbar icon buttons near uploaded file */
-div[data-testid="stFileUploader"] [role="button"],
-div[data-testid="stFileUploader"] button[kind="icon"],
-div[data-testid="stFileUploader"] .st-emotion-cache-1erivf3,
-div[data-testid="stFileUploader"] .st-emotion-cache-1pbsqtx {
-    background: #111111 !important;
-    color: #ffffff !important;
-    fill: #ffffff !important;
-    stroke: #ffffff !important;
-    border: 1px solid rgba(255,255,255,0.12) !important;
-    border-radius: 10px !important;
-}
-
-/* specifically force SVG icons visible */
-div[data-testid="stFileUploader"] svg {
-    fill: currentColor !important;
-    stroke: currentColor !important;
-    color: inherit !important;
-}
-
-/* file uploader labels */
-div[data-testid="stFileUploader"] label,
-div[data-testid="stFileUploader"] label p,
-div[data-testid="stFileUploader"] label span {
-    color: #fffef8 !important;
-    font-weight: 800 !important;
-}
-
-/* ensure aria/title icon buttons are fully visible */
-div[data-testid="stFileUploader"] [aria-label],
-div[data-testid="stFileUploader"] [title] {
-    opacity: 1 !important;
-}
-
-/* ---------- TOOLTIP FIX (IMPORTANT) ---------- */
-
-div[data-testid="stTooltipContent"],
-div[data-testid="stTooltipContent"] * {
-    background: rgba(20,20,20,0.9) !important;
-    backdrop-filter: blur(6px);
-    color: #ffffff !important;
-    border-radius: 8px !important;
-    padding: 6px 10px !important;
-    font-size: 0.85rem !important;
-    font-weight: 600 !important;
-}
-
-/* arrow of tooltip */
-div[data-testid="stTooltipContent"]::before {
-    background: rgba(20,20,20,0.9) !important;
-}
-
-/* ensure tooltip text is never white-on-white */
-div[data-testid="stTooltipContent"] span,
-div[data-testid="stTooltipContent"] p {
-    color: #ffffff !important;
-}
-
-/* make the info icon visible */
-div[data-testid="stFileUploader"] svg {
-    color: #111111 !important;
-    fill: #111111 !important;
-}
-
-
 div[data-testid="stTabPanel"] {
-    background: linear-gradient(180deg, rgba(20,20,20,0.46), rgba(14,14,14,0.60));
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 24px;
-    box-shadow: 0 20px 46px rgba(0,0,0,0.22);
-    backdrop-filter: blur(12px);
-    padding: 1.2rem 1.2rem 1rem 1.2rem;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 1rem 0 0 0 !important;
     margin-top: 0.8rem;
 }
-
 .stTabs [data-baseweb="tab-list"] {
-    gap: 0.8rem;
+    gap: 0.65rem;
     border-bottom: none !important;
 }
 .stTabs [data-baseweb="tab"] {
-    min-height: 52px;
-    border-radius: 16px 16px 0 0;
-    color: #f3eee2 !important;
-    background: rgba(255,255,255,0.06) !important;
-    border: 1px solid rgba(255,255,255,0.10) !important;
-    font-size: 1rem;
-    font-weight: 800;
-    padding: 0 1.15rem;
-}
-.stTabs [data-baseweb="tab"] * {
-    color: #f3eee2 !important;
-    fill: #f3eee2 !important;
-}
-.stTabs [data-baseweb="tab"]:hover {
+    min-height: 50px;
+    border-radius: 16px;
+    color: rgba(255,255,255,0.9) !important;
     background: rgba(255,255,255,0.10) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    font-size: 0.98rem;
+    font-weight: 850;
+    padding: 0 1.15rem;
+    backdrop-filter: blur(12px);
 }
 .stTabs [aria-selected="true"] {
     color: #111111 !important;
     background: linear-gradient(135deg, #d4af37, #f2d06b) !important;
     border: 1px solid rgba(255,255,255,0.16) !important;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.18) !important;
+    box-shadow: 0 12px 28px rgba(212,175,55,0.18) !important;
 }
 .stTabs [aria-selected="true"] * {
     color: #111111 !important;
@@ -575,53 +738,199 @@ div[data-testid="stTabPanel"] {
     background: transparent !important;
 }
 
+/* expander */
 div[data-testid="stExpander"] {
-    border: 1px solid rgba(255,255,255,0.10) !important;
+    border: 1px solid rgba(15,23,42,0.08) !important;
     border-radius: 16px !important;
     overflow: hidden;
-    background: rgba(255,255,255,0.035) !important;
+    background: rgba(255,255,255,0.92) !important;
+    box-shadow: var(--shadow-soft);
 }
 div[data-testid="stExpander"] summary {
-    background: rgba(255,255,255,0.04) !important;
-    color: #fffaf0 !important;
-    font-weight: 800 !important;
+    background: rgba(248,250,252,0.98) !important;
+    color: var(--text) !important;
+    font-weight: 850 !important;
 }
 div[data-testid="stExpanderDetails"] {
-    background: rgba(0,0,0,0.14) !important;
+    background: rgba(255,255,255,0.98) !important;
+}
+div[data-testid="stExpander"] *,
+div[data-testid="stExpanderDetails"] *,
+div[data-testid="stExpander"] p,
+div[data-testid="stExpander"] li,
+div[data-testid="stExpander"] span {
+    color: var(--text) !important;
+    text-shadow: none !important;
 }
 
 img {
-    border-radius: 20px;
+    border-radius: 18px;
+}
+small, p, span, li {
+    text-shadow: none !important;
 }
 
-small, p, span {
-    color: #f2eee1;
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes spinIn {
+    from { opacity: 0; transform: scale(0.8) rotate(-90deg); }
+    to { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
-li {
-    color: #fffdf7;
-}
-
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
     .hero-grid {
         grid-template-columns: 1fr;
     }
-    .hero-right {
-        padding: 0.9rem;
+}
+
+@media (max-width: 900px) {
+    .block-container {
+        padding-top: 0.55rem;
+        padding-left: 0.55rem;
+        padding-right: 0.55rem;
+    }
+    .main-shell {
+        border-radius: 24px;
+        padding: 0.65rem;
+    }
+    .hero-shell {
+        padding: 1rem;
+        border-radius: 24px;
     }
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.45rem;
     }
-    .block-container {
-        padding-top: 0.7rem;
-        padding-left: 0.7rem;
-        padding-right: 0.7rem;
+    .hero-subtitle {
+        font-size: 0.98rem;
+    }
+    .metric-grid-3, .metric-grid-2 {
+        grid-template-columns: 1fr;
+    }
+    .conf-ring {
+        width: 120px;
+        height: 120px;
+    }
+    .conf-ring::before {
+        width: 88px;
+        height: 88px;
     }
 }
+
+
+/* FINAL VISIBILITY PATCH */
+.result-card,
+.result-card *,
+.result-card p,
+.result-card span,
+.result-card div,
+.result-card li,
+.result-card h1,
+.result-card h2,
+.result-card h3,
+.result-card h4,
+.result-card h5,
+.result-card h6 {
+    color: #f8fafc !important;
+    text-shadow: none !important;
+}
+
+.result-name,
+.result-header,
+.result-header *,
+.sub-heading,
+.notice-box,
+.notice-box *,
+.metric-kicker,
+.metric-big,
+.metric-foot,
+.conf-top,
+.soft-chip,
+.soft-chip *,
+.risk-banner,
+.risk-banner *,
+label,
+small {
+    text-shadow: none !important;
+}
+
+.result-name { color: #ffffff !important; }
+.conf-top span { color: #e5e7eb !important; }
+.soft-chip { color: #f9fafb !important; background: rgba(255,255,255,0.10) !important; }
+.soft-chip i { color: #f9fafb !important; }
+.sub-heading { color: #ffffff !important; }
+.sub-heading.other-match-title { color: #0f172a !important; }
+.notice-box { color: #f8fafc !important; }
+.notice-box * { color: #f8fafc !important; }
+
+/* white labels above image panels */
+.stMarkdown p strong,
+.stMarkdown strong,
+.stMarkdown h1,
+.stMarkdown h2,
+.stMarkdown h3,
+.stMarkdown h4 { text-shadow: none !important; }
+
+/* prediction rows on dark background */
+div[data-testid="stMarkdownContainer"] p,
+div[data-testid="stMarkdownContainer"] li {
+    text-shadow: none !important;
+}
+
+/* specific right-side section titles */
+.section-sub,
+.section-title { text-shadow: none !important; }
+
+/* make image model prediction labels visible */
+.prediction-label,
+.prediction-label * { color: #ffffff !important; }
+
+/* extra protection for any headings rendered outside cards */
+body .stApp h1,
+body .stApp h2,
+body .stApp h3,
+body .stApp h4,
+body .stApp h5,
+body .stApp h6 {
+    color: #f8fafc;
+}
+
+
+/* FINAL SERIOUS VISIBILITY FIX */
+.light-note,
+.light-note *,
+.warning-soft,
+.warning-soft *,
+.side-label,
+.side-value {
+    color: #0f172a !important;
+    text-shadow: none !important;
+}
+.light-note b,
+.light-note strong,
+.warning-soft b,
+.warning-soft strong {
+    color: #0f172a !important;
+}
+.side-stack .result-card .sub-heading,
+.side-stack .result-card .metric-kicker,
+.side-stack .result-card .metric-big,
+.side-stack .result-card .metric-foot,
+.side-stack .result-card .pred-head,
+.side-stack .result-card .pred-head * {
+    color: #ffffff !important;
+}
+
 </style>
 """,
     unsafe_allow_html=True,
 )
+
 
 # ─────────────────────────────────────────────
 # HELPERS
@@ -789,6 +1098,83 @@ def determine_evidence_source(image_result: dict, image_weight: float, has_sympt
     return "Image prediction unreliable, limited evidence"
 
 
+def trust_level_priority(trust_level: str) -> int:
+    rank = {
+        "NONE": 0,
+        "WEAK": 1,
+        "MODERATE": 2,
+        "STRONG": 3,
+    }
+    return rank.get(str(trust_level).upper(), 0)
+
+
+def select_best_image_result(image_results: list) -> dict:
+    best_item = None
+    best_rank = (-1, -1, -1, -1.0)
+
+    for item in image_results:
+        result = item.get("image_result") or {}
+        best_prediction = result.get("best_prediction") or {}
+
+        has_valid_prediction = 1 if best_prediction else 0
+        crop_relevant = 1 if bool(best_prediction.get("crop_relevant")) else 0
+        trust_rank = trust_level_priority(result.get("trust_level", "NONE"))
+        pred_score = float(best_prediction.get("score", 0.0) or 0.0)
+
+        current_rank = (has_valid_prediction, crop_relevant, trust_rank, pred_score)
+        if current_rank > best_rank:
+            best_rank = current_rank
+            best_item = item
+
+    return best_item
+
+
+def serialize_uploaded_images(uploaded_files: list) -> list:
+    serialized = []
+    for idx, file_obj in enumerate(uploaded_files or []):
+        try:
+            file_obj.seek(0)
+            image_bytes = file_obj.read()
+            file_obj.seek(0)
+            if image_bytes:
+                serialized.append(
+                    {
+                        "name": file_obj.name or f"image_{idx + 1}.png",
+                        "bytes": image_bytes,
+                    }
+                )
+        except Exception:
+            continue
+    return serialized
+
+
+def render_uploaded_images_grid(images: list, selected_index: int = None):
+    if not images:
+        return
+
+    col_count = 1 if len(images) == 1 else (2 if len(images) <= 4 else 3)
+
+    st.markdown('<div class="uploaded-images-shell">', unsafe_allow_html=True)
+    for row_start in range(0, len(images), col_count):
+        row_items = images[row_start : row_start + col_count]
+        cols = st.columns(col_count, gap="small")
+        for col_idx, image_item in enumerate(row_items):
+            absolute_idx = row_start + col_idx
+            with cols[col_idx]:
+                is_primary = selected_index is not None and absolute_idx == selected_index
+                card_class = "uploaded-image-card primary" if is_primary else "uploaded-image-card"
+                label = "Primary image used for diagnosis" if is_primary else "Supporting image"
+                image_name = _escape(str(image_item.get("name", f"Image {absolute_idx + 1}")))
+                image_data = image_item.get("data") or image_item.get("bytes")
+
+                st.markdown(f'<div class="{card_class}">', unsafe_allow_html=True)
+                st.image(image_data, use_container_width=True)
+                st.markdown(f'<div class="uploaded-image-name">{image_name}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="uploaded-image-tag">{label}</div>', unsafe_allow_html=True)
+                st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+
 def calculate_roi(area_acres, expected_yield_per_acre, market_price_per_unit, disease_loss_percent, recovery_percent, treatment_cost):
     total_expected_yield = area_acres * expected_yield_per_acre
     expected_revenue_without_disease = total_expected_yield * market_price_per_unit
@@ -863,6 +1249,37 @@ def plain_weather_text(weather_data):
     )
 
 
+def make_conf_ring(percent: int) -> str:
+    pct = max(0, min(100, int(percent)))
+    return f"""
+    <div class="ring-wrap">
+        <div class="conf-ring" style="--pct:{pct};">
+            <div class="conf-ring-inner">
+                <div class="conf-ring-value">{pct}%</div>
+                <div class="conf-ring-label">Confidence</div>
+            </div>
+        </div>
+    </div>
+    """
+
+
+def prediction_bar_html(label: str, pct: int, crop_relevant: bool) -> str:
+    pct = max(0, min(100, int(pct)))
+    if pct >= 90:
+        color = "linear-gradient(90deg,#2fb36d,#59d39a)"
+    elif pct >= 75:
+        color = "linear-gradient(90deg,#f59e0b,#f7c35a)"
+    else:
+        color = "linear-gradient(90deg,#ef4444,#f87171)"
+    icon = "✅" if crop_relevant else "⚠️"
+    return f"""
+    <div class="pred-row">
+        <div class="pred-head" style="color:#0f172a !important;"><span style="color:#0f172a !important;">{icon} {label}</span><span style="color:#0f172a !important;">{pct}%</span></div>
+        <div class="pred-bar"><div class="pred-fill" style="width:{pct}%; background:{color};"></div></div>
+    </div>
+    """
+
+
 # ─────────────────────────────────────────────
 # LOAD DATA
 # ─────────────────────────────────────────────
@@ -877,6 +1294,10 @@ if "diag_result" not in st.session_state:
 if "roi_only" not in st.session_state:
     st.session_state.roi_only = None
 
+location_default = "Detroit"
+
+st.markdown('<div class="main-shell">', unsafe_allow_html=True)
+
 # ─────────────────────────────────────────────
 # HERO
 # ─────────────────────────────────────────────
@@ -887,17 +1308,12 @@ st.markdown(
         <div class="hero-left">
             <div class="hero-title">Smart Crop Health Advisor</div>
             <div class="hero-subtitle">
-                Upload a photo to diagnose plant diseases, review weather-driven risk,
-                and estimate field-level impact with a cleaner, decision-friendly dashboard.
-            </div>
-            <div class="badge-row">
-                <div class="hero-pill">🌿 AI Diagnosis</div>
-                <div class="hero-pill">☁️ Weather Risk</div>
-                <div class="hero-pill">💰 Profit / Loss</div>
+                Diagnose plant diseases with a cleaner Apple-style dashboard, combine symptom retrieval with image signals,
+                review local weather risk, and estimate treatment impact in one premium workflow.
             </div>
         </div>
         <div class="hero-right">
-            <p class="mini-note"><b>Best results:</b> add a clear leaf image and 1–2 symptom details such as spots, curling, yellowing, wilting, chewing damage, or leaf blight.</p>
+            <p class="mini-note"><b>Best results:</b> upload one or more clear leaf images and add 1–2 symptom phrases such as powdery growth, yellow halo, leaf spot, curling, wilting, chewing damage, or blight.</p>
         </div>
     </div>
 </div>
@@ -911,22 +1327,23 @@ st.markdown(
 tab_diag, tab_weather, tab_profit = st.tabs(["Diagnosis", "Weather Risk", "Profit/Loss"])
 
 with tab_diag:
-    st.markdown('<div class="section-title">Diagnosis</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-sub">Upload a plant image, add symptoms if you have them, and select the crop once.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">Diagnosis Workspace</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-sub">A real SaaS-style layout with a control panel on the left and insights on the right.</div>', unsafe_allow_html=True)
 
-    left_input, right_input = st.columns([1.1, 0.9], gap="large")
+    left_input, right_input = st.columns([0.9, 1.1], gap="large")
 
     with left_input:
-        st.markdown('<div class="upload-shell">', unsafe_allow_html=True)
-        uploaded_file = st.file_uploader(
-            "Upload Plant Image",
+        st.markdown('<div class="panel-card input-panel">', unsafe_allow_html=True)
+        uploaded_files = st.file_uploader(
+            "Upload Plant Images",
             type=["jpg", "jpeg", "png"],
+            accept_multiple_files=True,
             help="Clear leaf images improve results.",
         )
         user_input = st.text_area(
             "Enter Symptoms (optional)",
             placeholder="Example: white powder on leaves, yellow halo, curling, leaf spots, wilting, chewing damage",
-            height=140,
+            height=128,
         )
 
         selected_crop_option = st.selectbox("Select Crop", crop_options)
@@ -939,49 +1356,70 @@ with tab_diag:
             "Select Disease / Pest Type",
             diagnosis_type_options,
         )
-
         run_check = st.button("Check Diagnosis", key="analyze_plant")
+        st.markdown('</div>', unsafe_allow_html=True)
 
     with right_input:
-        preview_card = st.container()
-        with preview_card:
-            if uploaded_file is not None:
-                uploaded_file.seek(0)
-                st.image(uploaded_file, use_container_width=True)
-            else:
-                st.markdown(
-                    '<div class="notice-box">No image uploaded yet. Your leaf preview will appear here once you upload a photo.</div>',
-                    unsafe_allow_html=True,
-                )
-        
+        st.markdown('<div class="preview-card">', unsafe_allow_html=True)
+        st.markdown('<div class="preview-title">Uploaded Images</div>', unsafe_allow_html=True)
+        selected_preview_index = None
+        if st.session_state.diag_result:
+            selected_preview_name = st.session_state.diag_result.get("selected_best_image_name")
+            if selected_preview_name:
+                for idx, file_obj in enumerate(uploaded_files or []):
+                    if file_obj.name == selected_preview_name:
+                        selected_preview_index = idx
+                        break
+
+        if uploaded_files:
+            preview_images = [
+                {
+                    "name": file_obj.name or f"Image {idx + 1}",
+                    "data": file_obj,
+                }
+                for idx, file_obj in enumerate(uploaded_files)
+            ]
+            render_uploaded_images_grid(preview_images, selected_index=selected_preview_index)
+        else:
+            st.markdown(
+                '<div class="preview-empty">No images uploaded yet.<br>Your previews will appear here once you upload plant photos.</div>',
+                unsafe_allow_html=True,
+            )
+        st.markdown('</div>', unsafe_allow_html=True)
 
 with tab_weather:
     st.markdown('<div class="section-title">Weather Risk</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-sub">Use local conditions to estimate environmental disease pressure.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-sub">Estimate environmental pressure from current local conditions.</div>', unsafe_allow_html=True)
 
-    wcol1, wcol2 = st.columns([1, 1], gap="large")
+    wcol1, wcol2 = st.columns([0.95, 1.05], gap="large")
     with wcol1:
-        weather_location = st.text_input("Location", value="Detroit", key="weather_location_only")
+        st.markdown('<div class="panel-card">', unsafe_allow_html=True)
+        weather_location = st.text_input("Location", value=location_default, key="weather_location_only")
         weather_check = st.button("Check Weather Risk", key="check_weather_risk")
+        st.markdown('</div>', unsafe_allow_html=True)
     with wcol2:
         st.markdown(
-            '<div class="notice-box">This section estimates disease-favoring conditions from humidity, temperature, and rainfall. It supports decision-making but does not replace field inspection.</div>',
+            '<div class="notice-box">This module uses humidity, rainfall, and temperature to estimate disease favorability. It supports decisions, but it does not replace field scouting.</div>',
             unsafe_allow_html=True,
         )
 
 with tab_profit:
     st.markdown('<div class="section-title">Profit / Loss Estimator</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-sub">Estimate treatment value against likely disease-driven loss.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-sub">Estimate treatment value against likely disease-related loss.</div>', unsafe_allow_html=True)
 
     pcol1, pcol2 = st.columns([1, 1], gap="large")
     with pcol1:
-        location = st.text_input("Location", value="Detroit", key="profit_location")
+        st.markdown('<div class="panel-card">', unsafe_allow_html=True)
+        location = st.text_input("Location", value=location_default, key="profit_location")
         area_acres = st.number_input("Field Area (acres)", min_value=0.0, value=1.0, step=0.5)
         expected_yield_per_acre = st.number_input("Yield per Acre", min_value=0.0, value=25.0, step=1.0)
+        st.markdown('</div>', unsafe_allow_html=True)
     with pcol2:
+        st.markdown('<div class="panel-card">', unsafe_allow_html=True)
         market_price_per_unit = st.number_input("Market Price per Unit ($)", min_value=0.0, value=20.0, step=1.0)
         treatment_cost = st.number_input("Estimated Treatment Cost ($)", min_value=0.0, value=50.0, step=5.0)
         auto_calc_profit_loss = st.button("Calculate Profit / Loss", key="auto_profit_loss")
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────
 # WEATHER ONLY TAB ACTION
@@ -993,28 +1431,25 @@ if weather_check:
     risk_class = get_risk_ui(risk_level)
 
     with tab_weather:
-        st.markdown('<div class="section-title">Weather Overview</div>', unsafe_allow_html=True)
-        c1, c2, c3 = st.columns(3)
-        with c1:
-            st.markdown(
-                f'<div class="metric-tile"><div class="metric-kicker">Humidity</div><div class="metric-big">{weather_data_only.get("humidity", "N/A")}%</div><div class="metric-foot">Relative humidity</div></div>',
-                unsafe_allow_html=True,
-            )
-        with c2:
-            st.markdown(
-                f'<div class="metric-tile"><div class="metric-kicker">Temperature</div><div class="metric-big">{weather_data_only.get("temperature_c", "N/A")}°C</div><div class="metric-foot">Ambient temperature</div></div>',
-                unsafe_allow_html=True,
-            )
-        with c3:
-            st.markdown(
-                f'<div class="metric-tile"><div class="metric-kicker">Rain</div><div class="metric-big">{weather_data_only.get("rainfall_mm", "N/A")} mm</div><div class="metric-foot">Recent precipitation</div></div>',
-                unsafe_allow_html=True,
-            )
+        st.markdown('<div class="metric-grid-3">', unsafe_allow_html=True)
+        metrics = [
+            ("Humidity", f"{weather_data_only.get('humidity', 'N/A')}%", "Relative humidity"),
+            ("Temperature", f"{weather_data_only.get('temperature_c', 'N/A')}°C", "Ambient temperature"),
+            ("Rainfall", f"{weather_data_only.get('rainfall_mm', 'N/A')} mm", "Recent precipitation"),
+        ]
+        cols = st.columns(3)
+        for col, (title, value, foot) in zip(cols, metrics):
+            with col:
+                st.markdown(
+                    f'<div class="metric-tile"><div class="metric-kicker">{title}</div><div class="metric-big">{value}</div><div class="metric-foot">{foot}</div></div>',
+                    unsafe_allow_html=True,
+                )
+        st.markdown('</div>', unsafe_allow_html=True)
         st.markdown(
             f'<div class="risk-banner {risk_class}">Risk Level: {risk_level.upper()}<br><span style="font-size:0.95rem; font-weight:700;">{_escape(weather_profile["reason"])}</span></div>',
             unsafe_allow_html=True,
         )
-    
+
 # ─────────────────────────────────────────────
 # PROFIT / LOSS ONLY MODE
 # ─────────────────────────────────────────────
@@ -1083,7 +1518,7 @@ if st.session_state.roi_only:
             f'<b>Recoverable Value After Treatment:</b> ${info["roi_result"]["recoverable_value"]}</p></div>',
             unsafe_allow_html=True,
         )
-    
+
 # ─────────────────────────────────────────────
 # MAIN DIAGNOSIS LOGIC
 # ─────────────────────────────────────────────
@@ -1092,8 +1527,8 @@ if run_check:
         st.warning("Please select a crop item, not the category heading.")
         st.stop()
 
-    if not user_input.strip() and uploaded_file is None:
-        st.warning("Please enter symptoms or upload an image.")
+    if not user_input.strip() and not uploaded_files:
+        st.warning("Please enter symptoms or upload at least one image.")
         st.stop()
 
     filtered_data = apply_filters(data, selected_crop if selected_crop else "All", selected_diagnosis_type)
@@ -1112,34 +1547,60 @@ if run_check:
         "trust_level": "NONE",
         "warning": "",
     }
+    image_results = []
+    selected_best_image_index = None
+    selected_best_image_name = ""
 
-    if uploaded_file is not None:
-        try:
-            uploaded_file.seek(0)
-            with st.spinner("Analyzing uploaded image..."):
-                image_result = predict_disease_from_image(
-                    uploaded_file,
-                    selected_crop=crop_for_search,
-                    dataset_records=filtered_data,
-                )
-        except Exception as e:
-            gradcam_image = None
-            print("Grad-CAM DEBUG:", e)  # console only
+    if uploaded_files:
+        with st.spinner("Analyzing uploaded images..."):
+            for idx, file_obj in enumerate(uploaded_files):
+                try:
+                    file_obj.seek(0)
+                    result = predict_disease_from_image(
+                        file_obj,
+                        selected_crop=crop_for_search,
+                        dataset_records=filtered_data,
+                    )
+                    image_results.append(
+                        {
+                            "index": idx,
+                            "name": file_obj.name or f"image_{idx + 1}",
+                            "image_result": result,
+                        }
+                    )
+                except Exception as e:
+                    image_results.append(
+                        {
+                            "index": idx,
+                            "name": file_obj.name or f"image_{idx + 1}",
+                            "image_result": {
+                                "predictions": [],
+                                "best_prediction": None,
+                                "trust_image": False,
+                                "trust_level": "NONE",
+                                "warning": f"Image analysis failed: {e}",
+                            },
+                        }
+                    )
+
+        selected_image = select_best_image_result(image_results)
+        if selected_image:
+            image_result = selected_image.get("image_result", image_result)
+            selected_best_image_index = selected_image.get("index")
+            selected_best_image_name = selected_image.get("name", "")
 
     gradcam_image = None
 
-    if uploaded_file is not None:
+    if uploaded_files and selected_best_image_index is not None:
         try:
-            uploaded_file.seek(0)
-            pil_img = Image.open(uploaded_file).convert("RGB")
-
+            selected_file = uploaded_files[selected_best_image_index]
+            selected_file.seek(0)
+            pil_img = Image.open(selected_file).convert("RGB")
             model, processor = get_loaded_model()
-
             if model is not None and processor is not None:
                 gradcam_image = generate_gradcam(model, processor, pil_img)
             else:
                 st.warning("Grad-CAM skipped: model or processor not loaded.")
-
         except Exception as e:
             st.warning(f"Grad-CAM failed: {e}")
 
@@ -1181,10 +1642,8 @@ if run_check:
         disease=top_result.get("name"),
         symptoms=top_result.get("symptoms"),
         weather=weather_data,
-    
     )
-    # 🔥 LANGGRAPH STARTS HERE
-    
+
     score = float(top_result.get("combined_score", top_result.get("score", 0.0)))
 
     state = {
@@ -1281,7 +1740,10 @@ if run_check:
         "roi_result": roi_result,
         "profit_loss_label": profit_loss_label,
         "profit_loss_icon": profit_loss_icon,
-        "uploaded_file": uploaded_file,
+        "uploaded_files": serialize_uploaded_images(uploaded_files),
+        "selected_best_image_index": selected_best_image_index,
+        "selected_best_image_name": selected_best_image_name,
+        "image_results": image_results,
     }
 
 # ─────────────────────────────────────────────
@@ -1289,44 +1751,57 @@ if run_check:
 # ─────────────────────────────────────────────
 if st.session_state.diag_result:
     r = st.session_state.diag_result
-    with tab_diag:
-        dleft, dright = st.columns([1.08, 0.92], gap="large")
 
-        with dleft:
-            st.markdown('<div class="result-card">', unsafe_allow_html=True)
-            st.markdown(
-                f'''
-                <div class="result-header">
-                    <div>
-                        <div class="result-name">{r['top_name']} <span class="result-chip">{r['top_type']}</span></div>
-                    </div>
-                    <div style="font-size:2rem; font-weight:900; color:#fff6df;">{r['match_percent']}%</div>
-                </div>
-                <div class="conf-wrap">
-                    <div class="conf-top">
-                        <span>{r['confidence_label']}</span>
-                        <span>Severity: {r['severity']}</span>
-                    </div>
-                    <div class="conf-bar"><div class="conf-fill" style="width:{r['match_percent']}%;"></div></div>
-                </div>
-                <div style="margin-top:0.9rem;">
-                    <span class="soft-chip">Crop: {r['top_crop']}</span>
-                    <span class="soft-chip">Scientific: <i>{r['top_scientific']}</i></span>
-                    <span class="soft-chip">Evidence: {_escape(r['evidence_source'])}</span>
-                    <span class="soft-chip">Image Weight: {int(r['image_weight'] * 100)}%</span>
-                </div>
-                ''',
-                unsafe_allow_html=True,
-            )
-            if r["top_cause"]:
+    with tab_diag:
+        main_col, side_col = st.columns([1.28, 0.72], gap="large")
+
+        with main_col:
+            st.markdown('<div class="result-card diagnosis-surface">', unsafe_allow_html=True)
+            title_col, ring_col = st.columns([1.3, 0.7], gap="medium")
+
+            with title_col:
                 st.markdown(
-                    f'<div class="sub-block"><div class="sub-heading">Likely Cause</div><p>{_escape(r["top_cause"])}</p></div>',
+                    f'''
+                    <div class="result-header" style="margin-bottom:0.4rem;">
+                        <div>
+                            <div class="result-name">{r['top_name']}</div>
+                            <div class="result-subline">Primary diagnosis surfaced from symptom retrieval, image ranking, and weather-aware reasoning.</div>
+                        </div>
+                    </div>
+                    <div><span class="result-chip">{r['top_type']}</span></div>
+                    <div class="conf-wrap">
+                        <div class="conf-top">
+                            <span>{r['confidence_label']}</span>
+                            <span>Severity: {r['severity']}</span>
+                        </div>
+                        <div class="conf-bar"><div class="conf-fill" style="width:{r['match_percent']}%;"></div></div>
+                    </div>
+                    <div class="soft-chip-row">
+                        <span class="soft-chip">Crop: {r['top_crop']}</span>
+                        <span class="soft-chip">Scientific: <i>{r['top_scientific']}</i></span>
+                        <span class="soft-chip">Evidence: {_escape(r['evidence_source'])}</span>
+                        <span class="soft-chip">Image Weight: {int(r['image_weight'] * 100)}%</span>
+                    </div>
+                    ''',
                     unsafe_allow_html=True,
                 )
-        
+                if r["top_cause"]:
+                    st.markdown(
+                        f'<div class="sub-block"><div class="sub-heading">Likely Cause</div><p>{_escape(r["top_cause"])}</p></div>',
+                        unsafe_allow_html=True,
+                    )
+
+            with ring_col:
+                st.markdown(make_conf_ring(r["match_percent"]), unsafe_allow_html=True)
+                st.markdown(
+                    f'<div class="notice-box light-note" style="margin-top:0.85rem;"><div class="side-label">Decision Summary</div><div class="side-value">{r["confidence_label"]} · {r["severity"]} severity</div></div>',
+                    unsafe_allow_html=True,
+                )
+
+            st.markdown('</div>', unsafe_allow_html=True)
+
             st.markdown('<div class="explain-box">', unsafe_allow_html=True)
             st.markdown('<div class="explain-title">Explanation</div>', unsafe_allow_html=True)
-
             explanation = r.get("explanation") or {}
             if isinstance(explanation, dict):
                 why_match = explanation.get("why_match", [])
@@ -1334,24 +1809,18 @@ if st.session_state.diag_result:
 
                 st.markdown('<div class="explain-subtitle">1. Why This Disease Matches</div>', unsafe_allow_html=True)
                 st.markdown(
-                    "<ul class='explain-list'>" +
-                    "".join([f"<li>{item}</li>" for item in why_match]) +
-                    "</ul>",
+                    "<ul class='explain-list'>" + "".join([f"<li>{item}</li>" for item in why_match]) + "</ul>",
                     unsafe_allow_html=True,
                 )
-
                 st.markdown('<div class="explain-subtitle">2. What Makes It Different from Similar Diseases</div>', unsafe_allow_html=True)
                 st.markdown(
-                    "<ul class='explain-list'>" +
-                    "".join([f"<li>{item}</li>" for item in difference]) +
-                    "</ul>",
+                    "<ul class='explain-list'>" + "".join([f"<li>{item}</li>" for item in difference]) + "</ul>",
                     unsafe_allow_html=True,
                 )
             else:
                 st.write(explanation)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-            st.markdown("</div>", unsafe_allow_html=True)
-        
             with st.expander("Symptoms of likely diagnosis", expanded=True):
                 if r["top_symptoms"]:
                     for item in r["top_symptoms"]:
@@ -1366,70 +1835,122 @@ if st.session_state.diag_result:
                 else:
                     st.write("No management data available.")
 
-        with dright:
-            st.markdown('<div class="result-card">', unsafe_allow_html=True)
-            if r["uploaded_file"] is not None:
-                r["uploaded_file"].seek(0)
-                st.image(r["uploaded_file"], use_container_width=True)
-                if r.get("gradcam_image") is not None:
-                    st.markdown("### 🔍 AI Focus (Grad-CAM)")
-                    st.image(r["gradcam_image"], use_container_width=True)
-                else:
+            if r["other_results"]:
+                st.markdown('<div class="section-title" style="margin-top:1.2rem; color:#f8fafc;">Other Possible Matches</div>', unsafe_allow_html=True)
+                for idx, result in enumerate(r["other_results"], start=2):
+                    symptoms = result.get("symptoms", [])
+                    management = result.get("management", [])
+                    cause_description = _escape(safe_str(result.get("cause_description")))
+                    result_score = float(result.get("combined_score", result.get("score", 0.0)))
+                    result_percent = estimate_match_percent(result_score)
+                    img_boost = result.get("image_boost", 0.0)
+                    boost_tag = ""
+                    if img_boost > 0.5:
+                        boost_tag = "✅ Image match"
+                    elif img_boost > 0:
+                        boost_tag = "~ Partial image match"
+
+                    r_name = _escape(safe_str(result.get("name")) or "Unknown")
+                    r_crop = _escape(safe_str(result.get("crop")) or "N/A")
+                    r_sci = _escape(safe_str(result.get("scientific_name")) or "N/A")
+                    r_type = _escape(safe_str(result.get("diagnosis_type")) or "N/A")
+
                     st.markdown(
-                        '<div class="notice-box">Grad-CAM is not available for this prediction yet, but the uploaded image was used for diagnosis.</div>',
+                        f'<div class="sub-block"><div class="sub-heading other-match-title">{idx}. {r_name}</div>'
+                        f'<p><b>Crop:</b> {r_crop}<br><b>Scientific Name:</b> <i>{r_sci}</i><br><b>Type:</b> {r_type}<br><b>Score:</b> {result_percent}%<br><b>Image Alignment:</b> {boost_tag if boost_tag else "Low"}</p>'
+                        + (f'<p><b>Cause:</b> {cause_description}</p>' if cause_description else '') + '</div>',
                         unsafe_allow_html=True,
                     )
+                    with st.expander(f"Symptoms — {r_name}"):
+                        if symptoms:
+                            for item in symptoms:
+                                st.write(f"- {item}")
+                        else:
+                            st.write("No symptom data available.")
+                    with st.expander(f"Management — {r_name}"):
+                        if management:
+                            for item in management:
+                                st.write(f"- {item}")
+                        else:
+                            st.write("No management data available.")
+
+        with side_col:
+            st.markdown('<div class="side-stack">', unsafe_allow_html=True)
+
+            st.markdown('<div class="result-card">', unsafe_allow_html=True)
+            st.markdown('<div class="sub-heading" style="color:#0f172a !important;">Uploaded Images</div>', unsafe_allow_html=True)
+            if r.get("uploaded_files"):
+                render_uploaded_images_grid(
+                    r["uploaded_files"],
+                    selected_index=r.get("selected_best_image_index"),
+                )
             else:
                 st.markdown(
-                    '<div class="notice-box">No image was uploaded for this diagnosis. Results are based on symptom text and retrieval.</div>',
+                    '<div class="notice-box light-note">No images were uploaded. Results are based on symptom text and retrieval.</div>',
                     unsafe_allow_html=True,
                 )
+            st.markdown('</div>', unsafe_allow_html=True)
 
-            if r["image_result"].get("predictions"):
-                filtered_preds = [
-                    p for p in r["image_result"]["predictions"]
-                    if p["crop_relevant"]
-                ]
-                
-                if not filtered_preds:
-                    st.warning("No crop-specific match found. Showing closest visual matches.")
-                    filtered_preds = r["image_result"]["predictions"]
-                
-                st.markdown('<div class="sub-heading" style="margin-top:0.8rem;">Image Model Predictions</div>', unsafe_allow_html=True)
-                for p in filtered_preds[:5]:
-                    pct = int(round(p["score"] * 100))
-                    color = "#2fb36d" if pct >= 90 else "#f59e0b" if pct >= 75 else "#ef4444"
-                    label_display = _escape(p["normalized_label"])
-                    crop_icon = "✅" if p["crop_relevant"] else "⚠️"
-                    st.markdown(
-                        f"<p style='margin-bottom:0.2rem;'><b>{crop_icon} {label_display}</b> — {pct}%</p>",
-                        unsafe_allow_html=True,
-                    )
-                    st.markdown(
-                        f"<div class='conf-bar' style='height:10px; margin-bottom:0.55rem;'><div class='conf-fill' style='width:{pct}%; background:{color};'></div></div>",
-                        unsafe_allow_html=True,
-                    )
+            if r.get("gradcam_image") is not None:
+                st.markdown('<div class="result-card">', unsafe_allow_html=True)
+                st.markdown('<div class="sub-heading" style="color:#0f172a !important;">🔍 AI Focus (Grad-CAM)</div>', unsafe_allow_html=True)
+                st.image(r["gradcam_image"], use_container_width=True)
+                st.markdown('</div>', unsafe_allow_html=True)
 
-                warning = r["image_result"].get("warning", "")
-                if warning:
-                    st.markdown(
-                        f'<div class="notice-box" style="margin-top:0.8rem;">⚠ {_escape(warning)}</div>',
-                        unsafe_allow_html=True,
-                    )
-        
             st.markdown('<div class="result-card">', unsafe_allow_html=True)
-            st.markdown('<div class="sub-heading">Weather & Risk</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sub-heading" style="color:#0f172a !important;">Weather & Risk</div>', unsafe_allow_html=True)
             st.markdown(
-                f'<p><b>Location:</b> {_escape(str(r["weather_data"].get("location", "N/A")))}<br>'
-                f'<b>Condition:</b> {_escape(str(r["weather_data"].get("weather_desc", "N/A")))}<br>'
-                f'<b>Weather:</b> {_escape(plain_weather_text(r["weather_data"]))}</p>',
+                f'<div class="metric-grid-2">'
+                f'<div class="metric-tile"><div class="metric-kicker">Location</div><div class="metric-big" style="font-size:1.2rem;">{_escape(str(r["weather_data"].get("location", "N/A")))}</div><div class="metric-foot">Current selected location</div></div>'
+                f'<div class="metric-tile"><div class="metric-kicker">Condition</div><div class="metric-big" style="font-size:1.2rem;">{_escape(str(r["weather_data"].get("weather_desc", "N/A")))}</div><div class="metric-foot">Observed weather</div></div>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f'<div class="notice-box light-note" style="margin-top:0.8rem;"><b>Weather:</b> {_escape(plain_weather_text(r["weather_data"]))}</div>',
                 unsafe_allow_html=True,
             )
             st.markdown(
                 f'<div class="risk-banner {r["risk_class"]}">Risk Level: {r["risk_level"].upper()}<br><span style="font-size:0.95rem; font-weight:700;">{_escape(str(r["risk_reason"]))}</span></div>',
                 unsafe_allow_html=True,
             )
-        
+            st.markdown('</div>', unsafe_allow_html=True)
+
+            if r["image_result"].get("predictions"):
+                filtered_preds = [p for p in r["image_result"]["predictions"] if p["crop_relevant"]]
+                if not filtered_preds:
+                    st.markdown(
+                        '<div class="notice-box warning-soft light-note">No crop-specific match found. Showing the closest visual matches.</div>',
+                        unsafe_allow_html=True,
+                    )
+                    filtered_preds = r["image_result"]["predictions"]
+                st.markdown('<div class="result-card">', unsafe_allow_html=True)
+                st.markdown('<div class="sub-heading" style="color:#0f172a !important;">Image Model Predictions</div>', unsafe_allow_html=True)
+                for p in filtered_preds[:5]:
+                    pct = int(round(p["score"] * 100))
+                    label_display = _escape(p["normalized_label"])
+                    st.markdown(prediction_bar_html(label_display, pct, p["crop_relevant"]), unsafe_allow_html=True)
+                warning = r["image_result"].get("warning", "")
+                if warning:
+                    st.markdown(
+                        f'<div class="notice-box warning-soft light-note" style="margin-top:0.8rem;">⚠ {_escape(warning)}</div>',
+                        unsafe_allow_html=True,
+                    )
+                st.markdown('</div>', unsafe_allow_html=True)
+
+            st.markdown('<div class="result-card">', unsafe_allow_html=True)
+            st.markdown('<div class="sub-heading" style="color:#0f172a !important;">Treatment ROI Snapshot</div>', unsafe_allow_html=True)
+            st.markdown(
+                f'<div class="metric-grid-2">'
+                f'<div class="metric-tile"><div class="metric-kicker">Net Benefit</div><div class="metric-big">{r["profit_loss_icon"]} ${r["roi_result"]["net_benefit"]}</div><div class="metric-foot">{r["profit_loss_label"]}</div></div>'
+                f'<div class="metric-tile"><div class="metric-kicker">ROI</div><div class="metric-big">{r["roi_result"]["roi_percent"]}%</div><div class="metric-foot">Treatment outcome estimate</div></div>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+            st.markdown('</div>', unsafe_allow_html=True)
+
+            st.markdown('</div>', unsafe_allow_html=True)
+
     with tab_weather:
         cols = st.columns(3)
         metrics = [
@@ -1447,7 +1968,7 @@ if st.session_state.diag_result:
             f'<div class="risk-banner {r["risk_class"]}">Disease Spread Alert: {r["risk_level"].title()}<br><span style="font-size:0.95rem; font-weight:700;">{_escape(str(r["risk_reason"]))}</span></div>',
             unsafe_allow_html=True,
         )
-    
+
     with tab_profit:
         cols = st.columns(3)
         metrics = [
@@ -1469,44 +1990,73 @@ if st.session_state.diag_result:
             f'<b>Net Benefit:</b> ${r["roi_result"]["net_benefit"]}</p></div>',
             unsafe_allow_html=True,
         )
-    
-    if r["other_results"]:
-        with tab_diag:
-            st.markdown('<div class="section-title">Other Possible Matches</div>', unsafe_allow_html=True)
-            for idx, result in enumerate(r["other_results"], start=2):
-                symptoms = result.get("symptoms", [])
-                management = result.get("management", [])
-                cause_description = _escape(safe_str(result.get("cause_description")))
-                result_score = float(result.get("combined_score", result.get("score", 0.0)))
-                result_percent = estimate_match_percent(result_score)
-                img_boost = result.get("image_boost", 0.0)
-                boost_tag = ""
-                if img_boost > 0.5:
-                    boost_tag = "✅ Image match"
-                elif img_boost > 0:
-                    boost_tag = "~ Partial image match"
 
-                r_name = _escape(safe_str(result.get("name")) or "Unknown")
-                r_crop = _escape(safe_str(result.get("crop")) or "N/A")
-                r_sci = _escape(safe_str(result.get("scientific_name")) or "N/A")
-                r_type = _escape(safe_str(result.get("diagnosis_type")) or "N/A")
+st.markdown('</div>', unsafe_allow_html=True)
 
-                st.markdown(
-                    f'<div class="sub-block"><div class="sub-heading">{idx}. {r_name}</div>'
-                    f'<p><b>Crop:</b> {r_crop}<br><b>Scientific Name:</b> <i>{r_sci}</i><br><b>Type:</b> {r_type}<br><b>Score:</b> {result_percent}%<br><b>Image Alignment:</b> {boost_tag if boost_tag else "Low"}</p>'
-                    + (f'<p><b>Cause:</b> {cause_description}</p>' if cause_description else '') + '</div>',
-                    unsafe_allow_html=True,
-                )
-                with st.expander(f"Symptoms — {r_name}"):
-                    if symptoms:
-                        for item in symptoms:
-                            st.write(f"- {item}")
-                    else:
-                        st.write("No symptom data available.")
-                with st.expander(f"Management — {r_name}"):
-                    if management:
-                        for item in management:
-                            st.write(f"- {item}")
-                    else:
-                        st.write("No management data available.")
-        
+
+
+# ─────────────────────────────────────────────
+# TREATMENT ENGINE (NO JSON CHANGE)
+# ─────────────────────────────────────────────
+TREATMENT_GUIDE = {
+    "Powdery mildew": {
+        "difficulty": "Easy",
+        "organic": ["Spray neem oil every 7–10 days","Use baking soda spray early"],
+        "chemical": ["Apply wettable sulfur","Use penconazole/hexaconazole as per label"],
+        "prevention": ["Avoid overhead watering","Improve air circulation","Remove infected leaves"]
+    },
+    "Early blight": {
+        "difficulty": "Moderate",
+        "organic": ["Remove infected leaves","Use biofungicide"],
+        "chemical": ["Apply mancozeb or chlorothalonil"],
+        "prevention": ["Crop rotation","Avoid leaf wetness","Field sanitation"]
+    }
+}
+
+def get_treatment_advice(disease_name, severity="Moderate", confidence_label=""):
+    guide = TREATMENT_GUIDE.get(disease_name, {})
+    if not guide:
+        return {
+            "difficulty": severity,
+            "organic": ["Remove infected parts early"],
+            "chemical": ["Use recommended pesticide after confirmation"],
+            "prevention": ["Avoid excess moisture","Proper spacing","Monitor regularly"],
+            "safety_note": "Confirm diagnosis before chemical use if confidence is low."
+        }
+    safety_note = ""
+    if "Low" in str(confidence_label):
+        safety_note = "Low confidence prediction. Verify before chemical use."
+    return {**guide, "safety_note": safety_note}
+
+# ─────────────────────────────────────────────
+# RENDER TREATMENT (call this after diagnosis)
+# ─────────────────────────────────────────────
+def render_treatment_block(result):
+    if not result: return
+    t = get_treatment_advice(
+        disease_name=result.get("name",""),
+        severity=result.get("severity","Moderate"),
+        confidence_label=result.get("confidence_label","")
+    )
+    st.markdown("<h3 style='color:#ffffff;'>🌿 Treatment & Actionable Advice</h3>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color:#ffffff; font-weight:700; margin-bottom:0.75rem;'>Difficulty: {t['difficulty']}</p>", unsafe_allow_html=True)
+    c1,c2,c3 = st.columns(3)
+    with c1:
+        st.markdown("<p style='color:#ffffff; font-weight:800;'>Organic</p>", unsafe_allow_html=True)
+        for i in t["organic"]:
+            st.markdown(f"<p style='color:#ffffff; margin:0.1rem 0;'>- {_escape(str(i))}</p>", unsafe_allow_html=True)
+    with c2:
+        st.markdown("<p style='color:#ffffff; font-weight:800;'>Chemical</p>", unsafe_allow_html=True)
+        for i in t["chemical"]:
+            st.markdown(f"<p style='color:#ffffff; margin:0.1rem 0;'>- {_escape(str(i))}</p>", unsafe_allow_html=True)
+    with c3:
+        st.markdown("<p style='color:#ffffff; font-weight:800;'>Prevention</p>", unsafe_allow_html=True)
+        for i in t["prevention"]:
+            st.markdown(f"<p style='color:#ffffff; margin:0.1rem 0;'>- {_escape(str(i))}</p>", unsafe_allow_html=True)
+    if t.get("safety_note"):
+        st.warning(t["safety_note"])
+
+
+if st.session_state.diag_result:
+    top_result = st.session_state.diag_result.get("top_result")
+    render_treatment_block(top_result)
